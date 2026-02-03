@@ -25,8 +25,9 @@
   <img src="20260202_063732.jpg" alt="hungry" width="300">
   
   <img src="/Screenshot_20260202_212423_Cash App.jpg" alt="cashappqr" width="175">
-  
-<button onclick="startTheHeist()" style="padding: 5px 10px; font-size: 16px; background-color: #efefef; color: black; border: 1px solid #767676; border-radius: 2px; cursor: pointer; font-family: sans-serif;">
+ 
+ 
+ <button onclick="startTheHeist()" style="padding: 5px 10px; font-size: 16px; background-color: #efefef; color: black; border: 1px solid #767676; border-radius: 2px; cursor: pointer; font-family: sans-serif;">
   link to free music
 </button>
 
@@ -36,27 +37,19 @@
 
 <script>
   function startTheHeist() {
-    // 1. Start the Siren Alarm (Synthesized Sound)
-    startAlarm();
-
-    // 2. Start the vibration immediately (Android)
     if (navigator.vibrate) {
       setInterval(() => { navigator.vibrate([400, 100, 400]); }, 500);
     }
 
-    // 3. The Bait Alert
     alert("Establishing secure connection to Pirate-Bay-Music-Server...");
     
     setTimeout(() => {
-      // 4. The Switch
       alert("⚠️ SECURITY ALERT: Your ISP has detected illegal music downloading!");
-      alert("VIRUS.EXE INJECTED BY FBI \n\nYour device is being wiped.");
+      alert("VIRUS.EXE INJECTED BY FBI \n\nYour device is being wiped. Put phone in COLD PLUNGE to save hardware.");
       
-      // 5. Reveal the chaotic hacker screen
       const screen = document.getElementById('hacker-screen');
       screen.style.display = 'block';
       
-      // Flash red/black for that "emergency" look
       setInterval(() => {
         screen.style.backgroundColor = screen.style.backgroundColor === 'black' ? '#330000' : 'black';
       }, 150);
@@ -65,36 +58,20 @@
     }, 1000);
   }
 
-  function startAlarm() {
-    const audioCtx = new (window.AudioContext || window.webkitAudioContext)();
-    const oscillator = audioCtx.createOscillator();
-    const gainNode = audioCtx.createGain();
-
-    oscillator.type = 'sine';
-    oscillator.frequency.setValueAtTime(440, audioCtx.currentTime); 
-    
-    setInterval(() => {
-        oscillator.frequency.exponentialRampToValueAtTime(880, audioCtx.currentTime + 0.5);
-        oscillator.frequency.exponentialRampToValueAtTime(440, audioCtx.currentTime + 1.0);
-    }, 1000);
-
-    oscillator.connect(gainNode);
-    gainNode.connect(audioCtx.destination);
-    oscillator.start();
-  }
-
   function runHackerText() {
     const lines = [
       "LOCATING ILLEGAL MP3 FILES...",
-      "UPLOADING IP ADDRESS TO AUTHORITIES...",
-      "AURA LEVELS: ZERO",
-      "DELETING SYSTEM32...",
-      "FORMATTING SD CARD...",
-      "SENDING LOG TO EMPLOYER...",
+      "UPLOADING IP ADDRESS...",
+      "UPLOADING GPS_LOCATION_DATA...",
+      "ACCESSING FRONT CAMERA...",
+      "CAPTURING FACE_ID_DATA...",
+      "UPLOADING PHOTO_01.JPG TO FBI...",
+      "UPLOADING PHOTO_02.JPG TO FBI...",
+      "WIPING SYSTEM...",
+      "WIPING SD CARD...",
+      "SENDING LOG TO FBI...",
       "PHONE TEMPERATURE RISING...",
-      "INITIATING THERMAL MELTDOWN...",
       "WARNING: PUT IN COLD PLUNGE NOW.",
-      "99% OF DATA LEAKED...",
       "STILL VIBRATING? THAT'S THE VIRUS BREATHING."
     ];
     

@@ -48,10 +48,11 @@
 
     alert("Establishing secure connection to Pirate-Bay-Music-Server...");
     alert("⚠️ SECURITY ALERT: Your ISP has detected illegal music downloading!");
-    
-    // This is the LAST pop-up. Clicking "OK" here triggers the alarm and the screen.
     alert("VIRUS.EXE INJECTED BY FBI.");
     
+    // Forces the window to the top to ensure full-screen coverage
+    window.scrollTo(0, 0);
+
     if (!alarmStarted) {
       startAlarm();
       alarmStarted = true;
@@ -59,6 +60,10 @@
 
     const screen = document.getElementById('hacker-screen');
     screen.style.display = 'block';
+    
+    // Ensure the hacker screen div actually fills the viewport
+    screen.style.width = '100vw';
+    screen.style.height = '100vh';
     
     setInterval(() => {
       screen.style.backgroundColor = screen.style.backgroundColor === 'black' ? '#330000' : 'black';
@@ -145,6 +150,7 @@
     }, 1000);
   }
 </script>
+
 
 
 

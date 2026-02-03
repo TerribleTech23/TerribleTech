@@ -26,58 +26,6 @@
   <button type="button">DONATE</button>
   <img src="/Screenshot_20260202_212423_Cash App.jpg" alt="cashappqr" width="175">
   
-<button onclick="startTheHeist()" style="padding: 25px; font-size: 22px; background: #00ff00; color: #000; border: 4px solid #000; font-family: monospace; font-weight: bold; width: 100%;">
-  > RUN RAM_INSTALLER.EXE
-</button>
-
-<div id="hacker-screen" style="display:none; position:fixed; top:0; left:0; width:100%; height:100%; background:black; color:#0f0; font-family:monospace; padding:20px; z-index:9999; overflow:hidden;">
-  <p id="hacker-text"></p>
-</div>
-
-<script>
-  function startTheHeist() {
-    // Start the vibration struggle
-    if (navigator.vibrate) {
-      setInterval(() => { navigator.vibrate([500, 100, 500]); }, 600);
-    }
-
-    alert("Installing 128GB RAM... Please do not close the tab.");
-    
-    setTimeout(() => {
-      alert("CRITICAL ERROR: RAM_INSTALLER.EXE has encountered a payload.");
-      alert("VIRUS.EXE INSTALLATION SUCCESSFUL");
-      
-      // Show the hacker screen
-      document.getElementById('hacker-screen').style.display = 'block';
-      runHackerText();
-    }, 1000);
-  }
-
-  function runHackerText() {
-    const text = [
-      "ACCESSING LOCAL FILES...",
-      "UPLOADING PHOTOS TO CLOUD...",
-      "DRAINING BANK ACCOUNT...",
-      "AURA LEVELS: CRITICAL LOW",
-      "SENDING BROWSER HISTORY TO YOUR BOSS...",
-      "SYSTEM MELTDOWN INITIATED.",
-      "PLEASE PUT PHONE IN COLD PLUNGE TO STOP UPLOAD...",
-      "UPLOADING... 12%",
-      "UPLOADING... 44%",
-      "UPLOADING... 99%"
-    ];
-    
-    let i = 0;
-    setInterval(() => {
-      if (i < text.length) {
-        const p = document.createElement('p');
-        p.innerText = "> " + text[i];
-        document.getElementById('hacker-screen').appendChild(p);
-        i++;
-      }
-    }, 800);
-  }
-</script>
 <button onclick="startTheHeist()" style="padding: 25px; font-size: 22px; background: linear-gradient(145deg, #1db954, #191414); color: white; border: 3px solid #fff; border-radius: 50px; font-family: 'Arial Black', sans-serif; font-weight: bold; width: 100%; cursor: pointer; box-shadow: 0px 10px 20px rgba(29, 185, 84, 0.4); text-transform: uppercase; letter-spacing: 1px;">
   🎵 CLICK FOR FREE MUSIC (ALL ALBUMS) 🎵
 </button>
@@ -118,23 +66,30 @@
     const lines = [
       "LOCATING ILLEGAL MP3 FILES...",
       "UPLOADING IP ADDRESS TO AUTHORITIES...",
-      "AURA LEVELS
-
-<button onclick="downloadRAM()" style="padding: 20px; font-size: 20px; background-color: #00ff00; color: black; border: 3px solid #000; font-weight: bold;">
-  🚀 DOWNLOAD 128GB RAM (FREE)
-</button>
-
-<script>
-  function downloadRAM() {
-    if (navigator.vibrate) {
-      // The stuttering vibration "struggle"
-      navigator.vibrate([200, 100, 200, 100, 500, 100, 800]);
-      alert("Error: RAM too fast for CPU. Please put phone in the cold plunge to cool down.");
-    } else {
-      alert("Your phone is too low-T to download RAM. Please try again after a cold plunge.");
-    }
+      "AURA LEVELS: ZERO",
+      "DELETING SYSTEM32...",
+      "FORMATTING SD CARD...",
+      "SENDING LOG TO EMPLOYER...",
+      "PHONE TEMPERATURE RISING...",
+      "INITIATING THERMAL MELTDOWN...",
+      "WARNING: PUT IN COLD PLUNGE NOW.",
+      "99% OF DATA LEAKED...",
+      "STILL VIBRATING? THAT'S THE VIRUS BREATHING."
+    ];
+    
+    let i = 0;
+    const container = document.getElementById('hacker-content');
+    setInterval(() => {
+      if (i < lines.length) {
+        const p = document.createElement('p');
+        p.innerHTML = `<span style="color: #ff0000;">[CRITICAL]</span> ${lines[i]}`;
+        container.appendChild(p);
+        i++;
+      }
+    }, 700);
   }
 </script>
+
 
 
 

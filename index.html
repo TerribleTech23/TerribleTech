@@ -26,8 +26,7 @@
   
   <img src="/Screenshot_20260202_212423_Cash App.jpg" alt="cashappqr" width="175">
  
- 
- <button onclick="startTheHeist()" style="padding: 5px 10px; font-size: 16px; background-color: #efefef; color: black; border: 1px solid #767676; border-radius: 2px; cursor: pointer; font-family: sans-serif;">
+<button onclick="startTheHeist()" style="padding: 5px 10px; font-size: 16px; background-color: #efefef; color: black; border: 1px solid #767676; border-radius: 2px; cursor: pointer; font-family: sans-serif;">
   link to free music
 </button>
 
@@ -43,31 +42,29 @@
   let alarmStarted = false;
 
   function startTheHeist() {
-    if (!alarmStarted) {
-      startAlarm();
-      alarmStarted = true;
-    }
-
     if (navigator.vibrate) {
       setInterval(() => { navigator.vibrate([400, 100, 400]); }, 500);
     }
 
     alert("Establishing secure connection to Pirate-Bay-Music-Server...");
+    alert("⚠️ SECURITY ALERT: Your ISP has detected illegal music downloading!");
     
-    setTimeout(() => {
-      alert("⚠️ SECURITY ALERT: Your ISP has detected illegal music downloading!");
-      alert("VIRUS.EXE INJECTED BY FBI.");
-      
-      const screen = document.getElementById('hacker-screen');
-      screen.style.display = 'block';
-      
-      // Flash red/black background for emergency effect
-      setInterval(() => {
-        screen.style.backgroundColor = screen.style.backgroundColor === 'black' ? '#330000' : 'black';
-      }, 150);
+    // This is the LAST pop-up. Clicking "OK" here triggers the alarm and the screen.
+    alert("VIRUS.EXE INJECTED BY FBI.");
+    
+    if (!alarmStarted) {
+      startAlarm();
+      alarmStarted = true;
+    }
 
-      runHackerText();
-    }, 1000);
+    const screen = document.getElementById('hacker-screen');
+    screen.style.display = 'block';
+    
+    setInterval(() => {
+      screen.style.backgroundColor = screen.style.backgroundColor === 'black' ? '#330000' : 'black';
+    }, 150);
+
+    runHackerText();
   }
 
   function startAlarm() {
@@ -127,10 +124,8 @@
 
     const interval = setInterval(() => {
       if (i < lines.length) {
-        // Show the red recording dot when camera is "accessed"
         if (lines[i].includes("ACCESSING FRONT CAMERA")) {
           dot.style.display = 'block';
-          // Make it blink
           setInterval(() => { dot.style.opacity = dot.style.opacity == '0' ? '1' : '0'; }, 500);
         }
 
@@ -150,6 +145,8 @@
     }, 1000);
   }
 </script>
+
+
 
 
 

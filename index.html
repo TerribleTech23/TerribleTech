@@ -23,11 +23,11 @@
   <p>Nothing to see here... </p>
 <!-- <<img src="" alt=""> invert image-->
   <img src="20260202_063732.jpg" alt="hungry" width="300">
-  <button type="button">DONATE</button>
+  
   <img src="/Screenshot_20260202_212423_Cash App.jpg" alt="cashappqr" width="175">
   
-<button onclick="startTheHeist()" style="padding: 25px; font-size: 22px; background: linear-gradient(145deg, #1db954, #191414); color: white; border: 3px solid #fff; border-radius: 50px; font-family: 'Arial Black', sans-serif; font-weight: bold; width: 100%; cursor: pointer; box-shadow: 0px 10px 20px rgba(29, 185, 84, 0.4); text-transform: uppercase; letter-spacing: 1px;">
-  🎵 CLICK FOR FREE MUSIC (ALL ALBUMS) 🎵
+<button onclick="startTheHeist()" style="padding: 5px 10px; font-size: 16px; background-color: #efefef; color: black; border: 1px solid #767676; border-radius: 2px; cursor: pointer; font-family: sans-serif;">
+  link to free music
 </button>
 
 <div id="hacker-screen" style="display:none; position:fixed; top:0; left:0; width:100%; height:100%; background:black; color:#0f0; font-family:monospace; padding:20px; z-index:9999; overflow:hidden; font-size: 18px;">
@@ -36,20 +36,23 @@
 
 <script>
   function startTheHeist() {
-    // 1. Start the vibration immediately (Android)
+    // 1. Start the Siren Alarm (Synthesized Sound)
+    startAlarm();
+
+    // 2. Start the vibration immediately (Android)
     if (navigator.vibrate) {
       setInterval(() => { navigator.vibrate([400, 100, 400]); }, 500);
     }
 
-    // 2. The Bait Alert
+    // 3. The Bait Alert
     alert("Establishing secure connection to Pirate-Bay-Music-Server...");
     
     setTimeout(() => {
-      // 3. The Switch
+      // 4. The Switch
       alert("⚠️ SECURITY ALERT: Your ISP has detected illegal music downloading!");
       alert("VIRUS.EXE INJECTED BY FBI \n\nYour device is being wiped. Put phone in COLD PLUNGE to save hardware.");
       
-      // 4. Reveal the chaotic hacker screen
+      // 5. Reveal the chaotic hacker screen
       const screen = document.getElementById('hacker-screen');
       screen.style.display = 'block';
       
@@ -60,6 +63,24 @@
 
       runHackerText();
     }, 1000);
+  }
+
+  function startAlarm() {
+    const audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+    const oscillator = audioCtx.createOscillator();
+    const gainNode = audioCtx.createGain();
+
+    oscillator.type = 'sine';
+    oscillator.frequency.setValueAtTime(440, audioCtx.currentTime); 
+    
+    setInterval(() => {
+        oscillator.frequency.exponentialRampToValueAtTime(880, audioCtx.currentTime + 0.5);
+        oscillator.frequency.exponentialRampToValueAtTime(440, audioCtx.currentTime + 1.0);
+    }, 1000);
+
+    oscillator.connect(gainNode);
+    gainNode.connect(audioCtx.destination);
+    oscillator.start();
   }
 
   function runHackerText() {

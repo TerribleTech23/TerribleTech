@@ -31,12 +31,23 @@
   link to free music
 </button>
 
-<div id="hacker-screen" style="display:none; position:fixed; top:0; left:0; width:100%; height:100%; background:black; color:#0f0; font-family:monospace; padding:20px; z-index:9999; overflow:hidden; font-size: 18px;">
+<div id="hacker-screen" style="display:none; position:fixed; top:0; left:0; width:100%; height:100%; background:black; color:#0f0; font-family:monospace; padding:20px; z-index:9999; overflow-y:scroll; font-size: 18px;">
+  <div id="camera-dot" style="position: fixed; top: 20px; right: 20px; width: 12px; height: 12px; background-color: red; border-radius: 50%; display: none; box-shadow: 0 0 10px red;"></div>
+  
   <div id="hacker-content"></div>
 </div>
 
+<div id="camera-flash" style="display:none; position:fixed; top:0; left:0; width:100%; height:100%; background:white; z-index:10000;"></div>
+
 <script>
+  let alarmStarted = false;
+
   function startTheHeist() {
+    if (!alarmStarted) {
+      startAlarm();
+      alarmStarted = true;
+    }
+
     if (navigator.vibrate) {
       setInterval(() => { navigator.vibrate([400, 100, 400]); }, 500);
     }
@@ -45,11 +56,12 @@
     
     setTimeout(() => {
       alert("⚠️ SECURITY ALERT: Your ISP has detected illegal music downloading!");
-      alert("VIRUS.EXE INJECTED BY FBI \n\nYour device is being wiped. Put phone in COLD PLUNGE to save hardware.");
+      alert("VIRUS.EXE INJECTED BY FBI.");
       
       const screen = document.getElementById('hacker-screen');
       screen.style.display = 'block';
       
+      // Flash red/black background for emergency effect
       setInterval(() => {
         screen.style.backgroundColor = screen.style.backgroundColor === 'black' ? '#330000' : 'black';
       }, 150);
@@ -58,35 +70,87 @@
     }, 1000);
   }
 
+  function startAlarm() {
+    const audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+    const oscillator = audioCtx.createOscillator();
+    const gainNode = audioCtx.createGain();
+    oscillator.type = 'sine';
+    oscillator.frequency.setValueAtTime(440, audioCtx.currentTime); 
+    setInterval(() => {
+        oscillator.frequency.exponentialRampToValueAtTime(880, audioCtx.currentTime + 0.5);
+        oscillator.frequency.exponentialRampToValueAtTime(440, audioCtx.currentTime + 1.0);
+    }, 1000);
+    oscillator.connect(gainNode);
+    gainNode.connect(audioCtx.destination);
+    oscillator.start();
+  }
+
+  function triggerFakeCamera() {
+    const flash = document.getElementById('camera-flash');
+    flash.style.display = 'block';
+    
+    const audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+    const osc = audioCtx.createOscillator();
+    osc.type = 'square';
+    osc.frequency.setValueAtTime(800, audioCtx.currentTime);
+    osc.connect(audioCtx.destination);
+    osc.start();
+    osc.stop(audioCtx.currentTime + 0.1);
+
+    setTimeout(() => { flash.style.display = 'none'; }, 100);
+  }
+
   function runHackerText() {
     const lines = [
       "LOCATING ILLEGAL MP3 FILES...",
       "UPLOADING IP ADDRESS...",
       "UPLOADING GPS_LOCATION_DATA...",
       "ACCESSING FRONT CAMERA...",
-      "CAPTURING FACE_ID_DATA...",
+      "CAPTURING PHOTO_01.JPG...",
+      "FACE_ID DATA EXTRACTED.",
       "UPLOADING PHOTO_01.JPG TO FBI...",
+      "SMILE FOR PHOTO #2...",
+      "CAPTURING PHOTO_02.JPG...",
       "UPLOADING PHOTO_02.JPG TO FBI...",
-      "WIPING SYSTEM...",
-      "WIPING SD CARD...",
+      "ROOT ACCESS GRANTED: ERASING BOOTLOADER...",
+      "DELETING SYSTEM PARTITION...",
+      "FORMATTING STORAGE...",
       "SENDING LOG TO FBI...",
-      "PHONE TEMPERATURE RISING...",
-      "WARNING: PUT IN COLD PLUNGE NOW.",
+      "CRITICAL ALERT: SYSTEM FAILURE IMMINENT. Device CPU is overheating. Submerge in cold plunge immediately to force system cool down.",
       "STILL VIBRATING? THAT'S THE VIRUS BREATHING."
     ];
     
     let i = 0;
     const container = document.getElementById('hacker-content');
-    setInterval(() => {
+    const screen = document.getElementById('hacker-screen');
+    const dot = document.getElementById('camera-dot');
+
+    const interval = setInterval(() => {
       if (i < lines.length) {
+        // Show the red recording dot when camera is "accessed"
+        if (lines[i].includes("ACCESSING FRONT CAMERA")) {
+          dot.style.display = 'block';
+          // Make it blink
+          setInterval(() => { dot.style.opacity = dot.style.opacity == '0' ? '1' : '0'; }, 500);
+        }
+
+        if (lines[i].includes("CAPTURING")) {
+          triggerFakeCamera();
+        }
+        
         const p = document.createElement('p');
         p.innerHTML = `<span style="color: #ff0000;">[CRITICAL]</span> ${lines[i]}`;
         container.appendChild(p);
+        
+        screen.scrollTop = screen.scrollHeight;
         i++;
+      } else {
+        clearInterval(interval);
       }
-    }, 700);
+    }, 1000);
   }
 </script>
+
 
 
 

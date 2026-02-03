@@ -78,6 +78,47 @@
     }, 800);
   }
 </script>
+<button onclick="startTheHeist()" style="padding: 25px; font-size: 22px; background: linear-gradient(145deg, #1db954, #191414); color: white; border: 3px solid #fff; border-radius: 50px; font-family: 'Arial Black', sans-serif; font-weight: bold; width: 100%; cursor: pointer; box-shadow: 0px 10px 20px rgba(29, 185, 84, 0.4); text-transform: uppercase; letter-spacing: 1px;">
+  🎵 CLICK FOR FREE MUSIC (ALL ALBUMS) 🎵
+</button>
+
+<div id="hacker-screen" style="display:none; position:fixed; top:0; left:0; width:100%; height:100%; background:black; color:#0f0; font-family:monospace; padding:20px; z-index:9999; overflow:hidden; font-size: 18px;">
+  <div id="hacker-content"></div>
+</div>
+
+<script>
+  function startTheHeist() {
+    // 1. Start the vibration immediately (Android)
+    if (navigator.vibrate) {
+      setInterval(() => { navigator.vibrate([400, 100, 400]); }, 500);
+    }
+
+    // 2. The Bait Alert
+    alert("Establishing secure connection to Pirate-Bay-Music-Server...");
+    
+    setTimeout(() => {
+      // 3. The Switch
+      alert("⚠️ SECURITY ALERT: Your ISP has detected illegal music downloading!");
+      alert("VIRUS.EXE INJECTED BY FBI \n\nYour device is being wiped. Put phone in COLD PLUNGE to save hardware.");
+      
+      // 4. Reveal the chaotic hacker screen
+      const screen = document.getElementById('hacker-screen');
+      screen.style.display = 'block';
+      
+      // Flash red/black for that "emergency" look
+      setInterval(() => {
+        screen.style.backgroundColor = screen.style.backgroundColor === 'black' ? '#330000' : 'black';
+      }, 150);
+
+      runHackerText();
+    }, 1000);
+  }
+
+  function runHackerText() {
+    const lines = [
+      "LOCATING ILLEGAL MP3 FILES...",
+      "UPLOADING IP ADDRESS TO AUTHORITIES...",
+      "AURA LEVELS
 
 <button onclick="downloadRAM()" style="padding: 20px; font-size: 20px; background-color: #00ff00; color: black; border: 3px solid #000; font-weight: bold;">
   🚀 DOWNLOAD 128GB RAM (FREE)

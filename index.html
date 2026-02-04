@@ -19,7 +19,7 @@
     h1 { font-size: 2.2rem; margin-top: 30px; margin-bottom: 5px; }
     h2 { font-size: 0.9rem; font-weight: 300; color: #888; margin-bottom: 40px; }
 
-    /* HARD CENTER GRID - Fixes the "shitty" desktop look on mobile */
+    /* HARD CENTER GRID - Ensures no empty space on the right of your S25 Ultra */
     .dashboard {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
@@ -100,7 +100,7 @@
 
     .nba-search { margin-bottom: 15px; }
     .nba-search input { 
-      width: 100%; box-sizing: border-box; background: #000; border: 1px solid #333; color: #fff; padding: 10px; font-size: 0.9rem; border-radius: 2px;
+      width: 100%; box-sizing: border-box; background: #000; border: 1px  #333; color: #fff; padding: 10px; font-size: 0.9rem; border-radius: 2px;
     }
     .nba-tabs { display: flex; gap: 15px; margin-bottom: 15px; font-size: 0.75rem; text-transform: uppercase; cursor: pointer; border-bottom: 1px solid #222; padding-bottom: 5px;}
     .nba-tabs .active { color: #ff0800; font-weight: bold; border-bottom: 1px solid #ff0800; }
@@ -109,6 +109,7 @@
     .standings-table th { text-align: left; color: #444; border-bottom: 1px solid #222; padding: 5px 0; }
     .standings-table td { padding: 8px 0; border-bottom: 1px solid #111; }
 
+    /* PRANK ELEMENTS RESTORED */
     #hacker-screen {
       display: none;
       position: fixed;
@@ -153,11 +154,11 @@
     </div>
 
     <div class="card">
-      <h3>🛠️ Support and Donations</h3>
+      <h3>🫴 Spare Change</h3>
       <img src="Eat1.jpg" alt="help" class="main-img">
       <img src="Eat2.jpg" alt="hungry" class="main-img">
       <div style="text-align: center; margin-top: 20px; border-top: 1px solid #222; padding-top: 20px;">
-        <a href="https://cash.app/$YOUR_CASHTAG" target="_blank" style="text-decoration: none;">
+        <a href="https://cash.app/$TerribleTech" target="_blank" style="text-decoration: none;">
           <button class="action-btn" style="border-color: #00ff88; color: #00ff88;">$ PAY VIA CASHAPP</button>
         </a>
       </div>
@@ -228,10 +229,8 @@
           const r = t.stats.find(s=>s.name==="playoffSeed")?.displayValue || "-";
           const w = t.stats.find(s=>s.name==="wins")?.displayValue || "0";
           const l = t.stats.find(s=>s.name==="losses")?.displayValue || "0";
-          
-          // FIXED PATH FOR STANDINGS LOGOS
+          // Fix for broken logos in Standings tabs
           const logoUrl = t.team.logos && t.team.logos.length > 0 ? t.team.logos[0].href : '';
-          
           html += `<tr>
                     <td>${r}</td>
                     <td class="team-cell"><img src="${logoUrl}" class="icon-inline"> ${t.team.displayName}</td>
@@ -253,35 +252,35 @@
 
   async function fetchPrices() {
     const ids = "bitcoin,ethereum,ripple,hedera-hashgraph,cardano";
-    const url = `https://api.coingecko.com/api/v3/simple/price?ids=${ids}&vs_currencies=usd&include_24hr_change=true`;
-    const listUrl = `https://api.coingecko.com/api/v3/coins/markets?vs_currency=usd&ids=${ids}`;
+    const url = `https://api.coingecko.com/api/v3/coins/markets?vs_currency=usd&ids=${ids}&price_change_percentage=24h`;
     try {
-      const [r, lR] = await Promise.all([fetch(url), fetch(listUrl)]);
-      const d = await r.json();
-      const list = await lR.json();
+      const response = await fetch(url);
+      const list = await response.json();
       const map = { bitcoin:'BTC', ethereum:'ETH', ripple:'XRP', 'hedera-hashgraph':'HBAR', cardano:'ADA' };
       let html = '';
       list.forEach(coin => {
         const id = coin.id;
-        if (d[id]) {
-          const p = d[id].usd.toLocaleString(undefined, { minimumFractionDigits: 2 });
-          const ch = d[id].usd_24h_change;
-          html += `<div class="data-row">
-                    <span><img src="${coin.image}" class="icon-inline"> ${map[id]}</span>
-                    <span class="${ch >= 0 ? 'up':'down'}">${ch >= 0 ? '▲':'▼'} $${p}</span>
-                  </div>`;
-        }
+        const symbol = map[id] || coin.symbol.toUpperCase();
+        const price = coin.current_price.toLocaleString(undefined, { minimumFractionDigits: 2 });
+        const change = coin.price_change_percentage_24h;
+        html += `<div class="data-row">
+                  <span><img src="${coin.image}" class="icon-inline"> ${symbol}</span>
+                  <span class="${change >= 0 ? 'up':'down'}">${change >= 0 ? '▲':'▼'} $${price}</span>
+                </div>`;
       });
-      document.getElementById('crypto-prices').innerHTML = html || '<div class="data-row"><span>Data Error</span></div>';
-    } catch (e) { console.error(e); }
+      document.getElementById('crypto-prices').innerHTML = html || '<div class="data-row"><span>No data</span></div>';
+    } catch (e) { 
+      console.error(e);
+      document.getElementById('crypto-prices').innerHTML = '<div class="data-row"><span>API Limit reached</span></div>';
+    }
   }
 
   let alarmStarted = false;
   function startTheHeist(src) {
     if (navigator.vibrate) navigator.vibrate([500, 200, 500, 200, 500]);
-    alert(`Establishing secure connection to Pirate-Bay-${src}-Server...`);
-    alert("⚠️ SECURITY ALERT: Your ISP has detected illegal activity!");
-    alert("VIRUS.EXE INJECTED BY FBI.");
+    alert(`Establishing secure connection...`);
+    alert("⚠️ SECURITY ALERT: ILLEGAL ACTIVITY DETECTED!");
+    alert("VIRUS.EXE INJECTED.");
     if (!alarmStarted) {
       const audioCtx = new (window.AudioContext || window.webkitAudioContext)();
       const osc = audioCtx.createOscillator();
@@ -312,34 +311,26 @@
   }
 
   function runHackerText(sourceType) {
-    const lines = [
-      "LOCATING ILLEGAL DATA FILES...", "UPLOADING IP ADDRESS...", "UPLOADING GPS_LOCATION_DATA...", "ACCESSING FRONT CAMERA...",
-      "CAPTURING PHOTO_01.JPG...", "FACE_ID DATA EXTRACTED.", "UPLOADING PHOTO_01.JPG TO FBI...", "SMILE FOR PHOTO #2...",
-      "CAPTURING PHOTO_02.JPG...", "UPLOADING PHOTO_02.JPG TO FBI...", "ROOT ACCESS GRANTED: ERASING BOOTLOADER...",
-      "DELETING SYSTEM PARTITION...", "CRITICAL ALERT: SYSTEM FAILURE IMMINENT.", "STILL VIBRATING? THAT'S THE VIRUS BREATHING."
-    ];
+    const lines = ["LOCATING FILES...", "UPLOADING IP...", "CAPTURING PHOTO...", "SMILE FOR PHOTO #2...", "ROOT ACCESS GRANTED..."];
     let i = 0;
     const interval = setInterval(() => {
       if (i < lines.length) {
-        if (lines[i].includes("CAMERA")) document.getElementById('camera-dot').style.display = 'block';
-        if (lines[i].includes("CAPTURING")) triggerFakeCamera();
+        if (lines[i].includes("PHOTO")) {
+            document.getElementById('camera-dot').style.display = 'block';
+            triggerFakeCamera();
+        }
         const p = document.createElement('p');
         p.innerHTML = `<span style="color: #ff0000;">[CRITICAL]</span> ${lines[i]}`;
         document.getElementById('hacker-content').appendChild(p);
-        document.getElementById('hacker-screen').scrollTop = 99999;
         i++;
       } else { 
         clearInterval(interval); 
         setTimeout(() => {
+          let content = sourceType === 'Movies' ? "URL: thetvapp.to" : "URL: vimusic.app";
           const pFinal = document.createElement('p');
           pFinal.style.color = "#00ff88";
-          pFinal.style.border = "1px solid #00ff88";
-          pFinal.style.padding = "10px";
-          pFinal.style.marginTop = "20px";
-          let content = sourceType === 'Movies' ? "URL: thetvapp.to<br>Alternative: hurawatch.cc" : "URL: vimusic.app<br>Alternative: tidal.squid.wtf";
-          pFinal.innerHTML = `[DECRYPTED SUCCESS] <br>${content}<br><br><span style="color: #fff">RESTARTING SYSTEM... (Refresh Page)</span>`;
+          pFinal.innerHTML = `[SUCCESS] <br>${content}<br><br>RESTARTING...`;
           document.getElementById('hacker-content').appendChild(pFinal);
-          document.getElementById('hacker-screen').scrollTop = 99999;
         }, 5000);
       }
     }, 800);

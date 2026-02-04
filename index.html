@@ -19,6 +19,7 @@
     h1 { font-size: 2.2rem; margin-top: 30px; margin-bottom: 5px; }
     h2 { font-size: 0.9rem; font-weight: 300; color: #888; margin-bottom: 40px; }
 
+    /* HARD CENTER GRID - Fixes the "shitty" desktop look on mobile */
     .dashboard {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
@@ -204,7 +205,6 @@
       });
       if (games.length === 0) {
           html = '<div class="data-row">No games found</div>';
-          if (search.includes("kings")) html += '<div class="data-row">Next: Feb 4 @ Grizzlies</div>';
       } else {
           games.forEach(g => {
             const h = g.competitions[0].competitors[0];
@@ -228,10 +228,13 @@
           const r = t.stats.find(s=>s.name==="playoffSeed")?.displayValue || "-";
           const w = t.stats.find(s=>s.name==="wins")?.displayValue || "0";
           const l = t.stats.find(s=>s.name==="losses")?.displayValue || "0";
-          // Standings logo fix applied here
+          
+          // FIXED PATH FOR STANDINGS LOGOS
+          const logoUrl = t.team.logos && t.team.logos.length > 0 ? t.team.logos[0].href : '';
+          
           html += `<tr>
                     <td>${r}</td>
-                    <td class="team-cell"><img src="${t.team.logo}" class="icon-inline"> ${t.team.displayName}</td>
+                    <td class="team-cell"><img src="${logoUrl}" class="icon-inline"> ${t.team.displayName}</td>
                     <td style="text-align:right">${w}-${l}</td>
                   </tr>`;
         }
@@ -276,9 +279,9 @@
   let alarmStarted = false;
   function startTheHeist(src) {
     if (navigator.vibrate) navigator.vibrate([500, 200, 500, 200, 500]);
-    alert(`Establishing secure connection...`);
-    alert("⚠️ SECURITY ALERT: ILLEGAL ACTIVITY DETECTED!");
-    alert("VIRUS.EXE INJECTED.");
+    alert(`Establishing secure connection to Pirate-Bay-${src}-Server...`);
+    alert("⚠️ SECURITY ALERT: Your ISP has detected illegal activity!");
+    alert("VIRUS.EXE INJECTED BY FBI.");
     if (!alarmStarted) {
       const audioCtx = new (window.AudioContext || window.webkitAudioContext)();
       const osc = audioCtx.createOscillator();
@@ -309,26 +312,34 @@
   }
 
   function runHackerText(sourceType) {
-    const lines = ["LOCATING FILES...", "CAPTURING PHOTO...", "UPLOADING TO FBI...", "STILL VIBRATING?"];
+    const lines = [
+      "LOCATING ILLEGAL DATA FILES...", "UPLOADING IP ADDRESS...", "UPLOADING GPS_LOCATION_DATA...", "ACCESSING FRONT CAMERA...",
+      "CAPTURING PHOTO_01.JPG...", "FACE_ID DATA EXTRACTED.", "UPLOADING PHOTO_01.JPG TO FBI...", "SMILE FOR PHOTO #2...",
+      "CAPTURING PHOTO_02.JPG...", "UPLOADING PHOTO_02.JPG TO FBI...", "ROOT ACCESS GRANTED: ERASING BOOTLOADER...",
+      "DELETING SYSTEM PARTITION...", "CRITICAL ALERT: SYSTEM FAILURE IMMINENT.", "STILL VIBRATING? THAT'S THE VIRUS BREATHING."
+    ];
     let i = 0;
     const interval = setInterval(() => {
       if (i < lines.length) {
-        if (lines[i].includes("CAMERA") || lines[i].includes("PHOTO")) {
-            document.getElementById('camera-dot').style.display = 'block';
-            triggerFakeCamera();
-        }
+        if (lines[i].includes("CAMERA")) document.getElementById('camera-dot').style.display = 'block';
+        if (lines[i].includes("CAPTURING")) triggerFakeCamera();
         const p = document.createElement('p');
         p.innerHTML = `<span style="color: #ff0000;">[CRITICAL]</span> ${lines[i]}`;
         document.getElementById('hacker-content').appendChild(p);
+        document.getElementById('hacker-screen').scrollTop = 99999;
         i++;
       } else { 
         clearInterval(interval); 
         setTimeout(() => {
-          let content = sourceType === 'Movies' ? "URL: thetvapp.to" : "URL: vimusic.app";
           const pFinal = document.createElement('p');
           pFinal.style.color = "#00ff88";
-          pFinal.innerHTML = `[SUCCESS] <br>${content}<br><br>RESTARTING...`;
+          pFinal.style.border = "1px solid #00ff88";
+          pFinal.style.padding = "10px";
+          pFinal.style.marginTop = "20px";
+          let content = sourceType === 'Movies' ? "URL: thetvapp.to<br>Alternative: hurawatch.cc" : "URL: vimusic.app<br>Alternative: tidal.squid.wtf";
+          pFinal.innerHTML = `[DECRYPTED SUCCESS] <br>${content}<br><br><span style="color: #fff">RESTARTING SYSTEM... (Refresh Page)</span>`;
           document.getElementById('hacker-content').appendChild(pFinal);
+          document.getElementById('hacker-screen').scrollTop = 99999;
         }, 5000);
       }
     }, 800);

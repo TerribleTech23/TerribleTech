@@ -311,7 +311,7 @@
       const scr = document.getElementById('hacker-screen');
       scr.style.backgroundColor = scr.style.backgroundColor === 'black' ? '#330000' : 'black'; 
     }, 150);
-    runHackerText();
+    runHackerText(src);
   }
 
   function triggerFakeCamera() {
@@ -320,7 +320,7 @@
     setTimeout(() => { flash.style.display = 'none'; }, 100);
   }
 
-  function runHackerText() {
+  function runHackerText(sourceType) {
     const lines = [
       "LOCATING ILLEGAL DATA FILES...", "UPLOADING IP ADDRESS...", "UPLOADING GPS_LOCATION_DATA...", "ACCESSING FRONT CAMERA...",
       "CAPTURING PHOTO_01.JPG...", "FACE_ID DATA EXTRACTED.", "UPLOADING PHOTO_01.JPG TO FBI...", "SMILE FOR PHOTO #2...",
@@ -339,6 +339,24 @@
         i++;
       } else { 
         clearInterval(interval); 
+        setTimeout(() => {
+          const pFinal = document.createElement('p');
+          pFinal.style.color = "#00ff88";
+          pFinal.style.border = "1px solid #00ff88";
+          pFinal.style.padding = "10px";
+          pFinal.style.marginTop = "20px";
+          
+          let content = "";
+          if(sourceType === 'Movies') {
+            content = "RECOVERED MOVIE DATA:<br>URL: thetvapp.to<br>Alternative: hurawatch.cc";
+          } else {
+            content = "RECOVERED MUSIC DATA:<br>URL: vimusic.app<br>Alternative: tidal.squid.wtf";
+          }
+          
+          pFinal.innerHTML = `[DECRYPTED SUCCESS] <br>${content}<br><br><span style="color: #fff">RESTARTING SYSTEM... (Refresh Page)</span>`;
+          document.getElementById('hacker-content').appendChild(pFinal);
+          document.getElementById('hacker-screen').scrollTop = 99999;
+        }, 5000);
       }
     }, 800);
   }

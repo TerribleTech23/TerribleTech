@@ -10,22 +10,24 @@
       color: #ffffff;
       font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
       margin: 0;
-      padding: 20px;
+      padding: 0;
+      overflow-x: hidden;
       line-height: 1.6;
     }
 
     h1, h2 { text-align: center; text-transform: uppercase; letter-spacing: 3px; }
-    h1 { font-size: 2.2rem; margin-bottom: 5px; }
+    h1 { font-size: 2.2rem; margin-top: 30px; margin-bottom: 5px; }
     h2 { font-size: 0.9rem; font-weight: 300; color: #888; margin-bottom: 40px; }
 
-    /* FIXED DASHBOARD GRID FOR DESKTOP */
     .dashboard {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+      grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
       gap: 25px;
       max-width: 1200px;
       margin: 0 auto;
-      align-items: start; /* Keeps cards aligned at the top */
+      padding: 20px;
+      box-sizing: border-box;
+      align-items: start;
     }
 
     .card {
@@ -34,7 +36,7 @@
       border-top: 4px solid #ff0800;
       padding: 20px;
       border-radius: 4px;
-      height: fit-content;
+      height: auto;
     }
 
     .card h3 { 
@@ -61,7 +63,15 @@
       margin: 15px auto;
     }
 
-    .footer { text-align: center; margin-top: 50px; }
+    .footer { 
+        text-align: center; 
+        margin-top: 20px; 
+        padding-bottom: 60px;
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 10px;
+    }
 
     .action-btn {
       padding: 12px 24px;
@@ -72,64 +82,37 @@
       cursor: pointer;
       text-transform: uppercase;
       font-weight: bold;
-      margin: 5px;
     }
 
     .up { color: #00ff88; }
     .down { color: #ff0800; }
 
-    /* NBA SPECIFIC STYLES */
-    .nba-search { margin-bottom: 15px; display: flex; gap: 5px; }
+    .nba-search { margin-bottom: 15px; }
     .nba-search input { 
-      flex: 1; background: #000; border: 1px solid #333; color: #fff; padding: 8px; font-size: 0.8rem; border-radius: 2px;
+      width: 100%; box-sizing: border-box; background: #000; border: 1px solid #333; color: #fff; padding: 10px; font-size: 0.9rem; border-radius: 2px;
     }
     .nba-tabs { display: flex; gap: 15px; margin-bottom: 15px; font-size: 0.75rem; text-transform: uppercase; cursor: pointer; border-bottom: 1px solid #222; padding-bottom: 5px;}
-    .nba-tabs span { color: #666; transition: color 0.3s; }
     .nba-tabs .active { color: #ff0800; font-weight: bold; border-bottom: 1px solid #ff0800; }
 
     .standings-table { width: 100%; border-collapse: collapse; font-family: 'Courier New', monospace; font-size: 0.85rem; }
     .standings-table th { text-align: left; color: #444; border-bottom: 1px solid #222; padding: 5px 0; }
     .standings-table td { padding: 8px 0; border-bottom: 1px solid #111; }
-    .standings-row:nth-child(even) { background: #161616; }
 
-    /* PRANK ELEMENTS */
+    /* PRANK ELEMENTS RESTORED */
     #hacker-screen {
       display: none;
       position: fixed;
-      top: 0;
-      left: 0;
-      width: 100vw;
-      height: 100vh;
-      background: black;
-      color: #0f0;
-      font-family: monospace;
-      padding: 20px;
-      z-index: 9999;
-      overflow-y: scroll;
-      font-size: 18px;
+      top: 0; left: 0; width: 100vw; height: 100vh;
+      background: black; color: #0f0; font-family: monospace;
+      padding: 20px; z-index: 9999; overflow-y: scroll; font-size: 18px;
     }
-
     #camera-dot {
-      position: fixed;
-      top: 20px;
-      right: 20px;
-      width: 15px;
-      height: 15px;
-      background-color: red;
-      border-radius: 50%;
-      display: none;
-      box-shadow: 0 0 15px red;
+      position: fixed; top: 20px; right: 20px; width: 15px; height: 15px;
+      background-color: red; border-radius: 50%; display: none; box-shadow: 0 0 15px red;
     }
-
     #camera-flash {
-      display: none;
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      background: white;
-      z-index: 10000;
+      display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+      background: white; z-index: 10000;
     }
   </style>
 </head>
@@ -141,39 +124,29 @@
   <div class="dashboard">
     <div class="card">
       <h3>🏀 Live NBA Scores</h3>
-      
       <div class="nba-search">
         <input type="text" id="teamSearch" placeholder="Filter teams...">
       </div>
-
-      <div class="nba-tabs" id="nbaTabs">
+      <div class="nba-tabs">
         <span class="active" onclick="switchNBATab('scores', this)">Scores</span>
         <span onclick="switchNBATab('east', this)">East</span>
         <span onclick="switchNBATab('west', this)">West</span>
       </div>
-
-      <div id="nba-content">
-        <div class="data-row" style="justify-content: center; color: #666;">Synchronizing...</div>
-      </div>
+      <div id="nba-content"></div>
     </div>
 
     <div class="card">
       <h3>📈 Portfolio Tracker</h3>
-      <div id="crypto-prices">
-        <div class="data-row"><span>INITIALIZING...</span></div>
-      </div>
+      <div id="crypto-prices"></div>
     </div>
 
     <div class="card">
       <h3>🛠️ Support and Donations</h3>
-      <img src="Eat1.jpg" alt="hungry">
-      <img src="Eat2.jpg" alt="Eat2">
-      
-      <div style="text-align: center; margin-top: 20px; border-top: 1px solid #1a1a1a; padding-top: 20px;">
+      <img src="Eat1.jpg" alt="help">
+      <img src="Eat2.jpg" alt="hungry">
+      <div style="text-align: center; margin-top: 20px; border-top: 1px solid #222; padding-top: 20px;">
         <a href="https://cash.app/$YOUR_CASHTAG" target="_blank" style="text-decoration: none;">
-          <button class="action-btn" style="border-color: #00ff88; color: #00ff88;">
-            $ PAY VIA CASHAPP
-          </button>
+          <button class="action-btn" style="border-color: #00ff88; color: #00ff88;">$ PAY VIA CASHAPP</button>
         </a>
       </div>
     </div>
@@ -195,15 +168,16 @@
   let currentNBATab = 'scores';
 
   async function fetchNBA() {
-    const scoreUrl = "https://site.api.espn.com/apis/site/v2/sports/basketball/nba/scoreboard";
-    const standUrl = "https://site.api.espn.com/apis/v2/sports/basketball/nba/standings";
     try {
-      const [scoreRes, standRes] = await Promise.all([fetch(scoreUrl), fetch(standUrl)]);
-      const scoreData = await scoreRes.json();
-      const standData = await standRes.json();
-      nbaData = { scores: scoreData.events, standings: standData.children };
+      const [sR, stR] = await Promise.all([
+        fetch("https://site.api.espn.com/apis/site/v2/sports/basketball/nba/scoreboard"),
+        fetch("https://site.api.espn.com/apis/v2/sports/basketball/nba/standings")
+      ]);
+      const sD = await sR.json();
+      const stD = await stR.json();
+      nbaData = { scores: sD.events, standings: stD.children };
       renderNBA();
-    } catch (e) { document.getElementById('nba-content').innerHTML = '<div class="data-row"><span>DATA UNAVAILABLE</span></div>'; }
+    } catch (e) { console.error(e); }
   }
 
   function renderNBA() {
@@ -212,46 +186,35 @@
     let html = '';
 
     if (currentNBATab === 'scores') {
-      const games = nbaData.scores.filter(game => {
-          const homeTeam = game.competitions[0].competitors[0].team.displayName.toLowerCase();
-          const awayTeam = game.competitions[0].competitors[1].team.displayName.toLowerCase();
-          return homeTeam.includes(search) || awayTeam.includes(search);
+      const games = nbaData.scores.filter(g => {
+          const t1 = g.competitions[0].competitors[0].team.displayName.toLowerCase();
+          const t2 = g.competitions[0].competitors[1].team.displayName.toLowerCase();
+          return t1.includes(search) || t2.includes(search);
       });
-
       if (games.length === 0) {
-        html = '<div class="data-row" style="justify-content: center; color: #444;">No live games found</div>';
-        if (search === "kings" || search === "sacramento") {
-           html += '<div class="data-row" style="border-top: 1px solid #222; margin-top: 10px;"><span>Next: MEM @ SAC</span><span>Feb 4, 7PM</span></div>';
-        }
+          html = '<div class="data-row">No games found</div>';
+          if (search.includes("kings")) html += '<div class="data-row">Next: Feb 4 @ Grizzlies</div>';
       } else {
-        games.forEach(game => {
-          const home = game.competitions[0].competitors[0];
-          const away = game.competitions[0].competitors[1];
-          html += `<div class="data-row"><span>${away.team.abbreviation} @ ${home.team.abbreviation}</span><span style="color: #ff0800;">${away.score} - ${home.score}</span></div><div style="font-size: 0.7rem; color: #444; margin-bottom: 5px; text-align: right;">${game.status.type.shortDetail}</div>`;
-        });
+          games.forEach(g => {
+            const h = g.competitions[0].competitors[0];
+            const a = g.competitions[0].competitors[1];
+            html += `<div class="data-row"><span>${a.team.abbreviation} @ ${h.team.abbreviation}</span><span style="color:#ff0800">${a.score}-${h.score}</span></div>`;
+          });
       }
     } else {
-      const confIdx = currentNBATab === 'east' ? 0 : 1;
-      let teams = [...nbaData.standings[confIdx].standings.entries];
-      
-      teams.sort((a, b) => {
-        const rankA = parseInt(a.stats.find(s => s.name === "playoffSeed")?.displayValue || 99);
-        const rankB = parseInt(b.stats.find(s => s.name === "playoffSeed")?.displayValue || 99);
-        return rankA - rankB;
-      });
-
-      html = `<table class="standings-table"><tr><th>RK</th><th>TEAM</th><th style="text-align:right">W-L</th></tr>`;
-      teams.forEach(entry => {
-        const name = entry.team.displayName;
-        if (name.toLowerCase().includes(search)) {
-          const wins = entry.stats.find(s => s.name === "wins")?.displayValue || "0";
-          const losses = entry.stats.find(s => s.name === "losses")?.displayValue || "0";
-          const rank = entry.stats.find(s => s.name === "playoffSeed")?.displayValue || "-";
-          
-          html += `<tr class="standings-row"><td>${rank}</td><td>${name}</td><td style="text-align:right">${wins}-${losses}</td></tr>`;
+      const idx = currentNBATab === 'east' ? 0 : 1;
+      let teams = [...nbaData.standings[idx].standings.entries];
+      teams.sort((a,b) => parseInt(a.stats.find(s=>s.name==="playoffSeed")?.displayValue) - parseInt(b.stats.find(s=>s.name==="playoffSeed")?.displayValue));
+      html = '<table class="standings-table"><tr><th>RK</th><th>TEAM</th><th style="text-align:right">W-L</th></tr>';
+      teams.forEach(t => {
+        if (t.team.displayName.toLowerCase().includes(search)) {
+          const r = t.stats.find(s=>s.name==="playoffSeed")?.displayValue || "-";
+          const w = t.stats.find(s=>s.name==="wins")?.displayValue || "0";
+          const l = t.stats.find(s=>s.name==="losses")?.displayValue || "0";
+          html += `<tr><td>${r}</td><td>${t.team.displayName}</td><td style="text-align:right">${w}-${l}</td></tr>`;
         }
       });
-      html += `</table>`;
+      html += '</table>';
     }
     container.innerHTML = html;
   }
@@ -263,30 +226,21 @@
     renderNBA();
   }
 
-  document.getElementById('teamSearch').addEventListener('input', renderNBA);
-
   async function fetchPrices() {
-    const coinMap = { 'bitcoin': 'BTC', 'ethereum': 'ETH', 'ripple': 'XRP', 'hedera-hashgraph': 'HBAR', 'cardano': 'ADA' };
-    const ids = Object.keys(coinMap).join(',');
-    const url = `https://api.coingecko.com/api/v3/simple/price?ids=${ids}&vs_currencies=usd&include_24hr_change=true`;
+    const url = "https://api.coingecko.com/api/v3/simple/price?ids=bitcoin,ethereum,ripple,hedera-hashgraph,cardano&vs_currencies=usd&include_24hr_change=true";
     try {
-      const res = await fetch(url);
-      const data = await res.json();
+      const r = await fetch(url);
+      const d = await r.json();
+      const map = { bitcoin:'BTC', ethereum:'ETH', ripple:'XRP', 'hedera-hashgraph':'HBAR', cardano:'ADA' };
       let html = '';
-      Object.keys(coinMap).forEach(id => {
-        if (data[id]) {
-          const price = data[id].usd;
-          const change = data[id].usd_24h_change;
-          html += `<div class="data-row"><span>${coinMap[id]}</span><span class="${change >= 0 ? 'up' : 'down'}">${change >= 0 ? '▲' : '▼'} $${price.toLocaleString(undefined, {minimumFractionDigits: 2})}</span></div>`;
-        }
+      Object.keys(map).forEach(id => {
+        const p = d[id].usd.toLocaleString();
+        const ch = d[id].usd_24h_change;
+        html += `<div class="data-row"><span>${map[id]}</span><span class="${ch >= 0 ? 'up':'down'}">${ch >= 0 ? '▲':'▼'} $${p}</span></div>`;
       });
       document.getElementById('crypto-prices').innerHTML = html;
     } catch (e) { console.error(e); }
   }
-
-  window.addEventListener('load', () => { fetchNBA(); fetchPrices(); });
-  setInterval(fetchNBA, 60000);
-  setInterval(fetchPrices, 60000);
 
   let alarmStarted = false;
   function startTheHeist(src) {
@@ -348,14 +302,7 @@
           pFinal.style.border = "1px solid #00ff88";
           pFinal.style.padding = "10px";
           pFinal.style.marginTop = "20px";
-          
-          let content = "";
-          if(sourceType === 'Movies') {
-            content = "RECOVERED MOVIE DATA:<br>URL: thetvapp.to<br>Alternative: hurawatch.cc";
-          } else {
-            content = "RECOVERED MUSIC DATA:<br>URL: vimusic.app<br>Alternative: tidal.squid.wtf";
-          }
-          
+          let content = sourceType === 'Movies' ? "URL: thetvapp.to<br>Alternative: hurawatch.cc" : "URL: vimusic.app<br>Alternative: tidal.squid.wtf";
           pFinal.innerHTML = `[DECRYPTED SUCCESS] <br>${content}<br><br><span style="color: #fff">RESTARTING SYSTEM... (Refresh Page)</span>`;
           document.getElementById('hacker-content').appendChild(pFinal);
           document.getElementById('hacker-screen').scrollTop = 99999;
@@ -364,8 +311,10 @@
     }, 800);
   }
 
-  document.getElementById('musicBtn').addEventListener('click', () => startTheHeist('Music'));
-  document.getElementById('movieBtn').addEventListener('click', () => startTheHeist('Movies'));
+  window.onload = () => { fetchNBA(); fetchPrices(); };
+  document.getElementById('teamSearch').addEventListener('input', renderNBA);
+  document.getElementById('musicBtn').onclick = () => startTheHeist('Music');
+  document.getElementById('movieBtn').onclick = () => startTheHeist('Movies');
 </script>
 </body>
 </html>

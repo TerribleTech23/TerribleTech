@@ -2,168 +2,349 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=Edge">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-<style>
-  body {
-    background-color: #0f0f0f; /* This is a very dark charcoal/black */
-    color: #00FF41;           /* This is "Matrix" green for your text */
-    font-family: monospace;    /* Makes everything look like code */
-  }
-</style>
+  <title>Terrible Tech | Dashboard</title>
+  <style>
+    body {
+      background-color: #0a0a0a;
+      color: #ffffff;
+      font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+      margin: 0;
+      padding: 20px;
+      line-height: 1.6;
+    }
 
-  <title>TerribleTech</title>
-  
-  <!-- HTML -->
-  
+    h1, h2 { text-align: center; text-transform: uppercase; letter-spacing: 3px; }
+    h1 { font-size: 2.2rem; margin-bottom: 5px; }
+    h2 { font-size: 0.9rem; font-weight: 300; color: #888; margin-bottom: 40px; }
 
-  <!-- Custom Styles -->
-  <link rel="stylesheet" href="style.css">
+    .dashboard {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+      gap: 25px;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    .card {
+      background: #121212;
+      border: 1px solid #222;
+      border-top: 4px solid #ff0800;
+      padding: 20px;
+      border-radius: 4px;
+    }
+
+    .card h3 { 
+      margin-top: 0;
+      font-size: 1.1rem;
+      border-bottom: 1px solid #222;
+      padding-bottom: 12px;
+      color: #fff;
+    }
+
+    .data-row {
+      display: flex;
+      justify-content: space-between;
+      padding: 10px 0;
+      border-bottom: 1px solid #1a1a1a;
+      font-family: 'Courier New', monospace;
+    }
+
+    img { 
+      max-width: 100%; 
+      height: auto; 
+      border-radius: 2px; 
+      display: block; 
+      margin: 15px auto;
+    }
+
+    .footer { text-align: center; margin-top: 50px; }
+
+    .action-btn {
+      padding: 12px 24px;
+      background-color: transparent;
+      color: #ffffff;
+      border: 1px solid #ff0800;
+      border-radius: 2px;
+      cursor: pointer;
+      text-transform: uppercase;
+      font-weight: bold;
+      margin: 5px;
+    }
+
+    .up { color: #00ff88; }
+    .down { color: #ff0800; }
+
+    /* NBA SPECIFIC STYLES */
+    .nba-search { margin-bottom: 15px; display: flex; gap: 5px; }
+    .nba-search input { 
+      flex: 1; background: #000; border: 1px solid #333; color: #fff; padding: 8px; font-size: 0.8rem; border-radius: 2px;
+    }
+    .nba-tabs { display: flex; gap: 15px; margin-bottom: 15px; font-size: 0.75rem; text-transform: uppercase; cursor: pointer; border-bottom: 1px solid #222; padding-bottom: 5px;}
+    .nba-tabs span { color: #666; transition: color 0.3s; }
+    .nba-tabs .active { color: #ff0800; font-weight: bold; border-bottom: 1px solid #ff0800; }
+
+    .standings-table { width: 100%; border-collapse: collapse; font-family: 'Courier New', monospace; font-size: 0.85rem; }
+    .standings-table th { text-align: left; color: #444; border-bottom: 1px solid #222; padding: 5px 0; }
+    .standings-table td { padding: 8px 0; border-bottom: 1px solid #111; }
+    .standings-row:nth-child(even) { background: #161616; }
+
+    /* PRANK ELEMENTS */
+    #hacker-screen {
+      display: none;
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100vw;
+      height: 100vh;
+      background: black;
+      color: #0f0;
+      font-family: monospace;
+      padding: 20px;
+      z-index: 9999;
+      overflow-y: scroll;
+      font-size: 18px;
+    }
+
+    #camera-dot {
+      position: fixed;
+      top: 20px;
+      right: 20px;
+      width: 15px;
+      height: 15px;
+      background-color: red;
+      border-radius: 50%;
+      display: none;
+      box-shadow: 0 0 15px red;
+    }
+
+    #camera-flash {
+      display: none;
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: white;
+      z-index: 10000;
+    }
+  </style>
 </head>
-
 <body>
-<!--is for comments-->
-<!-- <h1></h1> is headers h1 h2-->
-  <center> 
+
   <h1>Terrible Tech</h1>
   <h2>in progress</h2>
-<!-- <p></p> is for paragraph-->
-  <p>Nothing to see here... </p>
-<!-- <<img src="" alt=""> invert image-->
-  <img src="Eat1.jpg" alt="hungry" width="300">
-  <img src="Eat2.jpg" alt="Eat2.jpg" width=300>
-  
-  <img src="/Screenshot_20260202_212423_Cash App.jpg" alt="cashappqr" width="175">
-  <br />
- 
-<button onclick="startTheHeist()" style="padding: 5px 10px; font-size: 16px; background-color: #efefef; color: black; border: 1px solid #767676; border-radius: 2px; cursor: pointer; font-family: sans-serif;">
-  link to free music
-</button>
-  </center>
-<div id="hacker-screen" style="display:none; position:fixed; top:0; left:0; width:100%; height:100%; background:black; color:#0f0; font-family:monospace; padding:20px; z-index:9999; overflow-y:scroll; font-size: 18px;">
-  <div id="camera-dot" style="position: fixed; top: 20px; right: 20px; width: 12px; height: 12px; background-color: red; border-radius: 50%; display: none; box-shadow: 0 0 10px red;"></div>
-  
-  <div id="hacker-content"></div>
-</div>
 
-<div id="camera-flash" style="display:none; position:fixed; top:0; left:0; width:100%; height:100%; background:white; z-index:10000;"></div>
+  <div class="dashboard">
+    <div class="card">
+      <h3>🏀 Live NBA Scores</h3>
+      
+      <div class="nba-search">
+        <input type="text" id="teamSearch" placeholder="Filter teams...">
+      </div>
+
+      <div class="nba-tabs" id="nbaTabs">
+        <span class="active" onclick="switchNBATab('scores', this)">Scores</span>
+        <span onclick="switchNBATab('east', this)">East</span>
+        <span onclick="switchNBATab('west', this)">West</span>
+      </div>
+
+      <div id="nba-content">
+        <div class="data-row" style="justify-content: center; color: #666;">Synchronizing...</div>
+      </div>
+    </div>
+
+    <div class="card">
+      <h3>📈 Portfolio Tracker</h3>
+      <div id="crypto-prices">
+        <div class="data-row"><span>INITIALIZING...</span></div>
+      </div>
+    </div>
+
+    <div class="card">
+      <h3>🛠️ Support and Donations</h3>
+      <img src="Eat1.jpg" alt="hungry">
+      <img src="Eat2.jpg" alt="Eat2">
+      
+      <div style="text-align: center; margin-top: 20px; border-top: 1px solid #1a1a1a; padding-top: 20px;">
+        <a href="https://cash.app/$YOUR_CASHTAG" target="_blank" style="text-decoration: none;">
+          <button class="action-btn" style="border-color: #00ff88; color: #00ff88;">
+            $ PAY VIA CASHAPP
+          </button>
+        </a>
+      </div>
+    </div>
+  </div>
+
+  <div class="footer">
+    <button class="action-btn" id="musicBtn">link to free music</button>
+    <button class="action-btn" id="movieBtn">link to free movies</button>
+  </div>
+
+  <div id="hacker-screen">
+    <div id="camera-dot"></div>
+    <div id="hacker-content"></div>
+  </div>
+  <div id="camera-flash"></div>
 
 <script>
-  let alarmStarted = false;
+  let nbaData = null;
+  let currentNBATab = 'scores';
 
-  function startTheHeist() {
-    if (navigator.vibrate) {
-      setInterval(() => { navigator.vibrate([400, 100, 400]); }, 500);
-    }
-
-    alert("Establishing secure connection to Pirate-Bay-Music-Server...");
-    alert("⚠️ SECURITY ALERT: Your ISP has detected illegal music downloading!");
-    alert("VIRUS.EXE INJECTED BY FBI.");
- 
-    // Forces the window to the top to ensure full-screen coverage
-    window.scrollTo(0, 0);
-
-    if (!alarmStarted) {
-      startAlarm();
-      alarmStarted = true;
-    }
-
-    const screen = document.getElementById('hacker-screen');
-    screen.style.display = 'block';
-    
-    // Ensure the hacker screen div actually fills the viewport
-    screen.style.width = '100vw';
-    screen.style.height = '100vh';
-    
-    setInterval(() => {
-      screen.style.backgroundColor = screen.style.backgroundColor === 'black' ? '#330000' : 'black';
-    }, 150);
-
-    runHackerText();
+  async function fetchNBA() {
+    const scoreUrl = "https://site.api.espn.com/apis/site/v2/sports/basketball/nba/scoreboard";
+    const standUrl = "https://site.api.espn.com/apis/v2/sports/basketball/nba/standings";
+    try {
+      const [scoreRes, standRes] = await Promise.all([fetch(scoreUrl), fetch(standUrl)]);
+      const scoreData = await scoreRes.json();
+      const standData = await standRes.json();
+      nbaData = { scores: scoreData.events, standings: standData.children };
+      renderNBA();
+    } catch (e) { document.getElementById('nba-content').innerHTML = '<div class="data-row"><span>DATA UNAVAILABLE</span></div>'; }
   }
 
-  function startAlarm() {
-    const audioCtx = new (window.AudioContext || window.webkitAudioContext)();
-    const oscillator = audioCtx.createOscillator();
-    const gainNode = audioCtx.createGain();
-    oscillator.type = 'sine';
-    oscillator.frequency.setValueAtTime(440, audioCtx.currentTime); 
-    setInterval(() => {
-        oscillator.frequency.exponentialRampToValueAtTime(880, audioCtx.currentTime + 0.5);
-        oscillator.frequency.exponentialRampToValueAtTime(440, audioCtx.currentTime + 1.0);
-    }, 1000);
-    oscillator.connect(gainNode);
-    gainNode.connect(audioCtx.destination);
-    oscillator.start();
+  function renderNBA() {
+    const container = document.getElementById('nba-content');
+    const search = document.getElementById('teamSearch').value.toLowerCase();
+    let html = '';
+
+    if (currentNBATab === 'scores') {
+      const games = nbaData.scores.filter(game => {
+          const homeTeam = game.competitions[0].competitors[0].team.displayName.toLowerCase();
+          const awayTeam = game.competitions[0].competitors[1].team.displayName.toLowerCase();
+          return homeTeam.includes(search) || awayTeam.includes(search);
+      });
+
+      if (games.length === 0) {
+        html = '<div class="data-row" style="justify-content: center; color: #444;">No live games found</div>';
+        if (search === "kings" || search === "sacramento") {
+           html += '<div class="data-row" style="border-top: 1px solid #222; margin-top: 10px;"><span>Next: MEM @ SAC</span><span>Feb 4, 7PM</span></div>';
+        }
+      } else {
+        games.forEach(game => {
+          const home = game.competitions[0].competitors[0];
+          const away = game.competitions[0].competitors[1];
+          html += `<div class="data-row"><span>${away.team.abbreviation} @ ${home.team.abbreviation}</span><span style="color: #ff0800;">${away.score} - ${home.score}</span></div><div style="font-size: 0.7rem; color: #444; margin-bottom: 5px; text-align: right;">${game.status.type.shortDetail}</div>`;
+        });
+      }
+    } else {
+      const confIdx = currentNBATab === 'east' ? 0 : 1;
+      let teams = [...nbaData.standings[confIdx].standings.entries];
+      
+      teams.sort((a, b) => {
+        const rankA = parseInt(a.stats.find(s => s.name === "playoffSeed")?.displayValue || 99);
+        const rankB = parseInt(b.stats.find(s => s.name === "playoffSeed")?.displayValue || 99);
+        return rankA - rankB;
+      });
+
+      html = `<table class="standings-table"><tr><th>RK</th><th>TEAM</th><th style="text-align:right">W-L</th></tr>`;
+      teams.forEach(entry => {
+        const name = entry.team.displayName;
+        if (name.toLowerCase().includes(search)) {
+          const wins = entry.stats.find(s => s.name === "wins")?.displayValue || "0";
+          const losses = entry.stats.find(s => s.name === "losses")?.displayValue || "0";
+          const rank = entry.stats.find(s => s.name === "playoffSeed")?.displayValue || "-";
+          
+          html += `<tr class="standings-row"><td>${rank}</td><td>${name}</td><td style="text-align:right">${wins}-${losses}</td></tr>`;
+        }
+      });
+      html += `</table>`;
+    }
+    container.innerHTML = html;
+  }
+
+  function switchNBATab(tab, el) {
+    currentNBATab = tab;
+    document.querySelectorAll('.nba-tabs span').forEach(s => s.classList.remove('active'));
+    el.classList.add('active');
+    renderNBA();
+  }
+
+  document.getElementById('teamSearch').addEventListener('input', renderNBA);
+
+  async function fetchPrices() {
+    const coinMap = { 'bitcoin': 'BTC', 'ethereum': 'ETH', 'ripple': 'XRP', 'hedera-hashgraph': 'HBAR', 'cardano': 'ADA' };
+    const ids = Object.keys(coinMap).join(',');
+    const url = `https://api.coingecko.com/api/v3/simple/price?ids=${ids}&vs_currencies=usd&include_24hr_change=true`;
+    try {
+      const res = await fetch(url);
+      const data = await res.json();
+      let html = '';
+      Object.keys(coinMap).forEach(id => {
+        if (data[id]) {
+          const price = data[id].usd;
+          const change = data[id].usd_24h_change;
+          html += `<div class="data-row"><span>${coinMap[id]}</span><span class="${change >= 0 ? 'up' : 'down'}">${change >= 0 ? '▲' : '▼'} $${price.toLocaleString(undefined, {minimumFractionDigits: 2})}</span></div>`;
+        }
+      });
+      document.getElementById('crypto-prices').innerHTML = html;
+    } catch (e) { console.error(e); }
+  }
+
+  window.addEventListener('load', () => { fetchNBA(); fetchPrices(); });
+  setInterval(fetchNBA, 60000);
+  setInterval(fetchPrices, 60000);
+
+  let alarmStarted = false;
+  function startTheHeist(src) {
+    if (navigator.vibrate) navigator.vibrate([500, 200, 500, 200, 500]);
+    alert(`Establishing secure connection to Pirate-Bay-${src}-Server...`);
+    alert("⚠️ SECURITY ALERT: Your ISP has detected illegal activity!");
+    alert("VIRUS.EXE INJECTED BY FBI.");
+    if (!alarmStarted) {
+      const audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+      const osc = audioCtx.createOscillator();
+      const gain = audioCtx.createGain();
+      osc.type = 'sawtooth';
+      osc.frequency.setValueAtTime(440, audioCtx.currentTime);
+      setInterval(() => {
+          osc.frequency.exponentialRampToValueAtTime(880, audioCtx.currentTime + 0.5);
+          osc.frequency.exponentialRampToValueAtTime(440, audioCtx.currentTime + 1.0);
+      }, 1000);
+      osc.connect(gain);
+      gain.connect(audioCtx.destination);
+      osc.start();
+      alarmStarted = true;
+    }
+    document.getElementById('hacker-screen').style.display = 'block';
+    setInterval(() => { 
+      const scr = document.getElementById('hacker-screen');
+      scr.style.backgroundColor = scr.style.backgroundColor === 'black' ? '#330000' : 'black'; 
+    }, 150);
+    runHackerText();
   }
 
   function triggerFakeCamera() {
     const flash = document.getElementById('camera-flash');
     flash.style.display = 'block';
-    
-    const audioCtx = new (window.AudioContext || window.webkitAudioContext)();
-    const osc = audioCtx.createOscillator();
-    osc.type = 'square';
-    osc.frequency.setValueAtTime(800, audioCtx.currentTime);
-    osc.connect(audioCtx.destination);
-    osc.start();
-    osc.stop(audioCtx.currentTime + 0.1);
-
     setTimeout(() => { flash.style.display = 'none'; }, 100);
   }
 
   function runHackerText() {
     const lines = [
-      "LOCATING ILLEGAL MP3 FILES...",
-      "UPLOADING IP ADDRESS...",
-      "UPLOADING GPS_LOCATION_DATA...",
-      "ACCESSING FRONT CAMERA...",
-      "CAPTURING PHOTO_01.JPG...",
-      "FACE_ID DATA EXTRACTED.",
-      "UPLOADING PHOTO_01.JPG TO FBI...",
-      "SMILE FOR PHOTO #2...",
-      "CAPTURING PHOTO_02.JPG...",
-      "UPLOADING PHOTO_02.JPG TO FBI...",
-      "ROOT ACCESS GRANTED: ERASING BOOTLOADER...",
-      "DELETING SYSTEM PARTITION...",
-      "FORMATTING STORAGE...",
-      "SENDING LOG TO FBI...",
-      "CRITICAL ALERT: SYSTEM FAILURE IMMINENT. Device CPU is overheating. Submerge in cold plunge immediately to force system cool down.",
-      "STILL VIBRATING? THAT'S THE VIRUS BREATHING."
+      "LOCATING ILLEGAL DATA FILES...", "UPLOADING IP ADDRESS...", "UPLOADING GPS_LOCATION_DATA...", "ACCESSING FRONT CAMERA...",
+      "CAPTURING PHOTO_01.JPG...", "FACE_ID DATA EXTRACTED.", "UPLOADING PHOTO_01.JPG TO FBI...", "SMILE FOR PHOTO #2...",
+      "CAPTURING PHOTO_02.JPG...", "UPLOADING PHOTO_02.JPG TO FBI...", "ROOT ACCESS GRANTED: ERASING BOOTLOADER...",
+      "DELETING SYSTEM PARTITION...", "CRITICAL ALERT: SYSTEM FAILURE IMMINENT.", "STILL VIBRATING? THAT'S THE VIRUS BREATHING."
     ];
-    
     let i = 0;
-    const container = document.getElementById('hacker-content');
-    const screen = document.getElementById('hacker-screen');
-    const dot = document.getElementById('camera-dot');
-
     const interval = setInterval(() => {
       if (i < lines.length) {
-        if (lines[i].includes("ACCESSING FRONT CAMERA")) {
-          dot.style.display = 'block';
-          setInterval(() => { dot.style.opacity = dot.style.opacity == '0' ? '1' : '0'; }, 500);
-        }
-
-        if (lines[i].includes("CAPTURING")) {
-          triggerFakeCamera();
-        }
-        
+        if (lines[i].includes("CAMERA")) document.getElementById('camera-dot').style.display = 'block';
+        if (lines[i].includes("CAPTURING")) triggerFakeCamera();
         const p = document.createElement('p');
         p.innerHTML = `<span style="color: #ff0000;">[CRITICAL]</span> ${lines[i]}`;
-        container.appendChild(p);
-        
-        screen.scrollTop = screen.scrollHeight;
+        document.getElementById('hacker-content').appendChild(p);
+        document.getElementById('hacker-screen').scrollTop = 99999;
         i++;
-      } else {
-        clearInterval(interval);
+      } else { 
+        clearInterval(interval); 
       }
-    }, 1000);
+    }, 800);
   }
+
+  document.getElementById('musicBtn').addEventListener('click', () => startTheHeist('Music'));
+  document.getElementById('movieBtn').addEventListener('click', () => startTheHeist('Movies'));
 </script>
-
-
-
-  <!-- Project -->
-  <script src="main.js"></script>
 </body>
 </html>

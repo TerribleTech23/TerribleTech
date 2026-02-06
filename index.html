@@ -61,6 +61,7 @@
             background: linear-gradient(to right, #fff, var(--accent-purple));
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
+            text-decoration: none;
         }
 
         .logo span {
@@ -141,6 +142,7 @@
             transition: transform 0.3s, border-color 0.3s;
             display: flex;
             flex-direction: column;
+            scroll-margin-top: 100px;
         }
 
         .card:hover {
@@ -194,7 +196,7 @@
 
     <header>
         <nav>
-            <div class="logo">TerribleTech<span>.io</span></div>
+            <a href="index.html" class="logo">TerribleTech<span>.io</span></a>
             <ul>
                 <li><a href="#apps">Apps & Programs</a></li>
                 <li><a href="#guides">Guides</a></li>
@@ -205,24 +207,23 @@
 
     <main>
         <section class="hero">
-            <h1>Media Automation &
-Hardened Privacy</h1>
+            <h1>Media Automation & Hardened Privacy</h1>
             <p>Practical guides on mastering hardware, securing your data, and streamlining your digital environment.</p>
         </section>
 
         <section class="content-grid">
             <article id="apps" class="card">
                 <div class="card-tag">Apps & Programs</div>
-                <h2>Media & Workflow</h2>
-                <p>Discover advanced tools for mobile development and streamlined media playback. From coding on Android to high-end streaming setups.</p>
-                <a href="stremio.html" class="btn">Explore Apps</a>
+                <h2>Mobile Dev Toolkit</h2>
+                <p>A look at the professional environments I use to build and mod directly on Android, featuring Spck Editor and Acode.</p>
+                <a href="#" class="btn">Explore Apps</a>
             </article>
 
             <article id="guides" class="card">
-                <div class="card-tag">Hardware</div>
-                <h2>Network Infrastructure</h2>
-                <p>Deep dives into high-performance hardware, router optimization, and building a robust home network for all your devices.</p>
-                <a href="flint2.html" class="btn">View Guide</a>
+                <div class="card-tag">Guides</div>
+                <h2>Technical Guides</h2>
+                <p>Step-by-step walkthroughs for media automation, remote networking, and self-hosting. Featuring Stremio, Plex, Tailscale, and more.</p>
+                <a href="guides.html" class="btn">Browse Guides</a>
             </article>
 
             <article id="privacy" class="card">
@@ -240,4 +241,3 @@ Hardened Privacy</h1>
 
 </body>
 </html>
-

@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Technical Guides | TerribleTech</title>
+    <style>
+        /* --- Matching your Home Theme --- */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --bg-dark: #0f172a;
+            --card-bg: #1e293b;
+            --text-main: #f8fafc;
+            --text-dim: #94a3b8;
+            --accent-purple: #8b5cf6; 
+        }
+
+        body {
+            background-color: var(--bg-dark);
+            color: var(--text-main);
+            font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+            line-height: 1.6;
+        }
+
+        header {
+            background: var(--card-bg);
+            padding: 1.2rem;
+            border-bottom: 2px solid var(--accent-purple);
+        }
+
+        nav {
+            max-width: 1100px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-weight: 800;
+            font-size: 1.6rem;
+            background: linear-gradient(to right, #fff, var(--accent-purple));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            text-decoration: none;
+        }
+
+        .logo span {
+            -webkit-text-fill-color: var(--accent-purple);
+        }
+
+        main {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 3rem 1.5rem;
+        }
+
+        h1 {
+            font-size: 2.5rem;
+            margin-bottom: 2rem;
+            background: linear-gradient(to right, #fff, var(--accent-purple));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        /* --- Guide List Layout --- */
+        .guide-list {
+            display: flex;
+            flex-direction: column;
+            gap: 1.5rem;
+        }
+
+        .guide-item {
+            background: var(--card-bg);
+            padding: 1.5rem;
+            border-radius: 12px;
+            border: 1px solid #334155;
+            text-decoration: none;
+            color: inherit;
+            transition: transform 0.2s, border-color 0.2s;
+        }
+
+        .guide-item:hover {
+            transform: scale(1.02);
+            border-color: var(--accent-purple);
+        }
+
+        .guide-item h2 {
+            font-size: 1.2rem;
+            color: var(--accent-purple);
+            margin-bottom: 0.5rem;
+        }
+
+        .guide-item p {
+            font-size: 0.9rem;
+            color: var(--text-dim);
+        }
+
+        .btn-back {
+            display: inline-block;
+            margin-top: 2rem;
+            color: var(--accent-purple);
+            text-decoration: none;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <nav>
+            <a href="index.html" class="logo">TerribleTech<span>.io</span></a>
+        </nav>
+    </header>
+
+    <main>
+        <h1>Browse All Guides</h1>
+        
+        <div class="guide-list">
+            <a href="stremio.html" class="guide-item">
+                <h2>Stremio + Real-Debrid</h2>
+                <p>The core setup for high-speed, buffer-free media automation.</p>
+            </a>
+
+            <div class="guide-item" style="opacity: 0.5; cursor: default;">
+                <h2>YouTube Morphine (Coming Soon)</h2>
+                <p>Optimizing your mobile YouTube experience.</p>
+            </div>
+
+            <div class="guide-item" style="opacity: 0.5; cursor: default;">
+                <h2>Plex & Immich (Coming Soon)</h2>
+                <p>Self-hosting your personal media and photo library.</p>
+            </div>
+        </div>
+
+        <a href="index.html" class="btn-back">← Back to Home</a>
+    </main>
+
+</body>
+</html>

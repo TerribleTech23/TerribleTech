@@ -1,347 +1,243 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Terrible Tech | Dashboard</title>
-  <style>
-    body {
-      background-color: #0a0a0a;
-      color: #ffffff;
-      font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
-      margin: 0;
-      padding: 0;
-      overflow-x: hidden;
-      line-height: 1.6;
-    }
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TerribleTech</title>
+    <style>
+        /* --- Global Reset & Variables --- */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
 
-    h1, h2 { text-align: center; text-transform: uppercase; letter-spacing: 3px; }
-    h1 { font-size: 2.2rem; margin-top: 30px; margin-bottom: 5px; }
-    h2 { font-size: 0.9rem; font-weight: 300; color: #888; margin-bottom: 40px; }
+        :root {
+            --bg-dark: #0f172a;
+            --card-bg: #1e293b;
+            --text-main: #f8fafc;
+            --text-dim: #94a3b8;
+            --accent-purple: #8b5cf6; 
+            --accent-hover: #7c3aed;
+        }
 
-    /* HARD CENTER GRID - Ensures no empty space on the right of your S25 Ultra */
-    .dashboard {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-      gap: 25px;
-      max-width: 1200px;
-      margin: 0 auto;
-      padding: 20px;
-      box-sizing: border-box;
-      align-items: start;
-    }
+        body {
+            background-color: var(--bg-dark);
+            color: var(--text-main);
+            font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+            line-height: 1.6;
+        }
 
-    .card {
-      background: #121212;
-      border: 1px solid #222;
-      border-top: 4px solid #ff0800;
-      padding: 20px;
-      border-radius: 4px;
-      height: auto;
-    }
+        /* --- Navigation --- */
+        header {
+            background: var(--card-bg);
+            padding: 1.2rem;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            border-bottom: 2px solid var(--accent-purple);
+        }
 
-    .card h3 { 
-      margin-top: 0;
-      font-size: 1.1rem;
-      border-bottom: 1px solid #222;
-      padding-bottom: 12px;
-      color: #fff;
-    }
+        nav {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            max-width: 1100px;
+            margin: 0 auto;
+            gap: 1rem;
+        }
 
-    .data-row {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      padding: 10px 0;
-      border-bottom: 1px solid #1a1a1a;
-      font-family: 'Courier New', monospace;
-    }
+        @media (min-width: 768px) {
+            nav {
+                flex-direction: row;
+                justify-content: space-between;
+            }
+        }
 
-    .icon-inline {
-      width: 20px;
-      height: 20px;
-      vertical-align: middle;
-      margin-right: 8px;
-    }
+        .logo {
+            font-weight: 800;
+            font-size: 1.6rem;
+            letter-spacing: -0.5px;
+            background: linear-gradient(to right, #fff, var(--accent-purple));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
 
-    .team-cell { display: flex; align-items: center; }
+        .logo span {
+            -webkit-text-fill-color: var(--accent-purple);
+            font-weight: 900;
+        }
 
-    img.main-img { 
-      max-width: 100%; 
-      height: auto; 
-      border-radius: 2px; 
-      display: block; 
-      margin: 15px auto;
-    }
+        nav ul {
+            display: flex;
+            list-style: none;
+            gap: 1.2rem;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
 
-    .footer { 
-        text-align: center; 
-        margin-top: 20px; 
-        padding-bottom: 60px;
-        display: flex;
-        flex-wrap: wrap;
-        justify-content: center;
-        gap: 10px;
-    }
+        nav a {
+            color: var(--text-dim);
+            text-decoration: none;
+            font-size: 0.9rem;
+            font-weight: 500;
+            transition: color 0.3s;
+        }
 
-    .action-btn {
-      padding: 12px 24px;
-      background-color: transparent;
-      color: #ffffff;
-      border: 1px solid #ff0800;
-      border-radius: 2px;
-      cursor: pointer;
-      text-transform: uppercase;
-      font-weight: bold;
-    }
+        nav a:hover {
+            color: var(--accent-purple);
+        }
 
-    .up { color: #00ff88; }
-    .down { color: #ff0800; }
+        /* --- Hero Section --- */
+        main {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 3rem 1.5rem;
+        }
 
-    .nba-search { margin-bottom: 15px; }
-    .nba-search input { 
-      width: 100%; box-sizing: border-box; background: #000; border: 1px  #333; color: #fff; padding: 10px; font-size: 0.9rem; border-radius: 2px;
-    }
-    .nba-tabs { display: flex; gap: 15px; margin-bottom: 15px; font-size: 0.75rem; text-transform: uppercase; cursor: pointer; border-bottom: 1px solid #222; padding-bottom: 5px;}
-    .nba-tabs .active { color: #ff0800; font-weight: bold; border-bottom: 1px solid #ff0800; }
+        .hero {
+            text-align: center;
+            margin-bottom: 4rem;
+        }
 
-    .standings-table { width: 100%; border-collapse: collapse; font-family: 'Courier New', monospace; font-size: 0.85rem; }
-    .standings-table th { text-align: left; color: #444; border-bottom: 1px solid #222; padding: 5px 0; }
-    .standings-table td { padding: 8px 0; border-bottom: 1px solid #111; }
+        .hero h1 {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+            background: linear-gradient(to right, #fff, var(--accent-purple));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
 
-    /* PRANK ELEMENTS RESTORED */
-    #hacker-screen {
-      display: none;
-      position: fixed;
-      top: 0; left: 0; width: 100vw; height: 100vh;
-      background: black; color: #0f0; font-family: monospace;
-      padding: 20px; z-index: 9999; overflow-y: scroll; font-size: 18px;
-    }
-    #camera-dot {
-      position: fixed; top: 20px; right: 20px; width: 15px; height: 15px;
-      background-color: red; border-radius: 50%; display: none; box-shadow: 0 0 15px red;
-    }
-    #camera-flash {
-      display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%;
-      background: white; z-index: 10000;
-    }
-  </style>
+        .hero p {
+            color: var(--text-dim);
+            font-size: 1.2rem;
+            max-width: 750px;
+            margin: 0 auto;
+            font-weight: 400;
+            letter-spacing: 0.3px;
+        }
+
+        /* --- Grid & Cards --- */
+        .content-grid {
+            display: grid;
+            grid-template-columns: 1fr; 
+            gap: 2rem;
+        }
+
+        @media (min-width: 900px) {
+            .content-grid {
+                grid-template-columns: repeat(3, 1fr);
+            }
+            .hero h1 {
+                font-size: 3.8rem;
+            }
+        }
+
+        .card {
+            background: var(--card-bg);
+            padding: 2.2rem;
+            border-radius: 16px;
+            border: 1px solid #334155;
+            transition: transform 0.3s, border-color 0.3s;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+            border-color: var(--accent-purple);
+        }
+
+        .card-tag {
+            font-size: 0.7rem;
+            text-transform: uppercase;
+            color: var(--accent-purple);
+            font-weight: bold;
+            margin-bottom: 0.5rem;
+            letter-spacing: 1px;
+        }
+
+        .card h2 {
+            margin-bottom: 1rem;
+            font-size: 1.4rem;
+        }
+
+        .card p {
+            color: var(--text-dim);
+            margin-bottom: 1.5rem;
+            flex-grow: 1;
+            font-size: 0.95rem;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 0.8rem 1.2rem;
+            background: var(--accent-purple);
+            color: white;
+            text-decoration: none;
+            border-radius: 8px;
+            font-weight: 600;
+            text-align: center;
+            font-size: 0.9rem;
+        }
+
+        footer {
+            text-align: center;
+            padding: 4rem 2rem;
+            color: var(--text-dim);
+            font-size: 0.85rem;
+            border-top: 1px solid #1e293b;
+        }
+    </style>
 </head>
 <body>
 
-  <h1>Terrible Tech</h1>
-  <h2>in progress</h2>
+    <header>
+        <nav>
+            <div class="logo">TerribleTech<span>.io</span></div>
+            <ul>
+                <li><a href="#apps">Apps & Programs</a></li>
+                <li><a href="#guides">Guides</a></li>
+                <li><a href="#privacy">Privacy & Security</a></li>
+            </ul>
+        </nav>
+    </header>
 
-  <div class="dashboard">
-    <div class="card">
-      <h3>🏀 Live NBA Scores</h3>
-      <div class="nba-search">
-        <input type="text" id="teamSearch" placeholder="Filter teams...">
-      </div>
-      <div class="nba-tabs">
-        <span class="active" onclick="switchNBATab('scores', this)">Scores</span>
-        <span onclick="switchNBATab('east', this)">East</span>
-        <span onclick="switchNBATab('west', this)">West</span>
-      </div>
-      <div id="nba-content"></div>
-    </div>
+    <main>
+        <section class="hero">
+            <h1>Media Automation &
+Hardened Privacy</h1>
+            <p>Practical guides on mastering hardware, securing your data, and streamlining your digital environment.</p>
+        </section>
 
-    <div class="card">
-      <h3>📈 Portfolio Tracker</h3>
-      <div id="crypto-prices">
-        <div class="data-row"><span>Loading prices...</span></div>
-      </div>
-    </div>
+        <section class="content-grid">
+            <article id="apps" class="card">
+                <div class="card-tag">Apps & Programs</div>
+                <h2>Media & Workflow</h2>
+                <p>Discover advanced tools for mobile development and streamlined media playback. From coding on Android to high-end streaming setups.</p>
+                <a href="#" class="btn">Explore Apps</a>
+            </article>
 
-    <div class="card">
-      <h3>🫴 Spare Change</h3>
-      <img src="Eat1.jpg" alt="help" class="main-img">
-      <img src="Eat2.jpg" alt="hungry" class="main-img">
-      <div style="text-align: center; margin-top: 20px; border-top: 1px solid #222; padding-top: 20px;">
-        <a href="https://cash.app/$TerribleTech" target="_blank" style="text-decoration: none;">
-          <button class="action-btn" style="border-color: #00ff88; color: #00ff88;">$ PAY VIA CASHAPP</button>
-        </a>
-      </div>
-    </div>
-  </div>
+            <article id="guides" class="card">
+                <div class="card-tag">Hardware</div>
+                <h2>Network Infrastructure</h2>
+                <p>Deep dives into high-performance hardware, router optimization, and building a robust home network for all your devices.</p>
+                <a href="flint2.html" class="btn">View Guide</a>
+            </article>
 
-  <div class="footer">
-    <button class="action-btn" id="musicBtn">link to free music</button>
-    <button class="action-btn" id="movieBtn">link to free movies</button>
-  </div>
+            <article id="privacy" class="card">
+                <div class="card-tag">Privacy & Security</div>
+                <h2>Securing the Stack</h2>
+                <p>Take control of your digital footprint. Comprehensive strategies for private communication, secure storage, and network hardening.</p>
+                <a href="#" class="btn">Learn More</a>
+            </article>
+        </section>
+    </main>
 
-  <div id="hacker-screen">
-    <div id="camera-dot"></div>
-    <div id="hacker-content"></div>
-  </div>
-  <div id="camera-flash"></div>
+    <footer>
+        <p>&copy; 2026 TerribleTech.io | Digital Excellence.</p>
+    </footer>
 
-<script>
-  let nbaData = null;
-  let currentNBATab = 'scores';
-
-  async function fetchNBA() {
-    try {
-      const [sR, stR] = await Promise.all([
-        fetch("https://site.api.espn.com/apis/site/v2/sports/basketball/nba/scoreboard"),
-        fetch("https://site.api.espn.com/apis/v2/sports/basketball/nba/standings")
-      ]);
-      const sD = await sR.json();
-      const stD = await stR.json();
-      nbaData = { scores: sD.events, standings: stD.children };
-      renderNBA();
-    } catch (e) { console.error(e); }
-  }
-
-  function renderNBA() {
-    const container = document.getElementById('nba-content');
-    const search = document.getElementById('teamSearch').value.toLowerCase();
-    let html = '';
-
-    if (currentNBATab === 'scores') {
-      const games = nbaData.scores.filter(g => {
-          const t1 = g.competitions[0].competitors[0].team.displayName.toLowerCase();
-          const t2 = g.competitions[0].competitors[1].team.displayName.toLowerCase();
-          return t1.includes(search) || t2.includes(search);
-      });
-      if (games.length === 0) {
-          html = '<div class="data-row">No games found</div>';
-      } else {
-          games.forEach(g => {
-            const h = g.competitions[0].competitors[0];
-            const a = g.competitions[0].competitors[1];
-            html += `<div class="data-row">
-                      <span class="team-cell">
-                        <img src="${a.team.logo}" class="icon-inline"> ${a.team.abbreviation} @ 
-                        <img src="${h.team.logo}" class="icon-inline"> ${h.team.abbreviation}
-                      </span>
-                      <span style="color:#ff0800">${a.score}-${h.score}</span>
-                    </div>`;
-          });
-      }
-    } else {
-      const idx = currentNBATab === 'east' ? 0 : 1;
-      let teams = [...nbaData.standings[idx].standings.entries];
-      teams.sort((a,b) => parseInt(a.stats.find(s=>s.name==="playoffSeed")?.displayValue) - parseInt(b.stats.find(s=>s.name==="playoffSeed")?.displayValue));
-      html = '<table class="standings-table"><tr><th>RK</th><th>TEAM</th><th style="text-align:right">W-L</th></tr>';
-      teams.forEach(t => {
-        if (t.team.displayName.toLowerCase().includes(search)) {
-          const r = t.stats.find(s=>s.name==="playoffSeed")?.displayValue || "-";
-          const w = t.stats.find(s=>s.name==="wins")?.displayValue || "0";
-          const l = t.stats.find(s=>s.name==="losses")?.displayValue || "0";
-          // Fix for broken logos in Standings tabs
-          const logoUrl = t.team.logos && t.team.logos.length > 0 ? t.team.logos[0].href : '';
-          html += `<tr>
-                    <td>${r}</td>
-                    <td class="team-cell"><img src="${logoUrl}" class="icon-inline"> ${t.team.displayName}</td>
-                    <td style="text-align:right">${w}-${l}</td>
-                  </tr>`;
-        }
-      });
-      html += '</table>';
-    }
-    container.innerHTML = html;
-  }
-
-  function switchNBATab(tab, el) {
-    currentNBATab = tab;
-    document.querySelectorAll('.nba-tabs span').forEach(s => s.classList.remove('active'));
-    el.classList.add('active');
-    renderNBA();
-  }
-
-  async function fetchPrices() {
-    const ids = "bitcoin,ethereum,ripple,hedera-hashgraph,cardano";
-    const url = `https://api.coingecko.com/api/v3/coins/markets?vs_currency=usd&ids=${ids}&price_change_percentage=24h`;
-    try {
-      const response = await fetch(url);
-      const list = await response.json();
-      const map = { bitcoin:'BTC', ethereum:'ETH', ripple:'XRP', 'hedera-hashgraph':'HBAR', cardano:'ADA' };
-      let html = '';
-      list.forEach(coin => {
-        const id = coin.id;
-        const symbol = map[id] || coin.symbol.toUpperCase();
-        const price = coin.current_price.toLocaleString(undefined, { minimumFractionDigits: 2 });
-        const change = coin.price_change_percentage_24h;
-        html += `<div class="data-row">
-                  <span><img src="${coin.image}" class="icon-inline"> ${symbol}</span>
-                  <span class="${change >= 0 ? 'up':'down'}">${change >= 0 ? '▲':'▼'} $${price}</span>
-                </div>`;
-      });
-      document.getElementById('crypto-prices').innerHTML = html || '<div class="data-row"><span>No data</span></div>';
-    } catch (e) { 
-      console.error(e);
-      document.getElementById('crypto-prices').innerHTML = '<div class="data-row"><span>API Limit reached</span></div>';
-    }
-  }
-
-  let alarmStarted = false;
-  function startTheHeist(src) {
-    if (navigator.vibrate) navigator.vibrate([500, 200, 500, 200, 500]);
-    alert(`Establishing secure connection...`);
-    alert("⚠️ SECURITY ALERT: ILLEGAL ACTIVITY DETECTED!");
-    alert("VIRUS.EXE INJECTED.");
-    if (!alarmStarted) {
-      const audioCtx = new (window.AudioContext || window.webkitAudioContext)();
-      const osc = audioCtx.createOscillator();
-      const gain = audioCtx.createGain();
-      osc.type = 'sawtooth';
-      osc.frequency.setValueAtTime(440, audioCtx.currentTime);
-      setInterval(() => {
-          osc.frequency.exponentialRampToValueAtTime(880, audioCtx.currentTime + 0.5);
-          osc.frequency.exponentialRampToValueAtTime(440, audioCtx.currentTime + 1.0);
-      }, 1000);
-      osc.connect(gain);
-      gain.connect(audioCtx.destination);
-      osc.start();
-      alarmStarted = true;
-    }
-    document.getElementById('hacker-screen').style.display = 'block';
-    setInterval(() => { 
-      const scr = document.getElementById('hacker-screen');
-      scr.style.backgroundColor = scr.style.backgroundColor === 'black' ? '#330000' : 'black'; 
-    }, 150);
-    runHackerText(src);
-  }
-
-  function triggerFakeCamera() {
-    const flash = document.getElementById('camera-flash');
-    flash.style.display = 'block';
-    setTimeout(() => { flash.style.display = 'none'; }, 100);
-  }
-
-  function runHackerText(sourceType) {
-    const lines = ["LOCATING FILES...", "UPLOADING IP...", "CAPTURING PHOTO...", "SMILE FOR PHOTO #2...", "ROOT ACCESS GRANTED..."];
-    let i = 0;
-    const interval = setInterval(() => {
-      if (i < lines.length) {
-        if (lines[i].includes("PHOTO")) {
-            document.getElementById('camera-dot').style.display = 'block';
-            triggerFakeCamera();
-        }
-        const p = document.createElement('p');
-        p.innerHTML = `<span style="color: #ff0000;">[CRITICAL]</span> ${lines[i]}`;
-        document.getElementById('hacker-content').appendChild(p);
-        i++;
-      } else { 
-        clearInterval(interval); 
-        setTimeout(() => {
-          let content = sourceType === 'Movies' ? "URL: thetvapp.to" : "URL: vimusic.app";
-          const pFinal = document.createElement('p');
-          pFinal.style.color = "#00ff88";
-          pFinal.innerHTML = `[SUCCESS] <br>${content}<br><br>RESTARTING...`;
-          document.getElementById('hacker-content').appendChild(pFinal);
-        }, 5000);
-      }
-    }, 800);
-  }
-
-  window.onload = () => { fetchNBA(); fetchPrices(); };
-  document.getElementById('teamSearch').addEventListener('input', renderNBA);
-  document.getElementById('musicBtn').onclick = () => startTheHeist('Music');
-  document.getElementById('movieBtn').onclick = () => startTheHeist('Movies');
-  setInterval(fetchPrices, 60000);
-  setInterval(fetchNBA, 60000);
-</script>
 </body>
 </html>
+

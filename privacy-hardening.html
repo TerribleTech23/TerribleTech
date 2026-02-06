@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Digital Hardening | TerribleTech</title>
+    <style>
+        /* --- Consistency with Home Theme --- */
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        :root {
+            --bg-dark: #0f172a;
+            --card-bg: #1e293b;
+            --text-main: #f8fafc;
+            --text-dim: #94a3b8;
+            --accent-purple: #8b5cf6; 
+        }
+
+        body {
+            background-color: var(--bg-dark);
+            color: var(--text-main);
+            font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+            line-height: 1.6;
+        }
+
+        header {
+            background: var(--card-bg);
+            padding: 1.2rem;
+            border-bottom: 2px solid var(--accent-purple);
+        }
+
+        nav { max-width: 1100px; margin: 0 auto; }
+        .logo {
+            font-weight: 800; font-size: 1.6rem;
+            background: linear-gradient(to right, #fff, var(--accent-purple));
+            -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+            text-decoration: none;
+        }
+        .logo span { -webkit-text-fill-color: var(--accent-purple); }
+
+        main { max-width: 800px; margin: 0 auto; padding: 3rem 1.5rem; }
+        h1 {
+            font-size: 2.5rem; margin-bottom: 1rem;
+            background: linear-gradient(to right, #fff, var(--accent-purple));
+            -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+        }
+        .intro { color: var(--text-dim); margin-bottom: 3rem; font-size: 1.1rem; }
+
+        section {
+            background: var(--card-bg);
+            padding: 2rem;
+            border-radius: 16px;
+            border: 1px solid #334155;
+            margin-bottom: 2rem;
+        }
+
+        h2 { color: var(--accent-purple); margin-bottom: 1rem; font-size: 1.4rem; }
+        p { color: var(--text-dim); margin-bottom: 1rem; }
+        ul { margin-left: 1.5rem; color: var(--text-dim); margin-bottom: 1rem; }
+        li { margin-bottom: 0.5rem; }
+
+        .btn-back {
+            display: inline-block; margin-top: 2rem;
+            color: var(--accent-purple); text-decoration: none; font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <nav>
+            <a href="index.html" class="logo">TerribleTech<span>.io</span></a>
+        </nav>
+    </header>
+
+    <main>
+        <h1>Digital Hardening 101</h1>
+        <p class="intro">Mastering your data footprint by securing your communications and network traffic.</p>
+
+        <section>
+            <h2>1. Encrypted Communication</h2>
+            <p>Move away from data-mining platforms and secure your messages and metadata at the source.</p>
+            <ul>
+                <li><strong>Proton Mail:</strong> End-to-end encrypted email based in Switzerland.</li>
+                <li><strong>Signal:</strong> The gold standard for private messaging. No ads, no trackers, and no data collection.</li>
+                <li><strong>Alias Management:</strong> Use Proton Pass or SimpleLogin to create unique aliases, keeping your primary email hidden from data brokers.</li>
+            </ul>
+        </section>
+
+        <section>
+            <h2>2. Network Privacy & Ad Blocking</h2>
+            <p>Your ISP shouldn't see your activity. Mask your traffic and kill trackers before they even load.</p>
+            <ul>
+                <li><strong>Proton VPN:</strong> Encrypt your entire internet connection and bypass censorship.</li>
+                <li><strong>NetShield Ad-blocker:</strong> Use Proton VPN’s built-in DNS filtering to block ads, malware, and trackers at the network level.</li>
+                <li><strong>Private DNS:</strong> Configure your device to use encrypted DNS providers for an extra layer of stealth.</li>
+            </ul>
+        </section>
+
+        <section>
+            <h2>3. Account Security</h2>
+            <p>Passwords aren't enough. Secure your logins with hardware-level or open-source authentication.</p>
+            <ul>
+                <li><strong>MFA with Aegis:</strong> An open-source 2FA app for Android that keeps your tokens encrypted and offline.</li>
+                <li><strong>Recovery:</strong> Always store your backup codes in an encrypted vault or offline physical storage.</li>
+            </ul>
+        </section>
+
+        <a href="index.html" class="btn-back">← Back to Home</a>
+    </main>
+
+    <footer>
+        <p style="text-align: center; color: var(--text-dim); padding: 2rem;">&copy; 2026 TerribleTech.io</p>
+    </footer>
+
+</body>
+</html>

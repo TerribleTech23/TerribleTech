@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Stremio + Debrid Guide | TerribleTech</title>
+    <style>
+        /* --- Global Reset & Variables (Matching your Home) --- */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --bg-dark: #0f172a;
+            --card-bg: #1e293b;
+            --text-main: #f8fafc;
+            --text-dim: #94a3b8;
+            --accent-purple: #8b5cf6; 
+            --accent-hover: #7c3aed;
+        }
+
+        body {
+            background-color: var(--bg-dark);
+            color: var(--text-main);
+            font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+            line-height: 1.6;
+        }
+
+        /* --- Navigation --- */
+        header {
+            background: var(--card-bg);
+            padding: 1.2rem;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            border-bottom: 2px solid var(--accent-purple);
+        }
+
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            max-width: 1100px;
+            margin: 0 auto;
+        }
+
+        .logo {
+            font-weight: 800;
+            font-size: 1.6rem;
+            letter-spacing: -0.5px;
+            background: linear-gradient(to right, #fff, var(--accent-purple));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            text-decoration: none;
+        }
+
+        .logo span {
+            -webkit-text-fill-color: var(--accent-purple);
+            font-weight: 900;
+        }
+
+        /* --- Content Layout --- */
+        main {
+            max-width: 800px; /* Narrower for easier reading */
+            margin: 0 auto;
+            padding: 3rem 1.5rem;
+        }
+
+        .guide-header {
+            margin-bottom: 3rem;
+        }
+
+        .guide-header h1 {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+            background: linear-gradient(to right, #fff, var(--accent-purple));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .tag {
+            display: inline-block;
+            background: var(--accent-purple);
+            color: white;
+            padding: 0.2rem 0.8rem;
+            border-radius: 4px;
+            font-size: 0.8rem;
+            font-weight: bold;
+            margin-bottom: 1rem;
+        }
+
+        section {
+            background: var(--card-bg);
+            padding: 2rem;
+            border-radius: 16px;
+            border: 1px solid #334155;
+            margin-bottom: 2rem;
+        }
+
+        h2 {
+            color: var(--accent-purple);
+            margin-bottom: 1rem;
+        }
+
+        p {
+            color: var(--text-dim);
+            margin-bottom: 1rem;
+        }
+
+        ul {
+            margin-left: 1.5rem;
+            color: var(--text-dim);
+            margin-bottom: 1rem;
+        }
+
+        li {
+            margin-bottom: 0.5rem;
+        }
+
+        .important-box {
+            border-left: 4px solid var(--accent-purple);
+            padding-left: 1.5rem;
+            font-style: italic;
+            margin: 2rem 0;
+        }
+
+        .btn-back {
+            display: inline-block;
+            margin-top: 2rem;
+            color: var(--accent-purple);
+            text-decoration: none;
+            font-weight: bold;
+        }
+
+        .btn-back:hover {
+            text-decoration: underline;
+        }
+
+        footer {
+            text-align: center;
+            padding: 4rem 2rem;
+            color: var(--text-dim);
+            font-size: 0.85rem;
+            border-top: 1px solid #1e293b;
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <nav>
+            <a href="index.html" class="logo">TerribleTech<span>.io</span></a>
+        </nav>
+    </header>
+
+    <main>
+        <div class="guide-header">
+            <span class="tag">Apps & Programs</span>
+            <h1>The Ultimate Stremio + Real-Debrid Setup</h1>
+            <p>Mastering buffer-free streaming and high-speed media automation.</p>
+        </div>
+
+        <section>
+            <h2>The Concept</h2>
+            <p>Traditional streaming is fragmented and slow. By combining Stremio (the interface) with Real-Debrid (the high-speed source), you create a private, centralized library that outperforms any standard subscription service.</p>
+        </section>
+
+        <section>
+            <h2>Requirements</h2>
+            <ul>
+                <li><strong>Stremio:</strong> The open-source media player.</li>
+                <li><strong>Real-Debrid Account:</strong> A premium service for high-speed cached links.</li>
+                <li><strong>Torrentio:</strong> The essential add-on bridge.</li>
+            </ul>
+        </section>
+
+        <section>
+            <h2>Setup Steps</h2>
+            <p><strong>1. Real-Debrid:</strong> Sign up for an account and locate your API Key in the user settings. This is your personal access token.</p>
+            <p><strong>2. Configure Torrentio:</strong> Visit the Torrentio configuration page. Select "Real-Debrid" as your provider and paste your API Key.</p>
+            <p><strong>3. Final Sync:</strong> Click install to link the configuration to your Stremio app. Your library will now sync across your Android phone, PC, and TV.</p>
+        </section>
+
+        <div class="important-box">
+            "By using Debrid servers, your ISP only sees an encrypted connection to the service, keeping your viewing habits private and your speeds unrestricted."
+        </div>
+
+        <a href="index.html" class="btn-back">← Back to Homepage</a>
+    </main>
+
+    <footer>
+        <p>&copy; 2026 TerribleTech.io | Digital Excellence.</p>
+    </footer>
+
+</body>
+</html>

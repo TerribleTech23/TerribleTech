@@ -3,42 +3,218 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Tailscale Universal Guide | TerribleTech</title>
+    <title>Tailscale Networking Guide | TerribleTech</title>
     <style>
-        * { margin: 0; padding: 0; box-sizing: border-box; }
-        :root {
-            --bg-dark: #0f172a; --card-bg: #1e293b; --text-main: #f8fafc;
-            --text-dim: #94a3b8; --accent-purple: #8b5cf6; --accent-blue: #38bdf8;
+        /* --- General Theme Styles (Matching TerribleTech.io) --- */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
         }
-        body { background-color: var(--bg-dark); color: var(--text-main); font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif; line-height: 1.6; }
-        header { background: var(--card-bg); padding: 1.2rem; border-bottom: 2px solid var(--accent-purple); position: sticky; top: 0; z-index: 100; }
-        nav { max-width: 1100px; margin: 0 auto; display: flex; justify-content: space-between; align-items: center; }
-        .logo { font-weight: 800; font-size: 1.6rem; background: linear-gradient(to right, #fff, var(--accent-purple)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; text-decoration: none; }
+
+        :root {
+            --bg-dark: #0f172a;
+            --card-bg: #1e293b;
+            --text-main: #f8fafc;
+            --text-dim: #94a3b8;
+            --accent-purple: #8b5cf6; 
+            --accent-blue: #38bdf8;
+        }
+
+        body {
+            background-color: var(--bg-dark);
+            color: var(--text-main);
+            font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+            line-height: 1.6;
+        }
+
+        header {
+            background: var(--card-bg);
+            padding: 1.2rem;
+            border-bottom: 2px solid var(--accent-purple);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        nav {
+            max-width: 1100px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-weight: 800;
+            font-size: 1.6rem;
+            background: linear-gradient(to right, #fff, var(--accent-purple));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            text-decoration: none;
+        }
+
         .logo span { -webkit-text-fill-color: var(--accent-purple); }
-        main { max-width: 900px; margin: 0 auto; padding: 3rem 1.5rem; }
-        h1 { font-size: 2.8rem; margin-bottom: 1.5rem; background: linear-gradient(to right, #fff, var(--accent-purple)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
-        .note { background: rgba(56, 189, 248, 0.1); border-left: 4px solid var(--accent-blue); padding: 1.5rem; border-radius: 8px; margin: 2rem 0; color: var(--text-dim); }
-        .step-card { background: var(--card-bg); border: 1px solid #334155; padding: 2rem; border-radius: 12px; margin-bottom: 2rem; }
-        .step-number { color: var(--accent-purple); font-weight: 800; font-size: 0.9rem; text-transform: uppercase; letter-spacing: 1px; display: block; margin-bottom: 0.5rem; }
-        .image-placeholder { width: 100%; height: 300px; background: #0f172a; border: 1px dashed #334155; display: flex; align-items: center; justify-content: center; border-radius: 8px; margin: 1.5rem 0; color: var(--text-dim); }
-        .btn-back { display: inline-block; margin-top: 2rem; color: var(--accent-purple); text-decoration: none; font-weight: bold; }
-        footer { text-align: center; padding: 4rem 2rem; color: var(--text-dim); font-size: 0.85rem; border-top: 1px solid #1e293b; }
+
+        main {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 3rem 1.5rem;
+        }
+
+        h1 {
+            font-size: 2.8rem;
+            margin-bottom: 1.5rem;
+            background: linear-gradient(to right, #fff, var(--accent-purple));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        p { margin-bottom: 1.2rem; color: var(--text-dim); }
+
+        .note {
+            background: rgba(56, 189, 248, 0.1);
+            border-left: 4px solid var(--accent-blue);
+            padding: 1.5rem;
+            border-radius: 8px;
+            margin: 2rem 0;
+            color: var(--text-dim);
+        }
+
+        .note strong { color: var(--accent-blue); }
+
+        /* --- Step Styling --- */
+        .step-card {
+            background: var(--card-bg);
+            border: 1px solid #334155;
+            padding: 2rem;
+            border-radius: 12px;
+            margin-bottom: 2rem;
+        }
+
+        .step-number {
+            color: var(--accent-purple);
+            font-weight: 800;
+            font-size: 0.9rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            display: block;
+            margin-bottom: 0.5rem;
+        }
+
+        .step-card h3 { color: var(--text-main); margin-bottom: 1rem; }
+
+        .btn-link {
+            display: inline-block;
+            background: var(--accent-purple);
+            color: #fff;
+            padding: 0.6rem 1.2rem;
+            border-radius: 6px;
+            text-decoration: none;
+            font-weight: 600;
+            margin: 0.5rem 0;
+            transition: opacity 0.2s;
+        }
+
+        .btn-link:hover { opacity: 0.9; color: #fff; }
+
+        code {
+            background: #0f172a;
+            padding: 0.2rem 0.4rem;
+            border-radius: 4px;
+            color: var(--accent-blue);
+            font-family: monospace;
+        }
+
+        .image-placeholder {
+            width: 100%;
+            height: 350px;
+            background: #0f172a;
+            border: 1px dashed #334155;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 8px;
+            margin: 1.5rem 0;
+            color: var(--text-dim);
+            font-style: italic;
+        }
+
+        .btn-back {
+            display: inline-block;
+            margin-top: 2rem;
+            color: var(--accent-purple);
+            text-decoration: none;
+            font-weight: bold;
+        }
+
+        footer {
+            text-align: center;
+            padding: 4rem 2rem;
+            color: var(--text-dim);
+            font-size: 0.85rem;
+            border-top: 1px solid #1e293b;
+        }
     </style>
 </head>
 <body>
-    <header><nav><a href="index.html" class="logo">TerribleTech<span>.io</span></a></nav></header>
+
+    <header>
+        <nav>
+            <a href="index.html" class="logo">TerribleTech<span>.io</span></a>
+        </nav>
+    </header>
+
     <main>
-        <h1>Home Internet Anywhere</h1>
-        <p>Turn your home router into a secure gateway, allowing your mobile devices to use your home IP address from anywhere.</p>
-        <div class="note"><strong>Key Benefit:</strong> Securely access your home NAS or cameras while making your travel device appear as if it is still at home.</div>
-        <div class="step-card">
-            <span class="step-number">Phase 1</span>
-            <h3>The Home Gateway (Router)</h3>
-            <p>Your router acts as the "Exit Node." Enable Tailscale in your router settings.</p>
-            <div class="image-placeholder">Screen: Router UI with Tailscale Exit Node enabled</div>
+        <h1>Tailscale Setup</h1>
+        <p>Tailscale creates a secure, zero-config Mesh VPN (Tailnet) that connects all your devices as if they were on the same local network, regardless of where they are in the world.</p>
+
+        <div class="note">
+            <strong>Use Case:</strong> This is the backbone for accessing your <strong>Immich</strong> library or <strong>Stremio</strong> server on your phone while away from home without opening dangerous ports on your router.
         </div>
+
+        <div class="step-card">
+            <span class="step-number">Step 01</span>
+            <h3>Create a Tailnet</h3>
+            <p>Sign up for a free account. This "Tailnet" is your private encrypted network. All devices you add will be assigned a permanent internal IP address.</p>
+            <a href="https://tailscale.com/" target="_blank" class="btn-link">Sign Up for Tailscale</a>
+        </div>
+
+        <div class="step-card">
+            <span class="step-number">Step 02</span>
+            <h3>Install on Your Home Server</h3>
+            <p>If you are running a Linux-based home server (like an N100 Mini PC), install Tailscale using their one-line script:</p>
+            <code>curl -fsSL https://tailscale.com/install.sh | sh</code>
+            <p style="margin-top:1rem;">Once installed, authenticate the server by running:</p>
+            <code>sudo tailscale up --advertise-exit-node</code>
+            <div class="image-placeholder">Screen: Terminal showing Tailscale authentication link</div>
+        </div>
+
+        <div class="step-card">
+            <span class="step-number">Step 03</span>
+            <h3>Mobile & Remote Access</h3>
+            <p>Install the Tailscale app on your S25 Ultra. Once logged in, you will see your home server listed. You can now use its Tailscale IP to access your self-hosted apps.</p>
+            <a href="https://play.google.com/store/apps/details?id=com.tailscale.ipn" target="_blank" class="btn-link">Download for Android</a>
+        </div>
+
+        <div class="step-card">
+            <span class="step-number">Step 04</span>
+            <h3>Enable Exit Nodes</h3>
+            <p>By using your home server as an <strong>Exit Node</strong>, you can route all your mobile traffic through your home network. This is perfect for using public Wi-Fi securely or bypassing location restrictions.</p>
+            <ol style="margin-left: 1.5rem; color: var(--text-dim);">
+                <li>In the Tailscale Admin Console, find your server.</li>
+                <li>Under "Edit route settings", enable <strong>Exit Node</strong>.</li>
+                <li>On your phone, select "Use Exit Node" in the Tailscale app.</li>
+            </ol>
+            <div class="image-placeholder">Screen: Tailscale Admin Console Route Settings</div>
+        </div>
+
         <a href="guides.html" class="btn-back">← Back to Guides</a>
     </main>
-    <footer><p>&copy; 2026 TerribleTech.io | Built on Android</p></footer>
+
+    <footer>
+        <p>&copy; 2026 TerribleTech.io | Built on Android</p>
+    </footer>
+
 </body>
 </html>

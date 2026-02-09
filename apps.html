@@ -3,34 +3,25 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="color-scheme" content="dark only">
     <title>The Stack | TerribleTech</title>
     <style>
         * { margin: 0; padding: 0; box-sizing: border-box; }
-        :root {
-            --bg-dark: #0f172a; --card-bg: #1e293b; --text-main: #f8fafc;
-            --text-dim: #94a3b8; --accent-purple: #8b5cf6; 
-            color-scheme: dark;
-        }
-        body { background-color: var(--bg-dark); color: var(--text-main); font-family: 'Segoe UI', Roboto, sans-serif; line-height: 1.6; }
-        header { background: var(--card-bg); padding: 1rem; position: sticky; top: 0; z-index: 100; border-bottom: 2px solid var(--accent-purple); min-height: 70px; }
-        nav { display: flex; flex-direction: column; align-items: center; max-width: 1100px; margin: 0 auto; gap: 1rem; }
-        @media (min-width: 768px) { nav { flex-direction: row; justify-content: space-between; gap: 0; } }
+        :root { --bg-dark: #0f172a; --card-bg: #1e293b; --text-main: #f8fafc; --text-dim: #94a3b8; --accent-purple: #8b5cf6; }
+        body { background-color: var(--bg-dark); color: var(--text-main); font-family: 'Segoe UI', sans-serif; line-height: 1.6; }
+        header { background: var(--card-bg); padding: 1rem; position: sticky; top: 0; z-index: 100; border-bottom: 2px solid var(--accent-purple); }
+        nav { display: flex; flex-direction: column; align-items: center; max-width: 1100px; margin: 0 auto; gap: 0.8rem; }
+        @media (min-width: 768px) { nav { flex-direction: row; justify-content: space-between; } }
         .logo { font-weight: 800; font-size: 1.4rem; background: linear-gradient(to right, #fff, var(--accent-purple)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; text-decoration: none; }
-        .logo span { -webkit-text-fill-color: var(--accent-purple); font-weight: 900; }
+        .logo span { -webkit-text-fill-color: var(--accent-purple); }
         .header-tagline { font-size: 0.75rem; color: var(--text-dim); text-transform: uppercase; letter-spacing: 1.5px; font-weight: 600; }
-        nav ul { display: flex; list-style: none; gap: 0.6rem; }
-        nav a { color: var(--text-dim); text-decoration: none; font-size: 0.85rem; font-weight: 600; padding: 0.6rem 1.1rem; border-radius: 10px; background: rgba(255, 255, 255, 0.04); border: 1px solid rgba(255, 255, 255, 0.08); transition: 0.2s; }
-        nav a:hover { color: var(--text-main); background: rgba(139, 92, 246, 0.15); border-color: var(--accent-purple); }
-        main { max-width: 1100px; margin: 0 auto; padding: 2.5rem 1.5rem; }
-        h1 { font-size: 2.5rem; margin-bottom: 1rem; text-align: center; background: linear-gradient(to right, #fff, var(--accent-purple)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; font-weight: 700; }
-        .intro { color: var(--text-dim); margin-bottom: 3rem; text-align: center; max-width: 800px; margin: 0 auto 3rem auto; }
-        .app-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1.5rem; }
-        .app-card { background: var(--card-bg); padding: 1.8rem; border-radius: 16px; border: 1px solid #334155; transition: 0.3s; display: flex; flex-direction: column; }
-        .app-card:hover { transform: translateY(-5px); border-color: var(--accent-purple); }
+        nav ul { display: flex; list-style: none; gap: 0.5rem; flex-wrap: wrap; justify-content: center; }
+        nav a { color: var(--text-dim); text-decoration: none; font-size: 0.85rem; font-weight: 600; padding: 0.5rem 0.8rem; border-radius: 8px; background: rgba(255, 255, 255, 0.04); border: 1px solid rgba(255, 255, 255, 0.08); }
+        h1 { font-size: 2.8rem; text-align: center; margin-bottom: 1rem; background: linear-gradient(to right, #fff, var(--accent-purple)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; font-weight: 700; }
+        .app-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1.5rem; padding: 2rem 0; }
+        .app-card { background: var(--card-bg); padding: 1.8rem; border-radius: 16px; border: 1px solid #334155; transition: 0.3s; }
+        .app-card:hover { border-color: var(--accent-purple); transform: translateY(-5px); }
         .tag { font-size: 0.65rem; font-weight: bold; text-transform: uppercase; color: var(--accent-purple); margin-bottom: 0.5rem; }
-        .app-card h2 { font-size: 1.4rem; margin-bottom: 0.8rem; color: var(--accent-purple); }
-        .app-card p { font-size: 0.9rem; color: var(--text-dim); flex-grow: 1; margin-bottom: 1.5rem; }
+        .app-card h2 { color: var(--accent-purple); margin-bottom: 0.8rem; }
         .btn { display: inline-block; padding: 0.7rem 1.1rem; background: var(--accent-purple); color: white; text-decoration: none; border-radius: 8px; font-weight: 600; text-align: center; font-size: 0.85rem; }
         footer { text-align: center; padding: 3rem 2rem; color: var(--text-dim); font-size: 0.8rem; border-top: 1px solid #1e293b; margin-top: 2rem; }
     </style>
@@ -47,14 +38,17 @@
             </ul>
         </nav>
     </header>
-    <main>
+    <main style="max-width: 1100px; margin: 0 auto; padding: 2.5rem 1.5rem;">
         <h1>The Stack</h1>
-        <p class="intro">The essential software toolkit for mobile development, terminal environments, and digital automation.</p>
+        <p style="text-align:center; color:var(--text-dim);">The essential software toolkit for mobile development, terminal environments, and digital automation.</p>
         <div class="app-grid">
-            <div class="app-card"><span class="tag">CLI</span><h2>Termux</h2><p>Terminal emulator and Linux environment for Android.</p><a href="https://termux.dev/" class="btn">Explore App</a></div>
-            <div class="app-card"><span class="tag">Development</span><h2>Spck Editor</h2><p>Professional-grade IDE used to build this site.</p><a href="https://spck.io/" class="btn">Explore App</a></div>
-            <div class="app-card"><span class="tag">Security</span><h2>Proton Tools</h2><p>Encrypted mail, VPN, and password management.</p><a href="https://proton.me/" class="btn">Explore App</a></div>
-            <div class="app-card"><span class="tag">Automation</span><h2>Obtainium</h2><p>Install and update APKs directly from source.</p><a href="https://github.com/ImranR98/Obtainium" class="btn">Explore App</a></div>
+            <div class="app-card"><span class="tag">CLI / System</span><h2>Termux</h2><p style="color:var(--text-dim); margin-bottom:1.5rem;">The core of advanced Android usage. A powerful terminal emulator and Linux environment.</p><a href="https://termux.dev/" class="btn">Explore App</a></div>
+            <div class="app-card"><span class="tag">Automation</span><h2>Obtainium</h2><p style="color:var(--text-dim); margin-bottom:1.5rem;">The open-source gateway for APKs. Track and install updates directly from GitHub and F-Droid.</p><a href="https://github.com/ImranR98/Obtainium" class="btn">Explore App</a></div>
+            <div class="app-card"><span class="tag">Automation</span><h2>Tasker</h2><p style="color:var(--text-dim); margin-bottom:1.5rem;">The ultimate Android automation tool. Create complex profiles triggered by system events.</p><a href="https://tasker.joaoapps.com/" class="btn">Explore App</a></div>
+            <div class="app-card"><span class="tag">System</span><h2>FUTO Keyboard</h2><p style="color:var(--text-dim); margin-bottom:1.5rem;">Privacy-focused keyboard with localized voice-to-text. Keeps data on-device.</p><a href="https://keyboard.futo.org/" class="btn">Explore App</a></div>
+            <div class="app-card"><span class="tag">Development</span><h2>Spck Editor</h2><p style="color:var(--text-dim); margin-bottom:1.5rem;">Professional-grade IDE on Android. Used to build and deploy TerribleTech.io.</p><a href="https://spck.io/" class="btn">Explore App</a></div>
+            <div class="app-card"><span class="tag">Development</span><h2>Acode</h2><p style="color:var(--text-dim); margin-bottom:1.5rem;">Lightweight, lightning-fast code editor for on-the-fly HTML/CSS debugging.</p><a href="https://acode.app/" class="btn">Explore App</a></div>
+            <div class="app-card"><span class="tag">Security</span><h2>Proton Tools</h2><p style="color:var(--text-dim); margin-bottom:1.5rem;">Comprehensive privacy via Proton Mail, VPN, and Pass for digital footprint protection.</p><a href="https://proton.me/" class="btn">Explore App</a></div>
         </div>
     </main>
     <footer><p>&copy; 2026 TerribleTech.io | Digital Excellence.</p></footer>

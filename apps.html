@@ -1,4 +1,4 @@
- <!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -105,8 +105,16 @@
 
         .app-card h2 {
             font-size: 1.2rem;
-            color: var(--accent-purple);
             margin-bottom: 0.5rem;
+        }
+
+        .app-card h2 a {
+            color: var(--accent-purple);
+            text-decoration: none;
+        }
+
+        .app-card h2 a:hover {
+            text-decoration: underline;
         }
 
         .app-card p {
@@ -164,37 +172,43 @@
         <div class="app-grid">
             <div class="app-card">
                 <span class="tag tag-sys">CLI / System</span>
-                <h2>Termux</h2>
+                <h2><a href="https://termux.dev/" target="_blank">Termux</a></h2>
                 <p>The core of advanced Android usage. A powerful terminal emulator and Linux environment for scripts, Git, and networking.</p>
             </div>
 
             <div class="app-card">
+                <span class="tag tag-sys">Automation</span>
+                <h2><a href="https://github.com/ImranR98/Obtainium" target="_blank">Obtainium</a></h2>
+                <p>The open-source gateway for APKs. Automatically track and install updates directly from GitHub, GitLab, and F-Droid releases.</p>
+            </div>
+
+            <div class="app-card">
                 <span class="tag tag-dev">Development</span>
-                <h2>Spck Editor</h2>
+                <h2><a href="https://spck.io/" target="_blank">Spck Editor</a></h2>
                 <p>A professional-grade IDE on Android. This is the primary tool used to build and deploy the TerribleTech.io ecosystem.</p>
             </div>
 
             <div class="app-card">
                 <span class="tag tag-dev">Development</span>
-                <h2>Acode</h2>
+                <h2><a href="https://acode.app/" target="_blank">Acode</a></h2>
                 <p>A lightweight, lightning-fast code editor. Excellent for on-the-fly HTML/CSS debugging and high-speed editing.</p>
             </div>
 
             <div class="app-card">
                 <span class="tag tag-media">Media</span>
-                <h2>YouTube Morphine</h2>
+                <h2><a href="https://github.com/YTMorphine/YouTubeMorphine" target="_blank">YouTube Morphine</a></h2>
                 <p>An advanced, modified YouTube client featuring background playback, ad-blocking, and specialized optimization.</p>
             </div>
 
             <div class="app-card">
                 <span class="tag tag-media">Media</span>
-                <h2>Stremio</h2>
+                <h2><a href="https://www.stremio.com/" target="_blank">Stremio</a></h2>
                 <p>The ultimate media shell. Pair this with a high-speed Debrid service for an elite, buffer-free streaming experience.</p>
             </div>
 
             <div class="app-card" style="opacity: 0.6;">
                 <span class="tag">Security</span>
-                <h2>Proton Tools</h2>
+                <h2><a href="https://proton.me/" target="_blank">Proton Tools</a></h2>
                 <p>Comprehensive privacy via Proton Mail, VPN, and Pass. Protecting your digital footprint from the ground up.</p>
             </div>
         </div>

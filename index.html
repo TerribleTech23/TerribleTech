@@ -71,7 +71,6 @@
             font-weight: 900;
         }
 
-        /* Border removed here as requested */
         .header-tagline {
             font-size: 0.75rem;
             color: var(--text-dim);
@@ -116,15 +115,11 @@
             padding: 2.5rem 1.5rem;
         }
 
-        .hero {
-            text-align: center;
-            margin-bottom: 3rem;
-        }
-
         .hero h1 {
             font-size: 1.5rem; 
             line-height: 1.4;
-            margin-bottom: 1rem;
+            margin-bottom: 3rem;
+            text-align: center;
             background: linear-gradient(to right, #ffffff, var(--accent-purple));
             -webkit-background-clip: text;
             background-clip: text;
@@ -176,9 +171,11 @@
             letter-spacing: 1px;
         }
 
+        /* UPDATED: Added purple color to card titles */
         .card h2 {
             margin-bottom: 0.8rem;
-            font-size: 1.2rem;
+            font-size: 1.4rem;
+            color: var(--accent-purple);
         }
 
         .card p {
@@ -218,7 +215,7 @@
             <div class="header-tagline">Privacy. Security. Sovereignty.</div>
 
             <ul>
-                <li><a href="apps.html">Apps</a></li>
+                <li><a href="apps.html" style="color: var(--accent-purple); border-color: var(--accent-purple);">Apps</a></li>
                 <li><a href="privacy-hardening.html">Privacy & Security</a></li>
                 <li><a href="guides.html">Guides</a></li>
             </ul>

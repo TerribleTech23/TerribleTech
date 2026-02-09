@@ -15,26 +15,44 @@
         }
         body { background-color: var(--bg-dark); color: var(--text-main); font-family: 'Segoe UI', Roboto, sans-serif; line-height: 1.6; }
         
-        /* Navigation Header */
+        /* Navigation Header (Updated to Glass Style) */
         header { background: var(--card-bg); padding: 1rem; position: sticky; top: 0; z-index: 100; border-bottom: 2px solid var(--accent-purple); }
-        nav { display: flex; flex-direction: column; align-items: center; max-width: 1100px; margin: 0 auto; gap: 0.5rem; }
+        nav { display: flex; flex-direction: column; align-items: center; max-width: 1100px; margin: 0 auto; gap: 1rem; }
         @media (min-width: 768px) { nav { flex-direction: row; justify-content: space-between; } }
         
         .logo { font-weight: 800; font-size: 1.4rem; letter-spacing: -0.5px; background: linear-gradient(to right, #fff, var(--accent-purple)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; text-decoration: none; }
         .logo span { -webkit-text-fill-color: var(--accent-purple); font-weight: 900; }
         
-        .header-tagline { font-size: 0.85rem; color: var(--text-dim); text-transform: uppercase; letter-spacing: 1.5px; font-weight: 600; margin: 5px 0; }
+        .header-tagline { font-size: 0.75rem; color: var(--text-dim); text-transform: uppercase; letter-spacing: 1.5px; font-weight: 600; padding: 4px 12px; }
         
-        nav ul { display: flex; list-style: none; gap: 1rem; flex-wrap: wrap; justify-content: center; }
-        nav a { color: var(--text-dim); text-decoration: none; font-size: 0.8rem; font-weight: 500; transition: color 0.3s; }
-        nav a:hover { color: var(--accent-purple); }
+        nav ul { display: flex; list-style: none; gap: 0.6rem; flex-wrap: wrap; justify-content: center; }
+        
+        nav a {
+            color: var(--text-dim);
+            text-decoration: none;
+            font-size: 0.85rem;
+            font-weight: 600;
+            padding: 0.6rem 1.1rem;
+            border-radius: 10px;
+            transition: all 0.2s ease-in-out;
+            background: rgba(255, 255, 255, 0.04);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+        }
 
-        /* Main Content Layout (Matching Apps/Guides Style) */
+        nav a:hover {
+            color: var(--text-main);
+            background: rgba(139, 92, 246, 0.15);
+            border-color: var(--accent-purple);
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+        }
+
+        /* Main Content Layout */
         main { max-width: 1100px; margin: 0 auto; padding: 2.5rem 1.5rem; }
         
-        h1 { font-size: 2.4rem; line-height: 1.4; margin-bottom: 1rem; background: linear-gradient(to right, #ffffff, var(--accent-purple)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; font-weight: 700; }
+        h1 { font-size: 2.5rem; line-height: 1.2; margin-bottom: 1.5rem; text-align: center; background: linear-gradient(to right, #ffffff, var(--accent-purple)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; font-weight: 700; }
         
-        .intro { color: var(--text-dim); margin-bottom: 3rem; font-size: 1.1rem; line-height: 1.6; }
+        .intro { color: var(--text-dim); margin-bottom: 3rem; font-size: 1.1rem; text-align: center; max-width: 800px; margin-left: auto; margin-right: auto; }
 
         /* Grid & Cards */
         .content-grid { display: grid; grid-template-columns: 1fr; gap: 1.5rem; }
@@ -43,14 +61,18 @@
         .card { background: var(--card-bg); padding: 1.8rem; border-radius: 16px; border: 1px solid #334155; transition: transform 0.3s, border-color 0.3s; display: flex; flex-direction: column; }
         .card:hover { transform: translateY(-5px); border-color: var(--accent-purple); }
         .card-tag { font-size: 0.65rem; text-transform: uppercase; color: var(--accent-purple); font-weight: bold; margin-bottom: 0.5rem; letter-spacing: 1px; }
-        .card h2 { margin-bottom: 0.8rem; font-size: 1.2rem; }
+        
+        /* FIX: Card titles purple */
+        .card h2 { margin-bottom: 0.8rem; font-size: 1.4rem; color: var(--accent-purple); }
+        
         .card p { color: var(--text-dim); margin-bottom: 1.5rem; flex-grow: 1; font-size: 0.9rem; }
         
         .btn { display: inline-block; padding: 0.7rem 1.1rem; background: var(--accent-purple); color: white; text-decoration: none; border-radius: 8px; font-weight: 600; text-align: center; font-size: 0.85rem; }
         
-        .btn-back { display: inline-block; margin-top: 3rem; color: var(--accent-purple); text-decoration: none; font-weight: bold; }
+        .btn-back { display: inline-block; margin-top: 3rem; color: var(--accent-purple); text-decoration: none; font-weight: bold; transition: color 0.3s; }
+        .btn-back:hover { color: #fff; }
 
-        footer { text-align: center; padding: 3rem 2rem; color: var(--text-dim); font-size: 0.8rem; border-top: 1px solid #1e293b; }
+        footer { text-align: center; padding: 3rem 2rem; color: var(--text-dim); font-size: 0.8rem; border-top: 1px solid #1e293b; margin-top: 2rem; }
     </style>
 </head>
 <body>
@@ -61,8 +83,8 @@
             <div class="header-tagline">Privacy. Security. Sovereignty.</div>
             <ul>
                 <li><a href="apps.html">Apps</a></li>
+                <li><a href="privacy-hardening.html" style="color: var(--accent-purple); border-color: var(--accent-purple); background: rgba(139, 92, 246, 0.15);">Privacy & Security</a></li>
                 <li><a href="guides.html">Guides</a></li>
-                <li><a href="privacy-hardening.html" style="color: var(--accent-purple);">Privacy & Security</a></li>
             </ul>
         </nav>
     </header>

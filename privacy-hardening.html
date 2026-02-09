@@ -3,57 +3,71 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Digital Hardening | TerribleTech</title>
+    <title>YouTube Morphine Guide | TerribleTech</title>
     <link rel="stylesheet" href="style.css">
-<meta name="color-scheme" content="dark only">
-
 </head>
 <body>
 
     <header>
         <nav>
             <a href="index.html" class="logo">TerribleTech<span>.io</span></a>
+            <ul>
+                <li><a href="apps.html">Apps</a></li>
+                <li><a href="guides.html">Guides</a></li>
+                <li><a href="privacy-hardening.html">Security</a></li>
+            </ul>
         </nav>
     </header>
 
     <main>
-        <h1>Digital Hardening 101</h1>
-        <p class="intro">Mastering your data footprint by securing your communications and network traffic.</p>
+        <h1>YouTube Morphine</h1>
+        <p>A specialized, modified YouTube client built for the Android ecosystem. This guide ensures you get the most out of background playback, sponsor-blocking, and ad-free viewing.</p>
 
-        <section>
-            <h2>1. Encrypted Communication</h2>
-            <p>Move away from data-mining platforms and secure your messages and metadata at the source.</p>
-            <ul>
-                <li><strong>Proton Mail:</strong> End-to-end encrypted email based in Switzerland.</li>
-                <li><strong>Signal:</strong> The gold standard for private messaging. No ads, no trackers, and no data collection.</li>
-                <li><strong>Alias Management:</strong> Use Proton Pass or SimpleLogin to create unique aliases, keeping your primary email hidden from data brokers.</li>
+        <div class="card" style="border-left: 4px solid #ef4444;">
+            <strong>Security Notice:</strong> Always download these tools from official sources. This guide points directly to the <code>MorpheApp</code> organization to ensure you are getting legitimate APKs.
+        </div>
+
+        <div class="step-card">
+            <span class="step-number" style="color: var(--accent); font-weight: bold;">Step 01</span>
+            <h3>Set Up microG-RE</h3>
+            <p>To sign in to your Google account without using the official YouTube app, you need a compatibility layer. Morphine works best with the <strong>microG-RE</strong> fork.</p>
+            <a href="https://github.com/mrvn-f/microG-RE/releases" target="_blank" class="btn">Download microG-RE</a>
+        </div>
+
+        <div class="step-card">
+            <span class="step-number" style="color: var(--accent); font-weight: bold;">Step 02</span>
+            <h3>Install via Obtainium</h3>
+            <p>Instead of manually downloading APKs, add the Morphine repository to <strong>Obtainium</strong>. This allows you to track and update the app directly from GitHub.</p>
+            <ol style="color: var(--text-dim); padding-left: 1.2rem; margin-top: 1rem;">
+                <li>Open Obtainium and click "Add App".</li>
+                <li>Paste the URL: <code>https://github.com/MorpheApp/YouTubeMorphine</code></li>
+                <li>Ensure "Include Prereleases" is toggled for latest builds.</li>
+            </ol>
+            <a href="https://github.com/MorpheApp" target="_blank" class="btn">MorpheApp GitHub</a>
+        </div>
+
+        <div class="step-card">
+            <span class="step-number" style="color: var(--accent); font-weight: bold;">Step 03</span>
+            <h3>Configuration & Optimization</h3>
+            <p>Once installed, open the app and navigate to <strong>Settings > Morphe Settings</strong> to enable the heavy hitters:</p>
+            <ul style="color: var(--text-dim); padding-left: 1.2rem; margin-top: 1rem;">
+                <li><strong>SponsorBlock:</strong> Automatically skips sponsor segments.</li>
+                <li><strong>Return YouTube Dislike:</strong> Re-enables the dislike counter.</li>
+                <li><strong>OLED Theme:</strong> Pure black theme for your S25 Ultra display.</li>
             </ul>
-        </section>
+        </div>
 
-        <section>
-            <h2>2. Network Privacy & Ad Blocking</h2>
-            <p>Your ISP shouldn't see your activity. Mask your traffic and kill trackers before they even load.</p>
-            <ul>
-                <li><strong>Proton VPN:</strong> Encrypt your entire internet connection and bypass censorship.</li>
-                <li><strong>NetShield Ad-blocker:</strong> Use Proton VPN’s built-in DNS filtering to block ads, malware, and trackers at the network level.</li>
-                <li><strong>Private DNS:</strong> Configure your device to use encrypted DNS providers for an extra layer of stealth.</li>
-            </ul>
-        </section>
+        <div class="step-card">
+            <span class="step-number" style="color: var(--accent); font-weight: bold;">Step 04</span>
+            <h3>Disabling the Official App</h3>
+            <p>To ensure links open in Morphine by default, disable the stock YouTube app via <code>Settings > Apps</code> or using ADB in Termux.</p>
+        </div>
 
-        <section>
-            <h2>3. Account Security</h2>
-            <p>Passwords aren't enough. Secure your logins with hardware-level or open-source authentication.</p>
-            <ul>
-                <li><strong>MFA with Aegis:</strong> An open-source 2FA app for Android that keeps your tokens encrypted and offline.</li>
-                <li><strong>Recovery:</strong> Always store your backup codes in an encrypted vault or offline physical storage.</li>
-            </ul>
-        </section>
-
-        <a href="index.html" class="btn-back">← Back to Home</a>
+        <a href="guides.html" class="btn-back">← Back to Guides</a>
     </main>
 
     <footer>
-        <p style="text-align: center; color: var(--text-dim); padding: 2rem;">&copy; 2026 TerribleTech.io</p>
+        <p style="text-align: center; color: var(--text-dim); padding: 2rem;">&copy; 2026 TerribleTech.io | Built on Android</p>
     </footer>
 
 </body>

@@ -3,9 +3,10 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="color-scheme" content="dark only">
     <title>Apps & Programs | TerribleTech</title>
     <style>
-        /* --- Matching the TerribleTech Theme --- */
+        /* --- Global Reset & Variables --- */
         * {
             margin: 0;
             padding: 0;
@@ -18,6 +19,8 @@
             --text-main: #f8fafc;
             --text-dim: #94a3b8;
             --accent-purple: #8b5cf6; 
+            --accent-hover: #7c3aed;
+            color-scheme: dark;
         }
 
         body {
@@ -27,26 +30,36 @@
             line-height: 1.6;
         }
 
+        /* --- Navigation (Updated to match Index) --- */
         header {
             background: var(--card-bg);
-            padding: 1.2rem;
-            border-bottom: 2px solid var(--accent-purple);
+            padding: 1rem;
             position: sticky;
             top: 0;
             z-index: 100;
+            border-bottom: 2px solid var(--accent-purple);
         }
 
         nav {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
             max-width: 1100px;
             margin: 0 auto;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
+            gap: 0.5rem;
+        }
+
+        @media (min-width: 768px) {
+            nav {
+                flex-direction: row;
+                justify-content: space-between;
+            }
         }
 
         .logo {
             font-weight: 800;
-            font-size: 1.6rem;
+            font-size: 1.4rem;
+            letter-spacing: -0.5px;
             background: linear-gradient(to right, #fff, var(--accent-purple));
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
@@ -55,17 +68,49 @@
 
         .logo span {
             -webkit-text-fill-color: var(--accent-purple);
+            font-weight: 900;
         }
 
+        .header-tagline {
+            font-size: 0.85rem;
+            color: var(--text-dim);
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            font-weight: 600;
+            margin: 5px 0;
+        }
+
+        nav ul {
+            display: flex;
+            list-style: none;
+            gap: 1rem;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+
+        nav a {
+            color: var(--text-dim);
+            text-decoration: none;
+            font-size: 0.8rem;
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+
+        nav a:hover {
+            color: var(--accent-purple);
+        }
+
+        /* --- Content Layout --- */
         main {
-            max-width: 900px;
+            max-width: 1100px;
             margin: 0 auto;
-            padding: 3rem 1.5rem;
+            padding: 2.5rem 1.5rem;
         }
 
         h1 {
             font-size: 2.5rem;
             margin-bottom: 1rem;
+            text-align: center;
             background: linear-gradient(to right, #fff, var(--accent-purple));
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
@@ -75,6 +120,10 @@
             color: var(--text-dim);
             margin-bottom: 3rem;
             font-size: 1.1rem;
+            text-align: center;
+            max-width: 800px;
+            margin-left: auto;
+            margin-right: auto;
         }
 
         /* --- Apps Grid --- */
@@ -84,56 +133,60 @@
             gap: 1.5rem;
         }
 
-        @media (min-width: 600px) {
+        @media (min-width: 768px) {
             .app-grid {
-                grid-template-columns: repeat(2, 1fr);
+                grid-template-columns: repeat(3, 1fr);
             }
         }
 
         .app-card {
             background: var(--card-bg);
-            padding: 1.5rem;
-            border-radius: 12px;
+            padding: 1.8rem;
+            border-radius: 16px;
             border: 1px solid #334155;
-            transition: border-color 0.3s, transform 0.2s;
+            transition: transform 0.3s, border-color 0.3s;
+            display: flex;
+            flex-direction: column;
         }
 
         .app-card:hover {
+            transform: translateY(-5px);
             border-color: var(--accent-purple);
-            transform: translateY(-3px);
         }
 
         .app-card h2 {
             font-size: 1.2rem;
-            margin-bottom: 0.5rem;
+            margin-bottom: 0.8rem;
         }
 
         .app-card h2 a {
-            color: var(--accent-purple);
+            color: var(--text-main);
             text-decoration: none;
+            transition: color 0.3s;
         }
 
         .app-card h2 a:hover {
-            text-decoration: underline;
+            color: var(--accent-purple);
         }
 
         .app-card p {
             font-size: 0.9rem;
             color: var(--text-dim);
-            margin-bottom: 1rem;
+            flex-grow: 1;
         }
 
         .tag {
-            font-size: 0.7rem;
+            font-size: 0.65rem;
             font-weight: bold;
             text-transform: uppercase;
             margin-bottom: 0.5rem;
-            display: inline-block;
+            letter-spacing: 1px;
         }
         
         .tag-dev { color: #38bdf8; }
         .tag-media { color: #f472b6; }
         .tag-sys { color: #fbbf24; }
+        .tag-security { color: var(--accent-purple); }
 
         .btn-back {
             display: inline-block;
@@ -150,10 +203,11 @@
 
         footer {
             text-align: center;
-            padding: 4rem 2rem;
+            padding: 3rem 2rem;
             color: var(--text-dim);
-            font-size: 0.85rem;
+            font-size: 0.8rem;
             border-top: 1px solid #1e293b;
+            margin-top: 2rem;
         }
     </style>
 </head>
@@ -162,6 +216,14 @@
     <header>
         <nav>
             <a href="index.html" class="logo">TerribleTech<span>.io</span></a>
+            
+            <div class="header-tagline">Privacy. Security. Sovereignty.</div>
+
+            <ul>
+                <li><a href="apps.html">Apps</a></li>
+                <li><a href="guides.html">Guides</a></li>
+                <li><a href="privacy-hardening.html">Privacy & Security</a></li>
+            </ul>
         </nav>
     </header>
 
@@ -207,7 +269,7 @@
             </div>
 
             <div class="app-card">
-                <span class="tag">Security</span>
+                <span class="tag tag-security">Security</span>
                 <h2><a href="https://proton.me/" target="_blank">Proton Tools</a></h2>
                 <p>Comprehensive privacy via Proton Mail, VPN, and Pass. Protecting your digital footprint from the ground up.</p>
             </div>

@@ -6,443 +6,51 @@
     <title>Stremio + Real-Debrid Guide | TerribleTech</title>
     <style>
         /* --- General Theme Styles (Matching TerribleTech.io) --- */
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
+        * { margin: 0; padding: 0; box-sizing: border-box; }
         :root {
-            --bg-dark: #0f172a;
-            --card-bg: #1e293b;
-            --text-main: #f8fafc;
-            --text-dim: #94a3b8;
-            --accent-purple: #8b5cf6; 
-            --accent-blue: #38bdf8;
-            --accent-green: #22c55e;
+            --bg-dark: #0f172a; --card-bg: #1e293b; --text-main: #f8fafc;
+            --text-dim: #94a3b8; --accent-purple: #8b5cf6; 
+            --accent-blue: #38bdf8; --accent-green: #22c55e;
         }
-
-        body {
-            background-color: var(--bg-dark);
-            color: var(--text-main);
-            font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
-            line-height: 1.6;
-        }
-
-        header {
-            background: var(--card-bg);
-            padding: 1.2rem;
-            border-bottom: 2px solid var(--accent-purple);
-            position: sticky;
-            top: 0;
-            z-index: 100;
-        }
-
-        nav {
-            max-width: 1100px;
-            margin: 0 auto;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-
-        .logo {
-            font-weight: 800;
-            font-size: 1.6rem;
-            background: linear-gradient(to right, #fff, var(--accent-purple));
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            text-decoration: none;
-        }
-
+        body { background-color: var(--bg-dark); color: var(--text-main); font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif; line-height: 1.6; }
+        header { background: var(--card-bg); padding: 1.2rem; border-bottom: 2px solid var(--accent-purple); position: sticky; top: 0; z-index: 100; }
+        nav { max-width: 1100px; margin: 0 auto; display: flex; justify-content: space-between; align-items: center; }
+        .logo { font-weight: 800; font-size: 1.6rem; background: linear-gradient(to right, #fff, var(--accent-purple)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; text-decoration: none; }
         .logo span { -webkit-text-fill-color: var(--accent-purple); }
-
-        main {
-            max-width: 900px;
-            margin: 0 auto;
-            padding: 3rem 1.5rem;
-        }
-
-        h1 {
-            font-size: 2.8rem;
-            margin-bottom: 1.5rem;
-            background: linear-gradient(to right, #fff, var(--accent-purple));
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-        }
-
-        h2 {
-            font-size: 1.8rem;
-            color: var(--text-main);
-            margin-top: 2.5rem;
-            margin-bottom: 1rem;
-            border-bottom: 1px solid var(--card-bg);
-            padding-bottom: 0.5rem;
-        }
-
+        main { max-width: 900px; margin: 0 auto; padding: 3rem 1.5rem; }
+        h1 { font-size: 2.8rem; margin-bottom: 1.5rem; background: linear-gradient(to right, #fff, var(--accent-purple)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
         p { margin-bottom: 1.2rem; color: var(--text-dim); }
-
-        .note {
-            background: rgba(139, 92, 246, 0.1);
-            border-left: 4px solid var(--accent-purple);
-            padding: 1.5rem;
-            border-radius: 8px;
-            margin: 2rem 0;
-        }
-
+        .note { background: rgba(139, 92, 246, 0.1); border-left: 4px solid var(--accent-purple); padding: 1.5rem; border-radius: 8px; margin: 2rem 0; }
         .note strong { color: var(--accent-purple); }
-
-        /* --- Step Styling --- */
-        .step-card {
-            background: var(--card-bg);
-            border: 1px solid #334155;
-            padding: 2rem;
-            border-radius: 12px;
-            margin-bottom: 2rem;
-        }
-
-        .step-number {
-            color: var(--accent-purple);
-            font-weight: 800;
-            font-size: 0.9rem;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            display: block;
-            margin-bottom: 0.5rem;
-        }
-
-        .step-card h3 { color: var(--text-main); margin-bottom: 1rem; }
-
-        .btn-link {
-            display: inline-block;
-            background: var(--accent-purple);
-            color: #fff;
-            padding: 0.6rem 1.2rem;
-            border-radius: 6px;
-            text-decoration: none;
-            font-weight: 600;
-            margin: 0.5rem 0;
-            transition: opacity 0.2s;
-        }
-
-        .btn-link:hover { opacity: 0.9; color: #fff; }
-
-        .image-placeholder {
-            width: 100%;
-            height: 400px;
-            background: #0f172a;
-            border: 1px dashed #334155;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            border-radius: 8px;
-            margin: 1.5rem 0;
-            color: var(--text-dim);
-            font-style: italic;
-        }
-
-        .btn-back {
-            display: inline-block;
-            margin-top: 2rem;
-            color: var(--accent-purple);
-            text-decoration: none;
-            font-weight: bold;
-        }
-
-        footer {
-            text-align: center;
-            padding: 4rem 2rem;
-            color: var(--text-dim);
-            font-size: 0.85rem;
-            border-top: 1px solid #1e293b;
-        }
+        .step-card { background: var(--card-bg); border: 1px solid #334155; padding: 2rem; border-radius: 12px; margin-bottom: 2rem; }
+        .step-number { color: var(--accent-purple); font-weight: 800; font-size: 0.9rem; text-transform: uppercase; letter-spacing: 1px; display: block; margin-bottom: 0.5rem; }
+        .btn-link { display: inline-block; background: var(--accent-purple); color: #fff; padding: 0.6rem 1.2rem; border-radius: 6px; text-decoration: none; font-weight: 600; margin: 0.5rem 0; transition: opacity 0.2s; }
+        .image-placeholder { width: 100%; height: 400px; background: #0f172a; border: 1px dashed #334155; display: flex; align-items: center; justify-content: center; border-radius: 8px; margin: 1.5rem 0; color: var(--text-dim); font-style: italic; }
+        .btn-back { display: inline-block; margin-top: 2rem; color: var(--accent-purple); text-decoration: none; font-weight: bold; }
+        footer { text-align: center; padding: 4rem 2rem; color: var(--text-dim); font-size: 0.85rem; border-top: 1px solid #1e293b; }
     </style>
 </head>
 <body>
-
-    <header>
-        <nav>
-            <a href="index.html" class="logo">TerribleTech<span>.io</span></a>
-        </nav>
-    </header>
-
+    <header><nav><a href="index.html" class="logo">TerribleTech<span>.io</span></a></nav></header>
     <main>
         <h1>Stremio + Real-Debrid</h1>
         <p>The core setup for a high-speed, buffer-free media experience. By offloading stream fetching to a Debrid service, you eliminate ISP throttling and peer-dependency.</p>
-
-        <div class="note">
-            <strong>Pro Tip:</strong> Using a Debrid service encrypted via HTTPS means you don't technically need a VPN for privacy while streaming, though it's always recommended for overall security.
-        </div>
-
+        <div class="note"><strong>Pro Tip:</strong> Using a Debrid service encrypted via HTTPS means you don't technically need a VPN for privacy while streaming.</div>
         <div class="step-card">
             <span class="step-number">Step 01</span>
             <h3>Acquire Real-Debrid</h3>
-            <p>Real-Debrid acts as your personal "downloader" in the cloud. It fetches torrents on high-speed servers and serves them to you as a direct download.</p>
+            <p>Real-Debrid acts as your personal "downloader" in the cloud.</p>
             <a href="https://real-debrid.com/" target="_blank" class="btn-link">Get Real-Debrid</a>
-            <div class="image-placeholder">Screen: Real-Debrid Dashboard & API Token Section</div>
+            <div class="image-placeholder">Screen: Real-Debrid Dashboard</div>
         </div>
-
         <div class="step-card">
             <span class="step-number">Step 02</span>
             <h3>Configure Torrentio</h3>
-            <p>Torrentio is the bridge between Stremio and Real-Debrid. You must configure it in a web browser before it appears in your app.</p>
-            <ol style="margin-left: 1.5rem; color: var(--text-dim);">
-                <li>Visit the Torrentio configuration page.</li>
-                <li>In the "Debrid Provider" dropdown, select <strong>Real-Debrid</strong>.</li>
-                <li>Paste your <strong>API Token</strong> from Step 1 into the field.</li>
-                <li>Click "Install" to open the link in your Stremio app.</li>
-            </ol>
+            <p>Torrentio is the bridge between Stremio and Real-Debrid.</p>
             <a href="https://torrentio.strem.fun/configure" target="_blank" class="btn-link">Configure Torrentio</a>
         </div>
-
-        <div class="step-card">
-            <span class="step-number">Step 03</span>
-            <h3>Add Media Scrapers (Optional)</h3>
-            <p>For even better link discovery, you can add <strong>Comet</strong> or <strong>Debridio</strong>. These work similarly to Torrentio and provide backup links if one service is down.</p>
-            <div class="image-placeholder">Screen: Stremio Add-ons List showing installed scrapers</div>
-        </div>
-
-        <div class="step-card">
-            <span class="step-number">Step 04</span>
-            <h3>Optimize Your Device</h3>
-            <p>On Android (S25 Ultra) or Android TV (Onn 4K), ensure the following settings are enabled in Stremio:</p>
-            <ul style="margin-left: 1.5rem; color: var(--text-dim);">
-                <li><strong>Hardware Acceleration:</strong> ON</li>
-                <li><strong>Torrent Profile:</strong> Ultra Fast (doesn't matter much for Debrid, but good for local)</li>
-                <li><strong>Frame Rate Matching:</strong> Enabled (for smooth TV playback)</li>
-            </ul>
-        </div>
-
         <a href="guides.html" class="btn-back">← Back to Guides</a>
     </main>
-
-    <footer>
-        <p>&copy; 2026 TerribleTech.io | Built on Android</p>
-    </footer>
-
-</body>
-</html>
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Stremio + Real-Debrid Guide | TerribleTech</title>
-    <style>
-        /* --- General Theme Styles (Matching TerribleTech.io) --- */
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
-        :root {
-            --bg-dark: #0f172a;
-            --card-bg: #1e293b;
-            --text-main: #f8fafc;
-            --text-dim: #94a3b8;
-            --accent-purple: #8b5cf6; 
-            --accent-blue: #38bdf8;
-            --accent-green: #22c55e;
-        }
-
-        body {
-            background-color: var(--bg-dark);
-            color: var(--text-main);
-            font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
-            line-height: 1.6;
-        }
-
-        header {
-            background: var(--card-bg);
-            padding: 1.2rem;
-            border-bottom: 2px solid var(--accent-purple);
-            position: sticky;
-            top: 0;
-            z-index: 100;
-        }
-
-        nav {
-            max-width: 1100px;
-            margin: 0 auto;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-
-        .logo {
-            font-weight: 800;
-            font-size: 1.6rem;
-            background: linear-gradient(to right, #fff, var(--accent-purple));
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            text-decoration: none;
-        }
-
-        .logo span { -webkit-text-fill-color: var(--accent-purple); }
-
-        main {
-            max-width: 900px;
-            margin: 0 auto;
-            padding: 3rem 1.5rem;
-        }
-
-        h1 {
-            font-size: 2.8rem;
-            margin-bottom: 1.5rem;
-            background: linear-gradient(to right, #fff, var(--accent-purple));
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-        }
-
-        h2 {
-            font-size: 1.8rem;
-            color: var(--text-main);
-            margin-top: 2.5rem;
-            margin-bottom: 1rem;
-            border-bottom: 1px solid var(--card-bg);
-            padding-bottom: 0.5rem;
-        }
-
-        p { margin-bottom: 1.2rem; color: var(--text-dim); }
-
-        .note {
-            background: rgba(139, 92, 246, 0.1);
-            border-left: 4px solid var(--accent-purple);
-            padding: 1.5rem;
-            border-radius: 8px;
-            margin: 2rem 0;
-        }
-
-        .note strong { color: var(--accent-purple); }
-
-        /* --- Step Styling --- */
-        .step-card {
-            background: var(--card-bg);
-            border: 1px solid #334155;
-            padding: 2rem;
-            border-radius: 12px;
-            margin-bottom: 2rem;
-        }
-
-        .step-number {
-            color: var(--accent-purple);
-            font-weight: 800;
-            font-size: 0.9rem;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            display: block;
-            margin-bottom: 0.5rem;
-        }
-
-        .step-card h3 { color: var(--text-main); margin-bottom: 1rem; }
-
-        .btn-link {
-            display: inline-block;
-            background: var(--accent-purple);
-            color: #fff;
-            padding: 0.6rem 1.2rem;
-            border-radius: 6px;
-            text-decoration: none;
-            font-weight: 600;
-            margin: 0.5rem 0;
-            transition: opacity 0.2s;
-        }
-
-        .btn-link:hover { opacity: 0.9; color: #fff; }
-
-        .image-placeholder {
-            width: 100%;
-            height: 400px;
-            background: #0f172a;
-            border: 1px dashed #334155;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            border-radius: 8px;
-            margin: 1.5rem 0;
-            color: var(--text-dim);
-            font-style: italic;
-        }
-
-        .btn-back {
-            display: inline-block;
-            margin-top: 2rem;
-            color: var(--accent-purple);
-            text-decoration: none;
-            font-weight: bold;
-        }
-
-        footer {
-            text-align: center;
-            padding: 4rem 2rem;
-            color: var(--text-dim);
-            font-size: 0.85rem;
-            border-top: 1px solid #1e293b;
-        }
-    </style>
-</head>
-<body>
-
-    <header>
-        <nav>
-            <a href="index.html" class="logo">TerribleTech<span>.io</span></a>
-        </nav>
-    </header>
-
-    <main>
-        <h1>Stremio + Real-Debrid</h1>
-        <p>The core setup for a high-speed, buffer-free media experience. By offloading stream fetching to a Debrid service, you eliminate ISP throttling and peer-dependency.</p>
-
-        <div class="note">
-            <strong>Pro Tip:</strong> Using a Debrid service encrypted via HTTPS means you don't technically need a VPN for privacy while streaming, though it's always recommended for overall security.
-        </div>
-
-        <div class="step-card">
-            <span class="step-number">Step 01</span>
-            <h3>Acquire Real-Debrid</h3>
-            <p>Real-Debrid acts as your personal "downloader" in the cloud. It fetches torrents on high-speed servers and serves them to you as a direct download.</p>
-            <a href="https://real-debrid.com/" target="_blank" class="btn-link">Get Real-Debrid</a>
-            <div class="image-placeholder">Screen: Real-Debrid Dashboard & API Token Section</div>
-        </div>
-
-        <div class="step-card">
-            <span class="step-number">Step 02</span>
-            <h3>Configure Torrentio</h3>
-            <p>Torrentio is the bridge between Stremio and Real-Debrid. You must configure it in a web browser before it appears in your app.</p>
-            <ol style="margin-left: 1.5rem; color: var(--text-dim);">
-                <li>Visit the Torrentio configuration page.</li>
-                <li>In the "Debrid Provider" dropdown, select <strong>Real-Debrid</strong>.</li>
-                <li>Paste your <strong>API Token</strong> from Step 1 into the field.</li>
-                <li>Click "Install" to open the link in your Stremio app.</li>
-            </ol>
-            <a href="https://torrentio.strem.fun/configure" target="_blank" class="btn-link">Configure Torrentio</a>
-        </div>
-
-        <div class="step-card">
-            <span class="step-number">Step 03</span>
-            <h3>Add Media Scrapers (Optional)</h3>
-            <p>For even better link discovery, you can add <strong>Comet</strong> or <strong>Debridio</strong>. These work similarly to Torrentio and provide backup links if one service is down.</p>
-            <div class="image-placeholder">Screen: Stremio Add-ons List showing installed scrapers</div>
-        </div>
-
-        <div class="step-card">
-            <span class="step-number">Step 04</span>
-            <h3>Optimize Your Device</h3>
-            <p>On Android (S25 Ultra) or Android TV (Onn 4K), ensure the following settings are enabled in Stremio:</p>
-            <ul style="margin-left: 1.5rem; color: var(--text-dim);">
-                <li><strong>Hardware Acceleration:</strong> ON</li>
-                <li><strong>Torrent Profile:</strong> Ultra Fast (doesn't matter much for Debrid, but good for local)</li>
-                <li><strong>Frame Rate Matching:</strong> Enabled (for smooth TV playback)</li>
-            </ul>
-        </div>
-
-        <a href="guides.html" class="btn-back">← Back to Guides</a>
-    </main>
-
-    <footer>
-        <p>&copy; 2026 TerribleTech.io | Built on Android</p>
-    </footer>
-
+    <footer><p>&copy; 2026 TerribleTech.io | Built on Android</p></footer>
 </body>
 </html>

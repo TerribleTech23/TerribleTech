@@ -7,30 +7,15 @@
     <title>TerribleTech</title>
     <style>
         /* --- Global Reset & Variables --- */
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
+        * { margin: 0; padding: 0; box-sizing: border-box; }
         :root {
-            --bg-dark: #0f172a;
-            --card-bg: #1e293b;
-            --text-main: #f8fafc;
-            --text-dim: #94a3b8;
-            --accent-purple: #8b5cf6; 
-            --accent-hover: #7c3aed;
+            --bg-dark: #0f172a; --card-bg: #1e293b; --text-main: #f8fafc;
+            --text-dim: #94a3b8; --accent-purple: #8b5cf6; 
             color-scheme: dark;
         }
+        body { background-color: var(--bg-dark); color: var(--text-main); font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif; line-height: 1.6; }
 
-        body {
-            background-color: var(--bg-dark);
-            color: var(--text-main);
-            font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
-            line-height: 1.6;
-        }
-
-        /* --- Navigation --- */
+        /* --- Unified Navigation (No Jumps) --- */
         header {
             background: var(--card-bg);
             padding: 1rem;
@@ -38,6 +23,7 @@
             top: 0;
             z-index: 100;
             border-bottom: 2px solid var(--accent-purple);
+            min-height: 70px; /* Forces header to stay same height */
         }
 
         nav {
@@ -50,13 +36,9 @@
         }
 
         @media (min-width: 768px) {
-            nav {
-                flex-direction: row;
-                justify-content: space-between;
-            }
+            nav { flex-direction: row; justify-content: space-between; gap: 0; }
         }
 
-        /* FIX: Logo styling - No glass box background/border */
         .logo {
             font-weight: 800;
             font-size: 1.4rem;
@@ -65,15 +47,12 @@
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             text-decoration: none;
-            padding: 0.6rem 0; /* Vertical padding only to match nav height */
-            background-color: transparent;
+            padding: 0.5rem 0;
             border: none;
+            background-color: transparent;
         }
 
-        .logo span {
-            -webkit-text-fill-color: var(--accent-purple);
-            font-weight: 900;
-        }
+        .logo span { -webkit-text-fill-color: var(--accent-purple); font-weight: 900; }
 
         .header-tagline {
             font-size: 0.75rem;
@@ -102,59 +81,34 @@
             transition: all 0.2s ease-in-out;
             background: rgba(255, 255, 255, 0.04);
             border: 1px solid rgba(255, 255, 255, 0.08);
+            white-space: nowrap;
         }
 
-        /* Keep hover effect ONLY for nav links, not logo */
         nav ul a:hover {
             color: var(--text-main);
             background: rgba(139, 92, 246, 0.15);
             border-color: var(--accent-purple);
             transform: translateY(-2px);
-            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
         }
 
-        /* --- Hero Section --- */
-        main {
-            max-width: 1100px;
-            margin: 0 auto;
-            padding: 2.5rem 1.5rem;
-        }
+        /* --- Content Layout --- */
+        main { max-width: 1100px; margin: 0 auto; padding: 2.5rem 1.5rem; }
 
-        .hero {
-            text-align: center;
-            margin-bottom: 3rem;
-        }
-
+        .hero { text-align: center; margin-bottom: 3rem; }
         .hero h1 {
             font-size: 1.5rem; 
             line-height: 1.4;
-            margin-bottom: 1rem;
             background: linear-gradient(to right, #ffffff, var(--accent-purple));
             -webkit-background-clip: text;
-            background-clip: text;
             -webkit-text-fill-color: transparent;
-            color: white; 
             font-weight: 700;
         }
 
-        @media (min-width: 900px) {
-            .hero h1 {
-                font-size: 2.4rem;
-            }
-        }
+        @media (min-width: 900px) { .hero h1 { font-size: 2.4rem; } }
 
         /* --- Grid & Cards --- */
-        .content-grid {
-            display: grid;
-            grid-template-columns: 1fr; 
-            gap: 1.5rem;
-        }
-
-        @media (min-width: 900px) {
-            .content-grid {
-                grid-template-columns: repeat(3, 1fr);
-            }
-        }
+        .content-grid { display: grid; grid-template-columns: 1fr; gap: 1.5rem; }
+        @media (min-width: 900px) { .content-grid { grid-template-columns: repeat(3, 1fr); } }
 
         .card {
             background: var(--card-bg);
@@ -166,10 +120,7 @@
             flex-direction: column;
         }
 
-        .card:hover {
-            transform: translateY(-5px);
-            border-color: var(--accent-purple);
-        }
+        .card:hover { transform: translateY(-5px); border-color: var(--accent-purple); }
 
         .card-tag {
             font-size: 0.65rem;
@@ -180,18 +131,8 @@
             letter-spacing: 1px;
         }
 
-        .card h2 {
-            margin-bottom: 0.8rem;
-            font-size: 1.4rem;
-            color: var(--accent-purple);
-        }
-
-        .card p {
-            color: var(--text-dim);
-            margin-bottom: 1.5rem;
-            flex-grow: 1;
-            font-size: 0.9rem;
-        }
+        .card h2 { margin-bottom: 0.8rem; font-size: 1.4rem; color: var(--accent-purple); }
+        .card p { color: var(--text-dim); margin-bottom: 1.5rem; flex-grow: 1; font-size: 0.9rem; }
 
         .btn {
             display: inline-block;
@@ -205,13 +146,7 @@
             font-size: 0.85rem;
         }
 
-        footer {
-            text-align: center;
-            padding: 3rem 2rem;
-            color: var(--text-dim);
-            font-size: 0.8rem;
-            border-top: 1px solid #1e293b;
-        }
+        footer { text-align: center; padding: 3rem 2rem; color: var(--text-dim); font-size: 0.8rem; border-top: 1px solid #1e293b; }
     </style>
 </head>
 <body>
@@ -219,9 +154,7 @@
     <header>
         <nav>
             <a href="index.html" class="logo">TerribleTech<span>.io</span></a>
-            
             <div class="header-tagline">Privacy. Security. Sovereignty.</div>
-
             <ul>
                 <li><a href="apps.html">Apps</a></li>
                 <li><a href="privacy-hardening.html">Privacy & Security</a></li>
@@ -232,28 +165,28 @@
 
     <main>
         <section class="hero">
-            <h1>"Breaking chains and building better. From Android hardening and network security to self-hosting the services they want to rent to you. If it’s locked down, we’re opening it up."</h1>
+            <h1>"Breaking chains and building better. If it’s locked down, we’re opening it up."</h1>
         </section>
 
         <section class="content-grid">
-            <article id="apps" class="card">
+            <article class="card">
                 <div class="card-tag">Applications</div>
                 <h2>Mobile Dev Toolkit</h2>
-                <p>Environments I use to build directly on Android, featuring Spck Editor and Acode.</p>
+                <p>Environments I use to build directly on Android.</p>
                 <a href="apps.html" class="btn">Explore Apps</a>
             </article>
 
-            <article id="privacy" class="card">
+            <article class="card">
                 <div class="card-tag">Privacy & Security</div>
                 <h2>Securing the Stack</h2>
-                <p>Take control of your digital footprint. Comprehensive strategies for private communication and network hardening.</p>
+                <p>Comprehensive strategies for network hardening.</p>
                 <a href="privacy-hardening.html" class="btn">Learn More</a>
             </article>
 
             <article id="guides" class="card">
                 <div class="card-tag">Guides</div>
                 <h2>Technical Guides</h2>
-                <p>Walkthroughs for media automation, remote networking, and self-hosting with Tailscale and Stremio.</p>
+                <p>Walkthroughs for self-hosting and automation.</p>
                 <a href="guides.html" class="btn">Browse Guides</a>
             </article>
         </section>

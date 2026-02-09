@@ -56,6 +56,7 @@
             }
         }
 
+        /* FIX: Logo styling - No glass box background/border */
         .logo {
             font-weight: 800;
             font-size: 1.4rem;
@@ -64,6 +65,9 @@
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             text-decoration: none;
+            padding: 0.6rem 0; /* Vertical padding only to match nav height */
+            background-color: transparent;
+            border: none;
         }
 
         .logo span {
@@ -100,7 +104,8 @@
             border: 1px solid rgba(255, 255, 255, 0.08);
         }
 
-        nav a:hover {
+        /* Keep hover effect ONLY for nav links, not logo */
+        nav ul a:hover {
             color: var(--text-main);
             background: rgba(139, 92, 246, 0.15);
             border-color: var(--accent-purple);
@@ -115,11 +120,15 @@
             padding: 2.5rem 1.5rem;
         }
 
+        .hero {
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+
         .hero h1 {
             font-size: 1.5rem; 
             line-height: 1.4;
-            margin-bottom: 3rem;
-            text-align: center;
+            margin-bottom: 1rem;
             background: linear-gradient(to right, #ffffff, var(--accent-purple));
             -webkit-background-clip: text;
             background-clip: text;
@@ -171,7 +180,6 @@
             letter-spacing: 1px;
         }
 
-        /* UPDATED: Added purple color to card titles */
         .card h2 {
             margin-bottom: 0.8rem;
             font-size: 1.4rem;
@@ -215,7 +223,7 @@
             <div class="header-tagline">Privacy. Security. Sovereignty.</div>
 
             <ul>
-                <li><a href="apps.html" style="color: var(--accent-purple); border-color: var(--accent-purple);">Apps</a></li>
+                <li><a href="apps.html">Apps</a></li>
                 <li><a href="privacy-hardening.html">Privacy & Security</a></li>
                 <li><a href="guides.html">Guides</a></li>
             </ul>

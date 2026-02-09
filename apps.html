@@ -6,7 +6,6 @@
     <meta name="color-scheme" content="dark only">
     <title>Apps & Programs | TerribleTech</title>
     <style>
-        /* --- Master Reset & Theme --- */
         * { margin: 0; padding: 0; box-sizing: border-box; }
         :root {
             --bg-dark: #0f172a; --card-bg: #1e293b; --text-main: #f8fafc;
@@ -15,55 +14,35 @@
         }
         body { background-color: var(--bg-dark); color: var(--text-main); font-family: 'Segoe UI', Roboto, sans-serif; line-height: 1.6; }
 
-        /* --- Navigation (Glass Style) --- */
         header { background: var(--card-bg); padding: 1rem; position: sticky; top: 0; z-index: 100; border-bottom: 2px solid var(--accent-purple); }
         nav { display: flex; flex-direction: column; align-items: center; max-width: 1100px; margin: 0 auto; gap: 1rem; }
         @media (min-width: 768px) { nav { flex-direction: row; justify-content: space-between; } }
         
-        .logo { font-weight: 800; font-size: 1.4rem; background: linear-gradient(to right, #fff, var(--accent-purple)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; text-decoration: none; }
+        /* FIX: Clean Logo - No box */
+        .logo { font-weight: 800; font-size: 1.4rem; background: linear-gradient(to right, #fff, var(--accent-purple)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; text-decoration: none; border: none; background-color: transparent; }
         .logo span { -webkit-text-fill-color: var(--accent-purple); font-weight: 900; }
+        
         .header-tagline { font-size: 0.75rem; color: var(--text-dim); text-transform: uppercase; letter-spacing: 1.5px; font-weight: 600; padding: 4px 12px; }
 
         nav ul { display: flex; list-style: none; gap: 0.6rem; flex-wrap: wrap; justify-content: center; }
-        nav a {
-            color: var(--text-dim);
-            text-decoration: none;
-            font-size: 0.85rem;
-            font-weight: 600;
-            padding: 0.6rem 1.1rem;
-            border-radius: 10px;
-            background: rgba(255, 255, 255, 0.04);
-            border: 1px solid rgba(255, 255, 255, 0.08);
-            transition: all 0.2s;
-        }
-        nav a:hover { color: var(--text-main); background: rgba(139, 92, 246, 0.15); border-color: var(--accent-purple); transform: translateY(-2px); }
+        nav a { color: var(--text-dim); text-decoration: none; font-size: 0.85rem; font-weight: 600; padding: 0.6rem 1.1rem; border-radius: 10px; background: rgba(255, 255, 255, 0.04); border: 1px solid rgba(255, 255, 255, 0.08); transition: all 0.2s; }
+        nav ul a:hover { color: var(--text-main); background: rgba(139, 92, 246, 0.15); border-color: var(--accent-purple); transform: translateY(-2px); }
 
-        /* --- Content Layout --- */
         main { max-width: 1100px; margin: 0 auto; padding: 2.5rem 1.5rem; }
         h1 { font-size: 2.5rem; margin-bottom: 1rem; text-align: center; background: linear-gradient(to right, #fff, var(--accent-purple)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; font-weight: 700; }
         .intro { color: var(--text-dim); margin-bottom: 3rem; text-align: center; max-width: 800px; margin: 0 auto 3rem auto; }
 
-        /* --- Apps Grid & FORCE PURPLE CARDS --- */
         .app-grid { display: grid; grid-template-columns: 1fr; gap: 1.5rem; }
         @media (min-width: 768px) { .app-grid { grid-template-columns: repeat(3, 1fr); } }
 
         .app-card { background: var(--card-bg); padding: 1.8rem; border-radius: 16px; border: 1px solid #334155; transition: all 0.3s; display: flex; flex-direction: column; }
         .app-card:hover { transform: translateY(-5px); border-color: var(--accent-purple); }
         
-        /* THE SPECIFIC FIX: Force the link inside H2 to be purple */
+        .tag { font-size: 0.65rem; font-weight: bold; text-transform: uppercase; margin-bottom: 0.5rem; letter-spacing: 1px; color: var(--accent-purple) !important; }
         .app-card h2 { font-size: 1.4rem; margin-bottom: 0.8rem; }
-        .app-card h2 a { 
-            color: #8b5cf6 !important; /* Forced purple hex code */
-            text-decoration: none; 
-            transition: color 0.3s; 
-        }
-        .app-card h2 a:hover { color: #f8fafc !important; }
-
+        .app-card h2 a { color: var(--accent-purple); text-decoration: none; transition: color 0.3s; }
+        .app-card h2 a:hover { color: var(--text-main); }
         .app-card p { font-size: 0.9rem; color: var(--text-dim); flex-grow: 1; }
-        .tag { font-size: 0.65rem; font-weight: bold; text-transform: uppercase; margin-bottom: 0.5rem; letter-spacing: 1px; }
-        .tag-dev { color: #38bdf8; }
-        .tag-sys { color: #fbbf24; }
-        .tag-security { color: var(--accent-purple); }
 
         .btn-back { display: inline-block; margin-top: 3rem; color: var(--accent-purple); text-decoration: none; font-weight: bold; transition: 0.3s; }
         .btn-back:hover { color: #fff; }
@@ -72,7 +51,6 @@
     </style>
 </head>
 <body>
-
     <header>
         <nav>
             <a href="index.html" class="logo">TerribleTech<span>.io</span></a>
@@ -84,51 +62,20 @@
             </ul>
         </nav>
     </header>
-
     <main>
         <h1>Apps & Programs</h1>
         <p class="intro">The essential software stack for mobile development, terminal environments, and digital automation.</p>
-        
         <div class="app-grid">
-            <div class="app-card">
-                <span class="tag tag-sys">CLI / System</span>
-                <h2><a href="https://termux.dev/" target="_blank">Termux</a></h2>
-                <p>The core of advanced Android usage. A powerful terminal emulator and Linux environment for scripts, Git, and networking.</p>
-            </div>
-            <div class="app-card">
-                <span class="tag tag-sys">Automation</span>
-                <h2><a href="https://github.com/ImranR98/Obtainium" target="_blank">Obtainium</a></h2>
-                <p>The open-source gateway for APKs. Automatically track and install updates directly from GitHub, GitLab, and F-Droid releases.</p>
-            </div>
-            <div class="app-card">
-                <span class="tag tag-sys">Automation</span>
-                <h2><a href="https://tasker.joaoapps.com/download.html" target="_blank">Tasker</a></h2>
-                <p>The ultimate Android automation tool. Create complex profiles and tasks to trigger actions based on system events.</p>
-            </div>
-            <div class="app-card">
-                <span class="tag tag-sys">System</span>
-                <h2><a href="https://keyboard.futo.org/" target="_blank">FUTO Keyboard</a></h2>
-                <p>A privacy-focused keyboard with localized voice-to-text. Keeps your data on your device entirely.</p>
-            </div>
-            <div class="app-card">
-                <span class="tag tag-dev">Development</span>
-                <h2><a href="https://spck.io/" target="_blank">Spck Editor</a></h2>
-                <p>A professional-grade IDE on Android. The primary tool used to build the TerribleTech.io ecosystem.</p>
-            </div>
-            <div class="app-card">
-                <span class="tag tag-dev">Development</span>
-                <h2><a href="https://acode.app/" target="_blank">Acode</a></h2>
-                <p>A lightweight, lightning-fast code editor. Excellent for on-the-fly HTML/CSS debugging.</p>
-            </div>
-            <div class="app-card">
-                <span class="tag tag-security">Security</span>
-                <h2><a href="https://proton.me/" target="_blank">Proton Tools</a></h2>
-                <p>Comprehensive privacy via Proton Mail, VPN, and Pass. Protecting your digital footprint from the ground up.</p>
-            </div>
+            <div class="app-card"><span class="tag">CLI / System</span><h2><a href="https://termux.dev/" target="_blank">Termux</a></h2><p>The core of advanced Android usage.</p></div>
+            <div class="app-card"><span class="tag">Automation</span><h2><a href="https://github.com/ImranR98/Obtainium" target="_blank">Obtainium</a></h2><p>The open-source gateway for APKs.</p></div>
+            <div class="app-card"><span class="tag">Automation</span><h2><a href="https://tasker.joaoapps.com/download.html" target="_blank">Tasker</a></h2><p>The ultimate Android automation tool.</p></div>
+            <div class="app-card"><span class="tag">System</span><h2><a href="https://keyboard.futo.org/" target="_blank">FUTO Keyboard</a></h2><p>Privacy-focused localized voice-to-text.</p></div>
+            <div class="app-card"><span class="tag">Development</span><h2><a href="https://spck.io/" target="_blank">Spck Editor</a></h2><p>Professional-grade IDE on Android.</p></div>
+            <div class="app-card"><span class="tag">Development</span><h2><a href="https://acode.app/" target="_blank">Acode</a></h2><p>Lightweight, fast code editor.</p></div>
+            <div class="app-card"><span class="tag">Security</span><h2><a href="https://proton.me/" target="_blank">Proton Tools</a></h2><p>Comprehensive privacy protection.</p></div>
         </div>
         <a href="index.html" class="btn-back">← Back to Home</a>
     </main>
-
     <footer><p>&copy; 2026 TerribleTech.io | Built on Android</p></footer>
 </body>
 </html>

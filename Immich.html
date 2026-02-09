@@ -3,39 +3,401 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="color-scheme" content="dark only">
-    <title>Immich Setup | TerribleTech</title>
+    <title>Immich Self-Hosting Guide | TerribleTech</title>
     <style>
-        /* Insert Master CSS from Stremio above */
-        pre { background: #0f172a; padding: 1rem; border-radius: 8px; overflow-x: auto; margin: 1rem 0; border: 1px solid #334155; }
-        pre code { color: #f8fafc; background: none; padding: 0; }
+        /* --- General Theme Styles (Matching TerribleTech.io) --- */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --bg-dark: #0f172a;
+            --card-bg: #1e293b;
+            --text-main: #f8fafc;
+            --text-dim: #94a3b8;
+            --accent-purple: #8b5cf6; 
+            --accent-green: #22c55e;
+            --accent-blue: #38bdf8;
+        }
+
+        body {
+            background-color: var(--bg-dark);
+            color: var(--text-main);
+            font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+            line-height: 1.6;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+        }
+
+        header {
+            background: var(--card-bg);
+            padding: 1.2rem;
+            border-bottom: 2px solid var(--accent-purple);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        nav {
+            max-width: 1100px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-weight: 800;
+            font-size: 1.6rem;
+            background: linear-gradient(to right, #fff, var(--accent-purple));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            text-decoration: none;
+        }
+
+        .logo span {
+            -webkit-text-fill-color: var(--accent-purple);
+        }
+
+        main {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 3rem 1.5rem;
+        }
+
+        h1 {
+            font-size: 2.8rem;
+            margin-bottom: 1.5rem;
+            background: linear-gradient(to right, #fff, var(--accent-purple));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        h2 {
+            font-size: 2rem;
+            color: var(--text-main);
+            margin-top: 2.5rem;
+            margin-bottom: 1rem;
+            padding-bottom: 0.5rem;
+            border-bottom: 1px solid var(--card-bg);
+        }
+
+        h3 {
+            font-size: 1.5rem;
+            color: var(--accent-blue);
+            margin-top: 2rem;
+            margin-bottom: 0.8rem;
+        }
+
+        p {
+            margin-bottom: 1rem;
+            color: var(--text-dim);
+        }
+
+        a {
+            color: var(--accent-purple);
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        a:hover {
+            color: #fff;
+            text-decoration: underline;
+        }
+
+        strong {
+            color: var(--text-main);
+        }
+
+        ul, ol {
+            margin-bottom: 1.5rem;
+            margin-left: 2rem;
+            color: var(--text-dim);
+        }
+
+        li {
+            margin-bottom: 0.7rem;
+        }
+
+        code {
+            background-color: var(--card-bg);
+            color: var(--accent-green);
+            padding: 0.2em 0.4em;
+            border-radius: 4px;
+            font-family: 'Fira Code', 'Cascadia Code', 'Consolas', monospace;
+            font-size: 0.9em;
+        }
+
+        pre {
+            background-color: var(--card-bg);
+            border: 1px solid #334155;
+            border-radius: 8px;
+            padding: 1rem;
+            overflow-x: auto;
+            margin-bottom: 1.5rem;
+        }
+
+        pre code {
+            display: block;
+            padding: 0;
+            background-color: transparent;
+            color: var(--text-main);
+            font-size: 0.9em;
+            line-height: 1.4;
+        }
+
+        /* --- Guide Specific Styles --- */
+        .intro-section {
+            font-size: 1.1rem;
+            color: var(--text-main);
+            margin-bottom: 3rem;
+        }
+
+        .note {
+            background-color: #334155;
+            border-left: 4px solid var(--accent-purple);
+            padding: 1rem 1.5rem;
+            border-radius: 8px;
+            margin-bottom: 2rem;
+            color: var(--text-dim);
+        }
+        
+        .note strong {
+            color: var(--text-main);
+        }
+
+        .image-container {
+            margin: 2rem 0;
+            text-align: center;
+        }
+
+        .image-container img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 8px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.4);
+            border: 1px solid #334155;
+        }
+
+        .image-caption {
+            font-size: 0.9em;
+            color: var(--text-dim);
+            margin-top: 0.7rem;
+        }
+
+        .step {
+            margin-bottom: 2.5rem;
+        }
+
+        .step-number {
+            font-size: 1.2rem;
+            font-weight: bold;
+            color: var(--accent-purple);
+            margin-bottom: 0.5rem;
+            display: block;
+        }
+
+        .btn-back {
+            display: inline-block;
+            margin-top: 3rem;
+            color: var(--accent-purple);
+            text-decoration: none;
+            font-weight: bold;
+            transition: color 0.3s;
+        }
+
+        .btn-back:hover {
+            color: #fff;
+        }
+
+        footer {
+            text-align: center;
+            padding: 4rem 2rem;
+            color: var(--text-dim);
+            font-size: 0.85rem;
+            border-top: 1px solid #1e293b;
+            margin-top: 4rem;
+        }
     </style>
 </head>
 <body>
+
     <header>
         <nav>
             <a href="index.html" class="logo">TerribleTech<span>.io</span></a>
-            <div class="header-tagline">Privacy. Security. Sovereignty.</div>
-            <ul>
-                <li><a href="apps.html">Apps</a></li>
-                <li><a href="guides.html">Guides</a></li>
-                <li><a href="privacy-hardening.html">Privacy & Security</a></li>
-            </ul>
         </nav>
     </header>
+
     <main>
-        <div class="card">
-            <span class="card-tag">Deploy</span>
-            <h2>Docker Compose Setup</h2>
-            <p>Run the following to pull the latest Immich image to your server:</p>
+        <h1>Immich Self-Hosting Guide</h1>
+        <p class="intro-section">Take control of your memories. This guide will walk you through setting up Immich, a powerful self-hosted photo and video backup solution, on a dedicated server.</p>
+
+        <div class="note">
+            <strong>Important Note:</strong> This guide assumes you have a dedicated server (like an Intel N100 mini PC, Raspberry Pi with external storage, or a home server) running Docker. The Flint 2 router does NOT support Docker, so a separate machine is required for Immich.
+        </div>
+
+        <h2>What You'll Need</h2>
+        <ul>
+            <li>A dedicated server with <a href="https://docs.docker.com/engine/install/" target="_blank">Docker</a> and <a href="https://docs.docker.com/compose/install/" target="_blank">Docker Compose</a> installed.</li>
+            <li>Basic command-line knowledge.</li>
+            <li>A reverse proxy (e.g., Nginx Proxy Manager, Caddy) if you want external access (recommended).</li>
+            <li>A domain name (optional, but recommended for easy external access).</li>
+        </ul>
+
+        <h2>Step-by-Step Installation</h2>
+
+        <div class="step">
+            <span class="step-number">Step 1: Prepare Your Server</span>
+            <h3>Update and Install Dependencies</h3>
+            <p>Ensure your server's package list is up-to-date and install Git (if not already present):</p>
+            <pre><code>sudo apt update
+sudo apt upgrade -y
+sudo apt install git -y</code></pre>
+        </div>
+
+        <div class="step">
+            <span class="step-number">Step 2: Clone Immich Repository</span>
+            <h3>Download Immich Docker Compose Files</h3>
+            <p>Navigate to your desired installation directory and clone the Immich example repository:</p>
+            <pre><code>cd /opt # Or any directory where you want to store Immich files
+git clone https://github.com/immich-app/immich-docs.git
+cd immich-docs/install</code></pre>
+            <p>This will give you the necessary <code>docker-compose.yml</code> and other configuration files.</p>
+            <div class="image-container">
+                <img src="https://picsum.photos/800/450?random=1" alt="Cloning Immich repository">
+                <p class="image-caption">Cloning the Immich repository on your server.</p>
+            </div>
+        </div>
+
+        <div class="step">
+            <span class="step-number">Step 3: Configure Environment Variables</span>
+            <h3>Set Up Your .env File</h3>
+            <p>Copy the example environment file and then edit it to set your desired passwords and other settings. You'll primarily want to focus on <code>DB_PASSWORD</code> and potentially port mappings.</p>
+            <pre><code>cp .env.example .env
+nano .env # Or use your preferred text editor like vim</code></pre>
+            <p><strong>Key variables to review:</strong></p>
+            <ul>
+                <li><code>DB_PASSWORD=your_secure_password</code> (<strong>CRITICAL: Change this!</strong>)</li>
+                <li><code>UPLOAD_LOCATION=/usr/src/app/upload</code> (This is the default path inside the container. You'll map a host volume to this later.)</li>
+            </ul>
+        </div>
+
+        <div class="step">
+            <span class="step-number">Step 4: Create Data Directories</span>
+            <h3>Persistent Storage for Immich</h3>
+            <p>Immich needs persistent storage for your uploaded photos/videos and for its database. Create these directories on your host machine and ensure Docker has permission to write to them.</p>
+            <pre><code>sudo mkdir -p /mnt/immich/upload # For your photos/videos
+sudo mkdir -p /mnt/immich/database # For PostgreSQL data
+sudo chown -R 1000:1000 /mnt/immich # Give ownership to the Immich user ID (default)</code></pre>
+            <p><strong>Note:</strong> Adjust <code>/mnt/immich</code> to your preferred storage location on your server.</p>
+        </div>
+
+        <div class="step">
+            <span class="step-number">Step 5: Edit Docker Compose File</span>
+            <h3>Map Volumes and Configure Ports</h3>
+            <p>Open the <code>docker-compose.yml</code> file and modify the <code>volumes</code> section for the <code>immich-server</code>, <code>immich-microservices</code>, and <code>database</code> services to point to your newly created host directories. Also, ensure your ports are correctly mapped.</p>
+            <pre><code>nano docker-compose.yml</code></pre>
+            <p><strong>Example volume mappings (look for these sections and adjust):</strong></p>
+            <p>For <code>immich-server</code> and <code>immich-microservices</code>:</p>
+            <pre><code>volumes:
+      - /mnt/immich/upload:/usr/src/app/upload</code></pre>
+            <p>For <code>database</code>:</p>
+            <pre><code>volumes:
+      - /mnt/immich/database:/var/lib/postgresql/data</code></pre>
+            <p><strong>Port Mappings:</strong> Ensure the `ports` section for `immich-web` exposes a port for the web interface (default is <code>3000:80</code>, meaning host port 3000 to container port 80). Adjust if needed, e.g., <code>8080:80</code>.</p>
+            <div class="image-container">
+                <img src="https://picsum.photos/800/450?random=2" alt="Editing docker-compose.yml">
+                <p class="image-caption">Modifying the <code>docker-compose.yml</code> file to map persistent volumes.</p>
+            </div>
+        </div>
+
+        <div class="step">
+            <span class="step-number">Step 6: Start Immich</span>
+            <h3>Launch Docker Containers</h3>
+            <p>Once your <code>.env</code> and <code>docker-compose.yml</code> files are configured, start Immich:</p>
             <pre><code>docker compose up -d</code></pre>
+            <p>The <code>-d</code> flag runs the containers in detached mode, meaning they will run in the background. It might take a few minutes for all services to start up completely.</p>
+            <div class="image-container">
+                <img src="https://picsum.photos/800/450?random=3" alt="Starting Docker Compose">
+                <p class="image-caption">Running <code>docker compose up -d</code> to launch Immich services.</p>
+            </div>
         </div>
-        <div class="card">
-            <span class="card-tag">Config</span>
-            <h2>Environment Variables</h2>
-            <p>Ensure your <code>.env</code> file is properly configured with your upload location on your external drive.</p>
+
+        <div class="step">
+            <span class="step-number">Step 7: Access Immich Web UI</span>
+            <h3>Initial Setup</h3>
+            <p>Open your web browser and navigate to your server's IP address and the mapped port (e.g., <code>http://your-server-ip:3000</code>). You should be greeted by the Immich setup screen.</p>
+            <p><strong>Create your admin account. This will be the first user in Immich.</strong></p>
+            <div class="image-container">
+                <img src="https://picsum.photos/800/450?random=4" alt="Immich Web UI Login">
+                <p class="image-caption">Creating your first Immich admin account.</p>
+            </div>
         </div>
+
+        <div class="step">
+            <span class="step-number">Step 8: Set Up Reverse Proxy (Optional, Recommended for External Access)</span>
+            <h3>Secure External Access with Nginx Proxy Manager</h3>
+            <p>If you plan to access Immich outside your home network or use a custom domain, a reverse proxy is highly recommended for SSL encryption and easier access.</p>
+            <p><strong>Using Nginx Proxy Manager (NPM):</strong></p>
+            <ol>
+                <li>In NPM, create a new <strong>Proxy Host</strong>.</li>
+                <li><strong>Domain Names:</strong> Enter your domain (e.g., <code>photos.yourdomain.com</code>).</li>
+                <li><strong>Scheme:</strong> <code>http</code></li>
+                <li><strong>Forward Hostname / IP:</strong> Enter your Immich server's local IP address.</li>
+                <li><strong>Forward Port:</strong> Enter the port Immich's web UI is running on (e.g., <code>3000</code>).</li>
+                <li>Go to the <strong>SSL</strong> tab, request a new SSL certificate, and enable "Force SSL" and "HSTS."</li>
+                <li>Save the configuration.</li>
+            </ol>
+            <div class="image-container">
+                <img src="https://picsum.photos/800/450?random=5" alt="Nginx Proxy Manager configuration">
+                <p class="image-caption">Configuring a reverse proxy for Immich with Nginx Proxy Manager.</p>
+            </div>
+        </div>
+
+        <div class="step">
+            <span class="step-number">Step 9: Mobile App Setup</span>
+            <h3>Backup Photos from Your Phone</h3>
+            <p>Download the Immich mobile app for <a href="https://play.google.com/store/apps/details?id=app.immich.mobile" target="_blank">Android</a> or <a href="https://apps.apple.com/us/app/immich/id6446540602" target="_blank">iOS</a>.</p>
+            <ol>
+                <li>Open the app and enter your Immich server URL (e.g., <code>https://photos.yourdomain.com</code> if using a reverse proxy, or <code>http://your-server-ip:3000</code> if local).</li>
+                <li>Log in with the admin credentials you created.</li>
+                <li>Configure your backup settings (e.g., Wi-Fi only, charging only).</li>
+            </ol>
+            <div class="image-container">
+                <img src="https://picsum.photos/400/700?random=6" alt="Immich Mobile App">
+                <p class="image-caption">The Immich mobile app for seamless photo and video backup.</p>
+            </div>
+        </div>
+
+        <h2>Maintenance Commands</h2>
+        <ul>
+            <li><strong>Stop Immich:</strong> <code>docker compose down</code></li>
+            <li><strong>Start Immich:</strong> <code>docker compose up -d</code></li>
+            <li><strong>Update Immich:</strong>
+                <pre><code>cd /opt/immich-docs/install # Your Immich installation directory
+git pull
+docker compose pull
+docker compose up -d</code></pre>
+            </li>
+            <li><strong>View Logs:</strong> <code>docker compose logs -f</code></li>
+        </ul>
+
+        <h2>Further Customization & Tips</h2>
+        <ul>
+            <li><strong>ExifTool:</strong> Immich leverages ExifTool for metadata. Ensure your server has it installed for best performance.</li>
+            <li><strong>GPU Transcoding:</strong> If your server has a compatible GPU, configure Immich to use it for faster video transcoding. Refer to the official <a href="https://immich.app/docs/installation/hardware-transcoding" target="_blank">Immich documentation</a>.</li>
+            <li><strong>Multiple Users:</strong> Create additional users directly from the Immich web interface. Each user gets their own private library.</li>
+            <li><strong>External Libraries:</strong> Connect existing photo/video folders to Immich for easy viewing and management without re-uploading.</li>
+        </ul>
+
         <a href="guides.html" class="btn-back">← Back to Guides</a>
     </main>
+
+    <footer>
+        <p>&copy; 2026 TerribleTech.io | Built on Android</p>
+    </footer>
+
 </body>
 </html>

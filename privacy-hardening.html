@@ -1,11 +1,41 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><meta name="color-scheme" content="dark only">
-    <title>Security | TerribleTech</title>
-    <style>/* Insert Master CSS here (same as Index) */</style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="color-scheme" content="dark only">
+    <title>Privacy & Security | TerribleTech</title>
+    <style>
+        /* --- Using Your Master CSS --- */
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        :root {
+            --bg-dark: #0f172a; --card-bg: #1e293b; --text-main: #f8fafc;
+            --text-dim: #94a3b8; --accent-purple: #8b5cf6;
+            color-scheme: dark;
+        }
+        body { background-color: var(--bg-dark); color: var(--text-main); font-family: 'Segoe UI', Roboto, sans-serif; line-height: 1.6; }
+        header { background: var(--card-bg); padding: 1rem; position: sticky; top: 0; z-index: 100; border-bottom: 2px solid var(--accent-purple); }
+        nav { display: flex; flex-direction: column; align-items: center; max-width: 1100px; margin: 0 auto; gap: 0.5rem; }
+        @media (min-width: 768px) { nav { flex-direction: row; justify-content: space-between; } }
+        .logo { font-weight: 800; font-size: 1.4rem; letter-spacing: -0.5px; background: linear-gradient(to right, #fff, var(--accent-purple)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; text-decoration: none; }
+        .logo span { -webkit-text-fill-color: var(--accent-purple); font-weight: 900; }
+        .header-tagline { font-size: 0.85rem; color: var(--text-dim); text-transform: uppercase; letter-spacing: 1.5px; font-weight: 600; margin: 5px 0; }
+        nav ul { display: flex; list-style: none; gap: 1rem; flex-wrap: wrap; justify-content: center; }
+        nav a { color: var(--text-dim); text-decoration: none; font-size: 0.8rem; font-weight: 500; transition: color 0.3s; }
+        nav a:hover { color: var(--accent-purple); }
+        main { max-width: 1100px; margin: 0 auto; padding: 2.5rem 1.5rem; }
+        .content-grid { display: grid; grid-template-columns: 1fr; gap: 1.5rem; }
+        @media (min-width: 900px) { .content-grid { grid-template-columns: repeat(3, 1fr); } }
+        .card { background: var(--card-bg); padding: 1.8rem; border-radius: 16px; border: 1px solid #334155; display: flex; flex-direction: column; }
+        .card-tag { font-size: 0.65rem; text-transform: uppercase; color: var(--accent-purple); font-weight: bold; margin-bottom: 0.5rem; letter-spacing: 1px; }
+        .card h2 { margin-bottom: 0.8rem; font-size: 1.2rem; }
+        .card p { color: var(--text-dim); margin-bottom: 1.5rem; flex-grow: 1; font-size: 0.9rem; }
+        .btn { display: inline-block; padding: 0.7rem 1.1rem; background: var(--accent-purple); color: white; text-decoration: none; border-radius: 8px; font-weight: 600; text-align: center; font-size: 0.85rem; }
+        footer { text-align: center; padding: 3rem 2rem; color: var(--text-dim); font-size: 0.8rem; border-top: 1px solid #1e293b; }
+    </style>
 </head>
 <body>
+
     <header>
         <nav>
             <a href="index.html" class="logo">TerribleTech<span>.io</span></a>
@@ -17,28 +47,33 @@
             </ul>
         </nav>
     </header>
+
     <main>
         <div class="content-grid">
             <article class="card">
-                <div class="card-tag">Communication</div>
+                <span class="card-tag">Communication</span>
                 <h2>Encrypted Comms</h2>
                 <p>Moving off Big Tech. Setting up Proton Mail and Signal for end-to-end encrypted messaging.</p>
                 <a href="#" class="btn">Learn More</a>
             </article>
+
             <article class="card">
-                <div class="card-tag">Accounts</div>
+                <span class="card-tag">Accounts</span>
                 <h2>Password Hardening</h2>
                 <p>Using Bitwarden and hardware keys (YubiKey) to eliminate the risk of account takeovers.</p>
                 <a href="#" class="btn">Learn More</a>
             </article>
+
             <article class="card">
-                <div class="card-tag">OS</div>
+                <span class="card-tag">OS</span>
                 <h2>Android De-Googling</h2>
                 <p>Strategies for hardening Android: from private DNS and permissions to GrapheneOS or lineage alternatives.</p>
                 <a href="#" class="btn">Learn More</a>
             </article>
         </div>
     </main>
-    <footer><p>&copy; 2026 TerribleTech.io</p></footer>
+
+    <footer><p>&copy; 2026 TerribleTech.io | Digital Excellence.</p></footer>
+
 </body>
 </html>

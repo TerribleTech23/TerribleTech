@@ -31,7 +31,7 @@
         /* --- Navigation --- */
         header {
             background: var(--card-bg);
-            padding: 1rem;
+            padding: 1.2rem;
             position: sticky;
             top: 0;
             z-index: 100;
@@ -44,7 +44,7 @@
             align-items: center;
             max-width: 1100px;
             margin: 0 auto;
-            gap: 0.5rem;
+            gap: 1rem;
         }
 
         @media (min-width: 768px) {
@@ -56,7 +56,7 @@
 
         .logo {
             font-weight: 800;
-            font-size: 1.4rem;
+            font-size: 1.6rem;
             letter-spacing: -0.5px;
             background: linear-gradient(to right, #fff, var(--accent-purple));
             -webkit-background-clip: text;
@@ -69,19 +69,10 @@
             font-weight: 900;
         }
 
-        .header-tagline {
-            font-size: 0.85rem;
-            color: var(--text-dim);
-            text-transform: uppercase;
-            letter-spacing: 1.5px;
-            font-weight: 600;
-            margin: 5px 0;
-        }
-
         nav ul {
             display: flex;
             list-style: none;
-            gap: 1rem;
+            gap: 1.2rem;
             flex-wrap: wrap;
             justify-content: center;
         }
@@ -89,7 +80,7 @@
         nav a {
             color: var(--text-dim);
             text-decoration: none;
-            font-size: 0.8rem;
+            font-size: 0.9rem;
             font-weight: 500;
             transition: color 0.3s;
         }
@@ -102,52 +93,58 @@
         main {
             max-width: 1100px;
             margin: 0 auto;
-            padding: 2rem 1.5rem;
+            padding: 3rem 1.5rem;
         }
 
         .hero {
             text-align: center;
-            margin-bottom: 3rem;
+            margin-bottom: 4rem;
         }
 
         .hero h1 {
-            font-size: 1.4rem; 
-            line-height: 1.4;
+            font-size: 2.5rem;
             margin-bottom: 1rem;
             background: linear-gradient(to bottom, #ffffff, var(--accent-purple));
             -webkit-background-clip: text;
             background-clip: text;
             -webkit-text-fill-color: transparent;
-            color: white; 
+            color: white; /* Fallback for browsers that don't support clip */
         }
 
-        @media (min-width: 900px) {
-            .hero h1 {
-                font-size: 2.2rem;
-            }
+        .hero p {
+            color: var(--text-dim);
+            font-size: 1.2rem;
+            max-width: 750px;
+            margin: 0 auto;
+            font-weight: 400;
+            letter-spacing: 0.3px;
         }
 
         /* --- Grid & Cards --- */
         .content-grid {
             display: grid;
             grid-template-columns: 1fr; 
-            gap: 1.5rem;
+            gap: 2rem;
         }
 
         @media (min-width: 900px) {
             .content-grid {
                 grid-template-columns: repeat(3, 1fr);
             }
+            .hero h1 {
+                font-size: 3.8rem;
+            }
         }
 
         .card {
             background: var(--card-bg);
-            padding: 1.8rem;
+            padding: 2.2rem;
             border-radius: 16px;
             border: 1px solid #334155;
             transition: transform 0.3s, border-color 0.3s;
             display: flex;
             flex-direction: column;
+            scroll-margin-top: 100px;
         }
 
         .card:hover {
@@ -156,7 +153,7 @@
         }
 
         .card-tag {
-            font-size: 0.65rem;
+            font-size: 0.7rem;
             text-transform: uppercase;
             color: var(--accent-purple);
             font-weight: bold;
@@ -165,34 +162,34 @@
         }
 
         .card h2 {
-            margin-bottom: 0.8rem;
-            font-size: 1.2rem;
+            margin-bottom: 1rem;
+            font-size: 1.4rem;
         }
 
         .card p {
             color: var(--text-dim);
             margin-bottom: 1.5rem;
             flex-grow: 1;
-            font-size: 0.9rem;
+            font-size: 0.95rem;
         }
 
         .btn {
             display: inline-block;
-            padding: 0.7rem 1.1rem;
+            padding: 0.8rem 1.2rem;
             background: var(--accent-purple);
             color: white;
             text-decoration: none;
             border-radius: 8px;
             font-weight: 600;
             text-align: center;
-            font-size: 0.85rem;
+            font-size: 0.9rem;
         }
 
         footer {
             text-align: center;
-            padding: 3rem 2rem;
+            padding: 4rem 2rem;
             color: var(--text-dim);
-            font-size: 0.8rem;
+            font-size: 0.85rem;
             border-top: 1px solid #1e293b;
         }
     </style>
@@ -202,11 +199,8 @@
     <header>
         <nav>
             <a href="index.html" class="logo">TerribleTech<span>.io</span></a>
-            
-            <div class="header-tagline">Privacy. Security. Sovereignty.</div>
-
             <ul>
-                <li><a href="apps.html">Apps</a></li>
+                <li><a href="apps.html">Apps & Programs</a></li>
                 <li><a href="guides.html">Guides</a></li>
                 <li><a href="privacy-hardening.html">Privacy & Security</a></li>
             </ul>
@@ -215,21 +209,22 @@
 
     <main>
         <section class="hero">
-            <h1>"Breaking chains and building better. From Android hardening and network security to self-hosting the services they want to rent to you. If it’s locked down, we’re opening it up."</h1>
+            <h1>Media Automation & Hardened Privacy</h1>
+            <p>Practical guides on mastering hardware, securing your data, and streamlining your digital environment.</p>
         </section>
 
         <section class="content-grid">
             <article id="apps" class="card">
                 <div class="card-tag">Apps & Programs</div>
                 <h2>Mobile Dev Toolkit</h2>
-                <p>Environments I use to build directly on Android, featuring Spck Editor and Acode.</p>
+                <p>A look at the professional environments I use to build and mod directly on Android, featuring Spck Editor and Acode.</p>
                 <a href="apps.html" class="btn">Explore Apps</a>
             </article>
 
             <article id="guides" class="card">
                 <div class="card-tag">Guides</div>
                 <h2>Technical Guides</h2>
-                <p>Walkthroughs for media automation, remote networking, and self-hosting with Tailscale and Stremio.</p>
+                <p>Step-by-step walkthroughs for media automation, remote networking, and self-hosting. Featuring Stremio, Plex, Tailscale, and more.</p>
                 <a href="guides.html" class="btn">Browse Guides</a>
             </article>
 

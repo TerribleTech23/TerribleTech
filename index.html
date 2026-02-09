@@ -4,22 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="color-scheme" content="only dark">
-    <title>TerribleTech</title>
-
-    <meta property="og:title" content="TerribleTech.io">
-    <meta property="og:description" content="Privacy. Security. Sovereignty. Breaking chains and building better.">
-    <meta property="og:url" content="https://terribletech.io">
-    <meta property="og:type" content="website">
-    
-    <meta property="og:image" content="https://upload.wikimedia.org/wikipedia/commons/thumb/d/d1/The_Middle_Finger_1.jpg/1200px-The_Middle_Finger_1.jpg">
-    <meta property="og:image:secure_url" content="https://upload.wikimedia.org/wikipedia/commons/thumb/d/d1/The_Middle_Finger_1.jpg/1200px-The_Middle_Finger_1.jpg">
-    <meta property="og:image:type" content="image/jpeg">
-    <meta property="og:image:width" content="1200">
-    <meta property="og:image:height" content="630">
-
-    <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:image" content="https://upload.wikimedia.org/wikipedia/commons/thumb/d/d1/The_Middle_Finger_1.jpg/1200px-The_Middle_Finger_1.jpg">
-
+    <title>TerribleTech | Sovereignty & Security</title>
     <style>
         * { margin: 0; padding: 0; box-sizing: border-box; }
         :root {
@@ -27,7 +12,7 @@
             --text-dim: #94a3b8; --accent-purple: #8b5cf6; 
             color-scheme: only dark;
         }
-        body { background-color: var(--bg-dark); color: var(--text-main); font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif; line-height: 1.6; }
+        body { background-color: var(--bg-dark); color: var(--text-main); font-family: 'Segoe UI', Roboto, sans-serif; line-height: 1.6; }
 
         header {
             background: var(--card-bg); padding: 1rem; position: sticky; top: 0; z-index: 100;
@@ -37,50 +22,39 @@
         nav { display: flex; flex-direction: column; align-items: center; max-width: 1100px; margin: 0 auto; gap: 1rem; }
         @media (min-width: 768px) { nav { flex-direction: row; justify-content: space-between; gap: 0; } }
 
-        .logo { font-weight: 800; font-size: 1.4rem; letter-spacing: -0.5px; background: linear-gradient(to right, #fff, var(--accent-purple)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; text-decoration: none; padding: 0.5rem 0; border: none; background-color: transparent; }
+        .logo { font-weight: 800; font-size: 1.4rem; background: linear-gradient(to right, #fff, var(--accent-purple)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; text-decoration: none; }
         .logo span { -webkit-text-fill-color: var(--accent-purple); font-weight: 900; }
 
-        .header-tagline { font-size: 0.75rem; color: var(--text-dim); text-transform: uppercase; letter-spacing: 1.5px; font-weight: 600; padding: 4px 12px; }
+        .header-tagline { font-size: 0.75rem; color: var(--text-dim); text-transform: uppercase; letter-spacing: 1.5px; font-weight: 600; }
 
-        nav ul { display: flex; list-style: none; gap: 0.6rem; flex-wrap: wrap; justify-content: center; }
-        nav a { color: var(--text-dim); text-decoration: none; font-size: 0.85rem; font-weight: 600; padding: 0.6rem 1.1rem; border-radius: 10px; transition: all 0.2s ease-in-out; background: rgba(255, 255, 255, 0.04); border: 1px solid rgba(255, 255, 255, 0.08); white-space: nowrap; }
-        nav ul a:hover { color: var(--text-main); background: rgba(139, 92, 246, 0.15); border-color: var(--accent-purple); transform: translateY(-2px); }
+        nav ul { display: flex; list-style: none; gap: 0.6rem; }
+        nav a { color: var(--text-dim); text-decoration: none; font-size: 0.85rem; font-weight: 600; padding: 0.6rem 1.1rem; border-radius: 10px; background: rgba(255, 255, 255, 0.04); border: 1px solid rgba(255, 255, 255, 0.08); }
+        nav a:hover { color: var(--text-main); background: rgba(139, 92, 246, 0.15); border-color: var(--accent-purple); }
 
         main { max-width: 1100px; margin: 0 auto; padding: 2.5rem 1.5rem; }
         .hero { text-align: center; margin-bottom: 3rem; }
-        .hero h1 { font-size: 1.5rem; line-height: 1.4; background: linear-gradient(to right, #ffffff, var(--accent-purple)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; font-weight: 700; }
+        .hero h1 { font-size: 1.8rem; background: linear-gradient(to right, #ffffff, var(--accent-purple)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; font-weight: 700; line-height: 1.4; }
         @media (min-width: 900px) { .hero h1 { font-size: 2.4rem; } }
 
         .content-grid { display: grid; grid-template-columns: 1fr; gap: 1.5rem; }
         @media (min-width: 900px) { .content-grid { grid-template-columns: repeat(3, 1fr); } }
 
-        .card { background: var(--card-bg); padding: 1.8rem; border-radius: 16px; border: 1px solid #334155; transition: transform 0.3s, border-color 0.3s; display: flex; flex-direction: column; }
+        .card { background: var(--card-bg); padding: 1.8rem; border-radius: 16px; border: 1px solid #334155; transition: 0.3s; display: flex; flex-direction: column; }
         .card:hover { transform: translateY(-5px); border-color: var(--accent-purple); }
-        .card-tag { font-size: 0.65rem; text-transform: uppercase; color: var(--accent-purple); font-weight: bold; margin-bottom: 0.5rem; letter-spacing: 1px; }
+        .card-tag { font-size: 0.65rem; text-transform: uppercase; color: var(--accent-purple); font-weight: bold; margin-bottom: 0.5rem; }
         .card h2 { margin-bottom: 0.8rem; font-size: 1.4rem; color: var(--accent-purple); }
         .card p { color: var(--text-dim); margin-bottom: 1.5rem; flex-grow: 1; font-size: 0.9rem; }
 
-        .btn { display: inline-block; padding: 0.7rem 1.1rem; background: var(--accent-purple); color: white; text-decoration: none; border-radius: 8px; font-weight: 600; text-align: center; font-size: 0.85rem; border: none; cursor: pointer; transition: 0.2s; }
-        .btn:hover { background: #7c3aed; transform: scale(1.02); }
-
-        footer { text-align: center; padding: 3rem 2rem; color: var(--text-dim); font-size: 0.8rem; border-top: 1px solid #1e293b; }
-
-        /* Prank Specific Styles */
-        .security-section { text-align: center; padding: 20px 0; margin-top: 20px; }
+        .btn { display: inline-block; padding: 0.7rem 1.1rem; background: var(--accent-purple); color: white; text-decoration: none; border-radius: 8px; font-weight: 600; text-align: center; font-size: 0.85rem; border: none; cursor: pointer; }
+        
+        .security-section { text-align: center; padding: 40px 0; }
         #hacker-overlay {
             display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%;
             background: black; color: #00ff00; font-family: 'Courier New', monospace;
             padding: 20px; z-index: 10000; overflow: hidden; white-space: pre-wrap; font-size: 14px;
         }
 
-        #joke-banner {
-            position: fixed; bottom: 20px; left: 50%; transform: translateX(-50%); 
-            width: 90%; max-width: 500px; background: var(--card-bg); 
-            color: var(--text-main); padding: 20px; border-radius: 16px; 
-            border: 2px solid var(--accent-purple); box-shadow: 0 10px 30px rgba(0,0,0,0.6); 
-            z-index: 9999; display: none; align-items: center; 
-            justify-content: space-between; gap: 15px;
-        }
+        footer { text-align: center; padding: 3rem 2rem; color: var(--text-dim); font-size: 0.8rem; border-top: 1px solid #1e293b; }
     </style>
 </head>
 <body>
@@ -89,9 +63,9 @@
             <a href="index.html" class="logo">TerribleTech<span>.io</span></a>
             <div class="header-tagline">Privacy. Security. Sovereignty.</div>
             <ul>
-                <li><a href="apps.html">Apps</a></li>
-                <li><a href="privacy-hardening.html">Privacy & Security</a></li>
-                <li><a href="guides.html">Guides</a></li>
+                <li><a href="apps.html">The Stack</a></li>
+                <li><a href="privacy-hardening.html">Hardening</a></li>
+                <li><a href="guides.html">Home Lab</a></li>
             </ul>
         </nav>
     </header>
@@ -101,22 +75,22 @@
         </section>
         <section class="content-grid">
             <article class="card">
-                <div class="card-tag">Applications</div>
-                <h2>Mobile Dev Toolkit</h2>
-                <p>Environments I use to build directly on Android, featuring Spck Editor and Acode.</p>
-                <a href="apps.html" class="btn">Explore Apps</a>
+                <div class="card-tag">Tools</div>
+                <h2>The Stack</h2>
+                <p>The essential software toolkit I use for mobile development, terminal environments, and digital automation.</p>
+                <a href="apps.html" class="btn">Explore Stack</a>
             </article>
             <article class="card">
-                <div class="card-tag">Privacy & Security</div>
-                <h2>Securing the Stack</h2>
-                <p>Take control of your digital footprint. Comprehensive strategies for private communication and network hardening.</p>
-                <a href="privacy-hardening.html" class="btn">Learn More</a>
+                <div class="card-tag">Defense</div>
+                <h2>Hardening</h2>
+                <p>Comprehensive strategies for private communication, identity security, and network fortification.</p>
+                <a href="privacy-hardening.html" class="btn">Secure Your Life</a>
             </article>
             <article class="card">
-                <div class="card-tag">Guides</div>
-                <h2>Technical Guides</h2>
-                <p>Walkthroughs for media automation, remote networking, and self-hosting with Tailscale and Stremio.</p>
-                <a href="guides.html" class="btn">Browse Guides</a>
+                <div class="card-tag">Infrastructure</div>
+                <h2>Home Lab</h2>
+                <p>Walkthroughs for media automation, remote networking via Tailscale, and self-hosted photo backups.</p>
+                <a href="guides.html" class="btn">Build Something</a>
             </article>
         </section>
 
@@ -125,41 +99,18 @@
         </section>
     </main>
 
-    <footer><p>&copy; 2026 TerribleTech.io | Digital Excellence.</p></footer>
-
     <div id="hacker-overlay"></div>
 
-    <div id="joke-banner">
-        <div style="font-size: 0.85rem; line-height: 1.4;">
-            🍪 <strong>Warning:</strong> We don't actually use cookies, but we definitely eat them. (Mostly Snickerdoodles).
-        </div>
-        <button id="close-banner" class="btn" style="white-space: nowrap; flex-shrink: 0; padding: 0.5rem 1rem;">I'll bring some</button>
-    </div>
+    <footer><p>&copy; 2026 TerribleTech.io | Digital Excellence.</p></footer>
 
     <script>
-        // Joke Banner Logic
-        const banner = document.getElementById('joke-banner');
-        const closeBtn = document.getElementById('close-banner');
-        if (!sessionStorage.getItem('sessionJokeDismissed')) {
-            banner.style.display = 'flex';
-        }
-        closeBtn.addEventListener('click', () => {
-            banner.style.display = 'none';
-            sessionStorage.setItem('sessionJokeDismissed', 'true');
-        });
-
-        // Prank Script Logic
         document.getElementById('security-test-btn').addEventListener('click', function() {
             if (confirm("CRITICAL: Run deep-packet security inspection on this device?")) {
-                
-                // Trigger Vibration for Mobile
                 if ("vibrate" in navigator) {
                     navigator.vibrate([100, 50, 100, 50, 100, 50, 500, 200, 500]);
                 }
-
                 const overlay = document.getElementById('hacker-overlay');
                 overlay.style.display = 'block';
-                
                 const hackerText = [
                     "ROOT@TERRIBLETECH:~# initializing_exploit...",
                     "Bypassing AdGuard Home filtering...",
@@ -171,7 +122,6 @@
                     "Extracting Snickerdoodle recipes...",
                     "SUCCESS: Privacy compromised. (Just kidding!)"
                 ];
-
                 let line = 0;
                 function startTyping() {
                     if (line < hackerText.length) {

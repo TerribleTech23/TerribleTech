@@ -3,48 +3,47 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Privacy & Security | TerribleTech</title>
+    <title>Hardening | TerribleTech</title>
     <style>
-        /* --- Styles remains exactly as you had them --- */
+        /* Shared Styles */
         * { margin: 0; padding: 0; box-sizing: border-box; }
-        :root {
-            --bg-dark: #0f172a; --card-bg: #1e293b; --text-main: #f8fafc;
-            --text-dim: #94a3b8; --accent-purple: #8b5cf6; 
-        }
+        :root { --bg-dark: #0f172a; --card-bg: #1e293b; --text-main: #f8fafc; --text-dim: #94a3b8; --accent-purple: #8b5cf6; }
         body { background-color: var(--bg-dark); color: var(--text-main); font-family: 'Segoe UI', sans-serif; line-height: 1.6; }
-        header { background: var(--card-bg); padding: 1rem; position: sticky; top: 0; z-index: 100; border-bottom: 2px solid var(--accent-purple); }
+        header { background: var(--card-bg); padding: 1rem; position: sticky; top: 0; z-index: 100; border-bottom: 2px solid var(--accent-purple); min-height: 70px; }
         nav { display: flex; justify-content: space-between; align-items: center; max-width: 1100px; margin: 0 auto; }
         .logo { font-weight: 800; font-size: 1.4rem; background: linear-gradient(to right, #fff, var(--accent-purple)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; text-decoration: none; }
         .logo span { -webkit-text-fill-color: var(--accent-purple); }
+        nav ul { display: flex; list-style: none; gap: 0.6rem; }
+        nav a { color: var(--text-dim); text-decoration: none; font-size: 0.85rem; font-weight: 600; padding: 0.6rem 1.1rem; border-radius: 10px; background: rgba(255, 255, 255, 0.04); border: 1px solid rgba(255, 255, 255, 0.08); }
+        nav a:hover { color: var(--text-main); background: rgba(139, 92, 246, 0.15); border-color: var(--accent-purple); }
         main { max-width: 1100px; margin: 0 auto; padding: 2.5rem 1.5rem; }
+        h1 { font-size: 2.5rem; margin-bottom: 1rem; text-align: center; background: linear-gradient(to right, #fff, var(--accent-purple)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
         .content-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 1.5rem; }
         .card { background: var(--card-bg); padding: 1.8rem; border-radius: 16px; border: 1px solid #334155; }
-        .btn { display: inline-block; padding: 0.7rem 1.1rem; background: var(--accent-purple); color: white; text-decoration: none; border-radius: 8px; font-weight: 600; margin-top: auto; }
+        .btn { display: inline-block; padding: 0.7rem 1.1rem; background: var(--accent-purple); color: white; text-decoration: none; border-radius: 8px; font-weight: 600; }
+        footer { text-align: center; padding: 3rem 2rem; color: var(--text-dim); font-size: 0.8rem; border-top: 1px solid #1e293b; margin-top: 2rem; }
     </style>
 </head>
 <body>
     <header>
-        <nav><a href="index.html" class="logo">TerribleTech<span>.io</span></a></nav>
+        <nav>
+            <a href="index.html" class="logo">TerribleTech<span>.io</span></a>
+            <ul>
+                <li><a href="apps.html">The Stack</a></li>
+                <li><a href="privacy-hardening.html" style="color: var(--accent-purple); border-color: var(--accent-purple); background: rgba(139, 92, 246, 0.15);">Hardening</a></li>
+                <li><a href="guides.html">Home Lab</a></li>
+            </ul>
+        </nav>
     </header>
     <main>
-        <h1 style="text-align:center; margin-bottom:2rem;">Privacy & Security</h1>
+        <h1>Hardening</h1>
+        <p style="text-align:center; color:var(--text-dim); margin-bottom:3rem;">Take control of your digital footprint with comprehensive security strategies.</p>
         <div class="content-grid">
-            <article class="card">
-                <h2>Encrypted Comms</h2>
-                <p style="color:var(--text-dim); margin-bottom:1.5rem;">Moving off Big Tech. Setting up Proton Mail and Signal for private messaging.</p>
-                <a href="encrypted-comms.html" class="btn">Learn More</a>
-            </article>
-            <article class="card">
-                <h2>Password Hardening</h2>
-                <p style="color:var(--text-dim); margin-bottom:1.5rem;">Using Bitwarden and hardware keys to eliminate the risk of account takeovers.</p>
-                <a href="password-hardening.html" class="btn">Learn More</a>
-            </article>
-            <article class="card">
-                <h2>Android De-Googling</h2>
-                <p style="color:var(--text-dim); margin-bottom:1.5rem;">Hardening Android: from private DNS to GrapheneOS and localized keyboards.</p>
-                <a href="android-hardening.html" class="btn">Learn More</a>
-            </article>
+            <article class="card"><h2>Encrypted Comms</h2><p style="margin-bottom:1.5rem; color:var(--text-dim);">Moving off Big Tech to E2EE messaging.</p><a href="encrypted-comms.html" class="btn">Read More</a></article>
+            <article class="card"><h2>Identity Security</h2><p style="margin-bottom:1.5rem; color:var(--text-dim);">Hardening accounts with Bitwarden and hardware keys.</p><a href="password-hardening.html" class="btn">Read More</a></article>
+            <article class="card"><h2>OS Hardening</h2><p style="margin-bottom:1.5rem; color:var(--text-dim);">Android de-googling and GrapheneOS strategies.</p><a href="android-hardening.html" class="btn">Read More</a></article>
         </div>
     </main>
+    <footer><p>&copy; 2026 TerribleTech.io | Digital Excellence.</p></footer>
 </body>
 </html>

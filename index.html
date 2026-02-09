@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>TerribleTech | Digital Sovereignty</title>
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="./style.css">
 </head>
 <body>
 
@@ -23,16 +23,33 @@
     </header>
 
     <main>
-        <section style="padding: 3rem 1.5rem;">
-            <h1 style="font-size: 2.5rem; font-weight: 800; margin-bottom: 1rem;">"Breaking chains and building better."</h1>
-            <p style="color: var(--text-dim); font-size: 1.1rem;">From Android hardening and network security to self-hosting. If it’s locked down, we’re opening it up.</p>
+        <section class="hero">
+            <h1>"Breaking chains and building better."</h1>
+            <p>From Android hardening and network security to self-hosting. If it’s locked down, we’re opening it up.</p>
         </section>
 
         <article class="card">
             <h2>Mobile Dev Toolkit</h2>
             <p>Environments I use to build directly on Android, featuring Spck Editor and Acode.</p>
+            <a href="apps.html" class="btn">Explore Apps</a>
+        </article>
+
+        <article class="card">
+            <h2>Technical Guides</h2>
+            <p>Walkthroughs for media automation, remote networking, and self-hosting with Tailscale and Stremio.</p>
+            <a href="guides.html" class="btn">Browse Guides</a>
+        </article>
+
+        <article class="card">
+            <h2>Securing the Stack</h2>
+            <p>Take control of your digital footprint. Comprehensive strategies for private communication and network hardening.</p>
+            <a href="privacy-hardening.html" class="btn">Learn More</a>
         </article>
     </main>
+
+    <footer style="padding: 4rem 0; color: #94a3b8;">
+        <p>&copy; 2026 TerribleTech.io | Built on Android</p>
+    </footer>
 
 </body>
 </html>

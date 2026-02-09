@@ -1,55 +1,44 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Technical Guides | TerribleTech</title>
-    <link rel="stylesheet" href="style.css">
+    <meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><meta name="color-scheme" content="dark only">
+    <title>Guides | TerribleTech</title>
+    <style>/* Insert Master CSS here (same as Index) */</style>
 </head>
 <body>
-
     <header>
         <nav>
             <a href="index.html" class="logo">TerribleTech<span>.io</span></a>
+            <div class="header-tagline">Privacy. Security. Sovereignty.</div>
             <ul>
                 <li><a href="apps.html">Apps</a></li>
-                <li><a href="guides.html" style="color: var(--accent);">Guides</a></li>
-                <li><a href="privacy-hardening.html">Security</a></li>
+                <li><a href="guides.html" style="color: var(--accent-purple);">Guides</a></li>
+                <li><a href="privacy-hardening.html">Privacy & Security</a></li>
             </ul>
         </nav>
     </header>
-
     <main>
-        <h1>Browse All Guides</h1>
-        
-        <div class="guide-list">
-            <a href="stremio.html" class="guide-item">
+        <div class="content-grid">
+            <article class="card">
+                <div class="card-tag">Network</div>
+                <h2>Tailscale Exit Node</h2>
+                <p>How to use your home network as a secure gateway for all your mobile traffic anywhere in the world.</p>
+                <a href="tailscale.html" class="btn">Read Guide</a>
+            </article>
+            <article class="card">
+                <div class="card-tag">Media</div>
                 <h2>Stremio + Real-Debrid</h2>
-                <p>The core setup for high-speed, buffer-free media automation.</p>
-            </a>
-
-            <a href="YtMorphe.html" class="guide-item">
-                <h2>YouTube Morphine</h2>
-                <p>Optimizing your mobile YouTube experience with advanced background playback.</p>
-            </a>
-
-            <a href="Immich.html" class="guide-item">
-                <h2>Plex & Immich</h2>
-                <p>Self-hosting your personal media and photo library for ultimate data ownership.</p>
-            </a>
-
-            <a href="tailscale.html" class="guide-item">
-                <h2>Tailscale Networking</h2>
-                <p>Creating a secure, private mesh VPN to access your home server and devices from anywhere.</p>
-            </a>
+                <p>The ultimate 4K streaming setup. Bypassing buffering and ISP throttling with a hardened configuration.</p>
+                <a href="stremio.html" class="btn">Read Guide</a>
+            </article>
+            <article class="card">
+                <div class="card-tag">Self-Host</div>
+                <h2>Immich Setup</h2>
+                <p>Replacing Google Photos with a high-performance, self-hosted photo backup solution.</p>
+                <a href="immich.html" class="btn">Read Guide</a>
+            </article>
         </div>
-
-        <a href="index.html" class="btn-back">← Back to Home</a>
     </main>
-
-    <footer>
-        <p style="text-align: center; color: var(--text-dim); padding: 2rem;">&copy; 2026 TerribleTech.io</p>
-    </footer>
-
+    <footer><p>&copy; 2026 TerribleTech.io</p></footer>
 </body>
 </html>

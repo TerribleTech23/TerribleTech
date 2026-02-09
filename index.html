@@ -3,8 +3,203 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>TerribleTech | Digital Sovereignty</title>
-    <link rel="stylesheet" href="./style.css">
+    <meta name="color-scheme" content="dark only">
+    <title>TerribleTech</title>
+    <style>
+        /* --- Global Reset & Variables --- */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --bg-dark: #0f172a;
+            --card-bg: #1e293b;
+            --text-main: #f8fafc;
+            --text-dim: #94a3b8;
+            --accent-purple: #8b5cf6; 
+            --accent-hover: #7c3aed;
+            /* Explicitly tells Chromium NOT to apply its own darkening filters */
+            color-scheme: dark;
+        }
+
+        body {
+            background-color: var(--bg-dark);
+            color: var(--text-main);
+            font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+            line-height: 1.6;
+        }
+
+        /* --- Navigation --- */
+        header {
+            background: var(--card-bg);
+            padding: 1rem;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            border-bottom: 2px solid var(--accent-purple);
+        }
+
+        nav {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            max-width: 1100px;
+            margin: 0 auto;
+            gap: 0.5rem;
+        }
+
+        @media (min-width: 768px) {
+            nav {
+                flex-direction: row;
+                justify-content: space-between;
+            }
+        }
+
+        .logo {
+            font-weight: 800;
+            font-size: 1.4rem;
+            letter-spacing: -0.5px;
+            background: linear-gradient(to right, #fff, var(--accent-purple));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            text-decoration: none;
+        }
+
+        .logo span {
+            -webkit-text-fill-color: var(--accent-purple);
+            font-weight: 900;
+        }
+
+        .header-tagline {
+            font-size: 0.85rem;
+            color: var(--text-dim);
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            font-weight: 600;
+            margin: 5px 0;
+        }
+
+        nav ul {
+            display: flex;
+            list-style: none;
+            gap: 1rem;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+
+        nav a {
+            color: var(--text-dim);
+            text-decoration: none;
+            font-size: 0.8rem;
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+
+        nav a:hover {
+            color: var(--accent-purple);
+        }
+
+        /* --- Hero Section --- */
+        main {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 2.5rem 1.5rem;
+        }
+
+        .hero {
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+
+        .hero h1 {
+            font-size: 1.5rem; 
+            line-height: 1.4;
+            margin-bottom: 1rem;
+            background: linear-gradient(to right, #ffffff, var(--accent-purple));
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+            color: white; 
+            font-weight: 700;
+        }
+
+        @media (min-width: 900px) {
+            .hero h1 {
+                font-size: 2.4rem;
+            }
+        }
+
+        /* --- Grid & Cards --- */
+        .content-grid {
+            display: grid;
+            grid-template-columns: 1fr; 
+            gap: 1.5rem;
+        }
+
+        @media (min-width: 900px) {
+            .content-grid {
+                grid-template-columns: repeat(3, 1fr);
+            }
+        }
+
+        .card {
+            background: var(--card-bg);
+            padding: 1.8rem;
+            border-radius: 16px;
+            border: 1px solid #334155;
+            transition: transform 0.3s, border-color 0.3s;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+            border-color: var(--accent-purple);
+        }
+
+        .card-tag {
+            font-size: 0.65rem;
+            text-transform: uppercase;
+            color: var(--accent-purple);
+            font-weight: bold;
+            margin-bottom: 0.5rem;
+            letter-spacing: 1px;
+        }
+
+        .card h2 {
+            margin-bottom: 0.8rem;
+            font-size: 1.2rem;
+        }
+
+        .card p {
+            color: var(--text-dim);
+            margin-bottom: 1.5rem;
+            flex-grow: 1;
+            font-size: 0.9rem;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 0.7rem 1.1rem;
+            background: var(--accent-purple);
+            color: white;
+            text-decoration: none;
+            border-radius: 8px;
+            font-weight: 600;
+            text-align: center;
+            font-size: 0.85rem;
+        }
+
+        footer {
+            text-align: center;
+            padding: 3rem 2rem;
+            color: var(--text-dim);
+            font-size: 0.8rem;
+            border-top: 1px solid #1e293b;
+        }
+    </style>
 </head>
 <body>
 
@@ -12,43 +207,47 @@
         <nav>
             <a href="index.html" class="logo">TerribleTech<span>.io</span></a>
             
+            <div class="header-tagline">Privacy. Security. Sovereignty.</div>
+
             <ul>
                 <li><a href="apps.html">Apps</a></li>
                 <li><a href="guides.html">Guides</a></li>
-                <li><a href="privacy-hardening.html">Security</a></li>
+                <li><a href="privacy-hardening.html">Privacy & Security</a></li>
             </ul>
-
-            <div class="header-tagline">Privacy. Security. Sovereignty.</div>
         </nav>
     </header>
 
     <main>
         <section class="hero">
-            <h1>"Breaking chains and building better."</h1>
-            <p>From Android hardening and network security to self-hosting. If it’s locked down, we’re opening it up.</p>
+            <h1>"Breaking chains and building better. From Android hardening and network security to self-hosting the services they want to rent to you. If it’s locked down, we’re opening it up."</h1>
         </section>
 
-        <article class="card">
-            <h2>Mobile Dev Toolkit</h2>
-            <p>Environments I use to build directly on Android, featuring Spck Editor and Acode.</p>
-            <a href="apps.html" class="btn">Explore Apps</a>
-        </article>
+        <section class="content-grid">
+            <article id="apps" class="card">
+                <div class="card-tag">Apps & Programs</div>
+                <h2>Mobile Dev Toolkit</h2>
+                <p>Environments I use to build directly on Android, featuring Spck Editor and Acode.</p>
+                <a href="apps.html" class="btn">Explore Apps</a>
+            </article>
 
-        <article class="card">
-            <h2>Technical Guides</h2>
-            <p>Walkthroughs for media automation, remote networking, and self-hosting with Tailscale and Stremio.</p>
-            <a href="guides.html" class="btn">Browse Guides</a>
-        </article>
+            <article id="guides" class="card">
+                <div class="card-tag">Guides</div>
+                <h2>Technical Guides</h2>
+                <p>Walkthroughs for media automation, remote networking, and self-hosting with Tailscale and Stremio.</p>
+                <a href="guides.html" class="btn">Browse Guides</a>
+            </article>
 
-        <article class="card">
-            <h2>Securing the Stack</h2>
-            <p>Take control of your digital footprint. Comprehensive strategies for private communication and network hardening.</p>
-            <a href="privacy-hardening.html" class="btn">Learn More</a>
-        </article>
+            <article id="privacy" class="card">
+                <div class="card-tag">Privacy & Security</div>
+                <h2>Securing the Stack</h2>
+                <p>Take control of your digital footprint. Comprehensive strategies for private communication and network hardening.</p>
+                <a href="privacy-hardening.html" class="btn">Learn More</a>
+            </article>
+        </section>
     </main>
 
-    <footer style="padding: 4rem 0; color: #94a3b8;">
-        <p>&copy; 2026 TerribleTech.io | Built on Android</p>
+    <footer>
+        <p>&copy; 2026 TerribleTech.io | Digital Excellence.</p>
     </footer>
 
 </body>

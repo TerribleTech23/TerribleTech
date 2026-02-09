@@ -3,75 +3,39 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Immich Self-Hosting Guide | TerribleTech</title>
-    <link rel="stylesheet" href="style.css">
+    <meta name="color-scheme" content="dark only">
+    <title>Immich Setup | TerribleTech</title>
+    <style>
+        /* Insert Master CSS from Stremio above */
+        pre { background: #0f172a; padding: 1rem; border-radius: 8px; overflow-x: auto; margin: 1rem 0; border: 1px solid #334155; }
+        pre code { color: #f8fafc; background: none; padding: 0; }
+    </style>
 </head>
 <body>
-
     <header>
         <nav>
             <a href="index.html" class="logo">TerribleTech<span>.io</span></a>
+            <div class="header-tagline">Privacy. Security. Sovereignty.</div>
             <ul>
                 <li><a href="apps.html">Apps</a></li>
                 <li><a href="guides.html">Guides</a></li>
-                <li><a href="privacy-hardening.html">Security</a></li>
+                <li><a href="privacy-hardening.html">Privacy & Security</a></li>
             </ul>
         </nav>
     </header>
-
     <main>
-        <h1>Immich Self-Hosting Guide</h1>
-        <p>Take control of your memories. This guide walks you through setting up Immich, a powerful self-hosted photo backup solution, on a dedicated server.</p>
-
-        <div class="card" style="border-left: 4px solid var(--accent); margin-bottom: 2rem;">
-            <strong>Server Note:</strong> This requires a dedicated machine (Mini PC, Pi, etc.) running Docker. Your Flint 2 router handles networking, but Immich needs its own "brain."
-        </div>
-
-        <div class="step-card">
-            <h3>Step 1: Update & Dependencies</h3>
-            <pre><code>sudo apt update && sudo apt upgrade -y
-sudo apt install git -y</code></pre>
-        </div>
-
-        <div class="step-card">
-            <h3>Step 2: Clone Immich</h3>
-            <pre><code>cd /opt
-git clone https://github.com/immich-app/immich-docs.git
-cd immich-docs/install</code></pre>
-        </div>
-
-        <div class="step-card">
-            <h3>Step 3: Configure Environment</h3>
-            <p>Copy the example env file and set your database password:</p>
-            <pre><code>cp .env.example .env
-nano .env</code></pre>
-        </div>
-
-        <div class="step-card">
-            <h3>Step 4: Storage Paths</h3>
-            <p>Create directories for your photos and database:</p>
-            <pre><code>sudo mkdir -p /mnt/immich/upload
-sudo mkdir -p /mnt/immich/database
-sudo chown -R 1000:1000 /mnt/immich</code></pre>
-        </div>
-
-        <div class="step-card">
-            <h3>Step 5: Launch</h3>
-            <p>Start the containers in detached mode:</p>
+        <div class="card">
+            <span class="card-tag">Deploy</span>
+            <h2>Docker Compose Setup</h2>
+            <p>Run the following to pull the latest Immich image to your server:</p>
             <pre><code>docker compose up -d</code></pre>
         </div>
-
-        <div class="step-card">
-            <h3>Step 6: Access & Mobile</h3>
-            <p>Open <code>http://your-server-ip:3000</code> to create your admin account. Then, download the Immich app on your S25 Ultra to begin your first backup.</p>
+        <div class="card">
+            <span class="card-tag">Config</span>
+            <h2>Environment Variables</h2>
+            <p>Ensure your <code>.env</code> file is properly configured with your upload location on your external drive.</p>
         </div>
-
         <a href="guides.html" class="btn-back">← Back to Guides</a>
     </main>
-
-    <footer>
-        <p style="text-align: center; color: var(--text-dim); padding: 2rem;">&copy; 2026 TerribleTech.io | Built on Android</p>
-    </footer>
-
 </body>
 </html>

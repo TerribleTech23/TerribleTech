@@ -3,39 +3,120 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="color-scheme" content="only dark">
     <title>Encrypted Comms | TerribleTech</title>
     <style>
         /* Reusing your root variables and base styles */
-        :root { --bg-dark: #0f172a; --card-bg: #1e293b; --text-main: #f8fafc; --text-dim: #94a3b8; --accent-purple: #8b5cf6; }
-        body { background-color: var(--bg-dark); color: var(--text-main); font-family: 'Segoe UI', sans-serif; line-height: 1.6; }
-        header { background: var(--card-bg); padding: 1.2rem; border-bottom: 2px solid var(--accent-purple); }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        :root { 
+            --bg-dark: #0f172a; 
+            --card-bg: #1e293b; 
+            --text-main: #f8fafc; 
+            --text-dim: #94a3b8; 
+            --accent-purple: #8b5cf6; 
+            color-scheme: only dark;
+        }
+        body { background-color: var(--bg-dark); color: var(--text-main); font-family: 'Segoe UI', Roboto, sans-serif; line-height: 1.6; }
+
+        /* Compact Header Fix - Matched to Index */
+        header { 
+            background: var(--card-bg); 
+            padding: 0.5rem 1rem; 
+            position: sticky; 
+            top: 0; 
+            z-index: 100; 
+            border-bottom: 2px solid var(--accent-purple); 
+            min-height: 60px; 
+            display: flex; 
+            align-items: center; 
+        }
+
+        /* Tighter Navigation - Matched to Index */
+        nav { 
+            display: flex; 
+            flex-direction: column; 
+            align-items: center; 
+            width: 100%;
+            max-width: 1100px; 
+            margin: 0 auto; 
+            gap: 0.4rem; 
+        }
+        @media (min-width: 768px) { nav { flex-direction: row; justify-content: space-between; gap: 0; } }
+
+        .logo { 
+            font-weight: 800; 
+            font-size: 1.2rem; 
+            background: linear-gradient(to right, #fff, var(--accent-purple)); 
+            -webkit-background-clip: text; 
+            -webkit-text-fill-color: transparent; 
+            text-decoration: none; 
+        }
+        .logo span { -webkit-text-fill-color: var(--accent-purple); font-weight: 900; }
+
+        .header-tagline { 
+            font-size: 0.65rem; 
+            color: var(--text-dim); 
+            text-transform: uppercase; 
+            letter-spacing: 1.2px; 
+            font-weight: 600; 
+            margin-bottom: 2px;
+        }
+
+        /* Compact Nav Buttons - Matched to Index */
+        nav ul { display: flex; list-style: none; gap: 0.4rem; flex-wrap: wrap; justify-content: center; row-gap: 0.4rem; }
+        nav a { 
+            color: var(--text-dim); 
+            text-decoration: none; 
+            font-size: 0.75rem; 
+            font-weight: 600; 
+            padding: 0.4rem 0.8rem; 
+            border-radius: 8px; 
+            background: rgba(255, 255, 255, 0.04); 
+            border: 1px solid rgba(255, 255, 255, 0.08); 
+            display: inline-block;
+        }
+        nav a:hover { color: var(--text-main); background: rgba(139, 92, 246, 0.15); border-color: var(--accent-purple); }
+
         main { max-width: 900px; margin: 0 auto; padding: 3rem 1.5rem; }
         .step-card { background: var(--card-bg); border: 1px solid #334155; padding: 2rem; border-radius: 12px; margin-bottom: 2rem; }
         .image-placeholder { width: 100%; height: 300px; background: #0f172a; border: 1px dashed #334155; display: flex; align-items: center; justify-content: center; border-radius: 8px; margin: 1.5rem 0; color: var(--text-dim); }
-        .btn { display: inline-block; padding: 0.7rem 1.1rem; background: var(--accent-purple); color: white; text-decoration: none; border-radius: 8px; font-weight: 600; }
+        .btn { display: inline-block; padding: 0.7rem 1.1rem; background: var(--accent-purple); color: white; text-decoration: none; border-radius: 8px; font-weight: 600; text-align: center; font-size: 0.85rem; }
+        footer { text-align: center; padding: 3rem 2rem; color: var(--text-dim); font-size: 0.8rem; border-top: 1px solid #1e293b; margin-top: 4rem; }
     </style>
 </head>
 <body>
-    <header><nav><a href="index.html" style="text-decoration:none; color:white; font-weight:800; font-size:1.6rem;">TerribleTech<span style="color:var(--accent-purple);">.io</span></a></nav></header>
+    <header>
+        <nav>
+            <a href="index.html" class="logo">TerribleTech<span>.io</span></a>
+            <div class="header-tagline">Privacy. Security. Sovereignty.</div>
+            <ul>
+                <li><a href="apps.html">The Stack</a></li>
+                <li><a href="privacy-hardening.html">Hardening</a></li>
+                <li><a href="guides.html">Home Lab</a></li>
+                <li><a href="thevault.html">The Vault</a></li>
+            </ul>
+        </nav>
+    </header>
     <main>
-        <h1 style="font-size:2.8rem; background: linear-gradient(to right, #fff, var(--accent-purple)); -webkit-background-clip: text; -webkit-text-fill-color: transparent;">Encrypted Comms</h1>
-        <p style="color:var(--text-dim); margin-bottom: 2rem;">Stop giving your data to Big Tech. Use services that can't read your messages even if they wanted to.</p>
+        <h1 style="font-size:2.8rem; background: linear-gradient(to right, #fff, var(--accent-purple)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; text-align: center; margin-bottom: 1rem;">Encrypted Comms</h1>
+        <p style="text-align:center; color:var(--text-dim); margin-bottom: 2rem;">Stop giving your data to Big Tech. Use services that can't read your messages even if they wanted to.</p>
 
         <div class="step-card">
             <h3 style="color:var(--accent-purple);">01. Proton Mail</h3>
             <p>Ditch Gmail for zero-access encryption. Proton keeps your emails private and is based in Switzerland for strong legal protection.</p>
-            <a href="https://proton.me/mail" target="_blank" class="btn">Get Proton Mail</a>
+            <a href="https://proton.me/mail" target="_blank" class="btn" style="margin-top: 1rem;">Get Proton Mail</a>
             <div class="image-placeholder">Screen: Proton Mail Inbox with Encryption Badge</div>
         </div>
 
         <div class="step-card">
             <h3 style="color:var(--accent-purple);">02. Signal Messenger</h3>
             <p>The gold standard for private chat. Signal is open-source and collects zero metadata about who you talk to or when.</p>
-            <a href="https://signal.org/download/" target="_blank" class="btn">Get Signal</a>
+            <a href="https://signal.org/download/" target="_blank" class="btn" style="margin-top: 1rem;">Get Signal</a>
             <div class="image-placeholder">Screen: Signal Privacy Settings and Sealed Sender</div>
         </div>
 
         <a href="privacy-hardening.html" style="color:var(--accent-purple); text-decoration:none; font-weight:bold;">← Back to Privacy</a>
     </main>
+    <footer><p>&copy; 2026 TerribleTech.io | Digital Excellence.</p></footer>
 </body>
 </html>

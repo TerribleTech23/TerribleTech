@@ -14,20 +14,63 @@
         }
         body { background-color: var(--bg-dark); color: var(--text-main); font-family: 'Segoe UI', Roboto, sans-serif; line-height: 1.6; }
 
+        /* Compact Header Fix - Matched to Index */
         header {
-            background: var(--card-bg); padding: 1rem; position: sticky; top: 0; z-index: 100;
-            border-bottom: 2px solid var(--accent-purple);
+            background: var(--card-bg); 
+            padding: 0.5rem 1rem; 
+            position: sticky; 
+            top: 0; 
+            z-index: 100;
+            border-bottom: 2px solid var(--accent-purple); 
+            min-height: 60px; 
+            display: flex; 
+            align-items: center;
         }
 
-        nav { display: flex; flex-direction: column; align-items: center; max-width: 1100px; margin: 0 auto; gap: 0.8rem; }
-        @media (min-width: 768px) { nav { flex-direction: row; justify-content: space-between; } }
+        /* Tighter Navigation - Matched to Index */
+        nav { 
+            display: flex; 
+            flex-direction: column; 
+            align-items: center; 
+            width: 100%; 
+            max-width: 1100px; 
+            margin: 0 auto; 
+            gap: 0.4rem; 
+        } 
+        @media (min-width: 768px) { nav { flex-direction: row; justify-content: space-between; gap: 0; } }
 
-        .logo { font-weight: 800; font-size: 1.4rem; background: linear-gradient(to right, #fff, var(--accent-purple)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; text-decoration: none; }
+        .logo { 
+            font-weight: 800; 
+            font-size: 1.2rem; 
+            background: linear-gradient(to right, #fff, var(--accent-purple)); 
+            -webkit-background-clip: text; 
+            -webkit-text-fill-color: transparent; 
+            text-decoration: none; 
+        }
         .logo span { -webkit-text-fill-color: var(--accent-purple); font-weight: 900; }
-        .header-tagline { font-size: 0.75rem; color: var(--text-dim); text-transform: uppercase; letter-spacing: 1.5px; font-weight: 600; }
 
-        nav ul { display: flex; list-style: none; gap: 0.5rem; flex-wrap: wrap; justify-content: center; }
-        nav a { color: var(--text-dim); text-decoration: none; font-size: 0.85rem; font-weight: 600; padding: 0.5rem 0.8rem; border-radius: 8px; background: rgba(255, 255, 255, 0.04); border: 1px solid rgba(255, 255, 255, 0.08); }
+        .header-tagline { 
+            font-size: 0.65rem; 
+            color: var(--text-dim); 
+            text-transform: uppercase; 
+            letter-spacing: 1.2px; 
+            font-weight: 600; 
+            margin-bottom: 2px; 
+        }
+
+        /* Compact Nav Buttons - Matched to Index */
+        nav ul { display: flex; list-style: none; gap: 0.4rem; flex-wrap: wrap; justify-content: center; row-gap: 0.4rem; }
+        nav a { 
+            color: var(--text-dim); 
+            text-decoration: none; 
+            font-size: 0.75rem; 
+            font-weight: 600; 
+            padding: 0.4rem 0.8rem; 
+            border-radius: 8px; 
+            background: rgba(255, 255, 255, 0.04); 
+            border: 1px solid rgba(255, 255, 255, 0.08); 
+            display: inline-block; 
+        }
         nav a:hover { color: var(--text-main); background: rgba(139, 92, 246, 0.15); border-color: var(--accent-purple); }
 
         main { max-width: 1100px; margin: 0 auto; padding: 2.5rem 1.5rem; }
@@ -54,6 +97,7 @@
                 <li><a href="apps.html">The Stack</a></li>
                 <li><a href="privacy-hardening.html" style="color: var(--accent-purple); border-color: var(--accent-purple); background: rgba(139, 92, 246, 0.15);">Hardening</a></li>
                 <li><a href="guides.html">Home Lab</a></li>
+                <li><a href="thevault.html">The Vault</a></li>
             </ul>
         </nav>
     </header>

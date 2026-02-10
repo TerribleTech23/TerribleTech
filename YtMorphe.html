@@ -3,14 +3,11 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="color-scheme" content="only dark">
     <title>YouTube Morphe Guide | TerribleTech</title>
     <style>
         /* --- General Theme Styles (Matching TerribleTech.io) --- */
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
 
         :root {
             --bg-dark: #0f172a;
@@ -19,42 +16,74 @@
             --text-dim: #94a3b8;
             --accent-purple: #8b5cf6; 
             --accent-red: #ef4444;
+            color-scheme: only dark;
         }
 
         body {
             background-color: var(--bg-dark);
             color: var(--text-main);
-            font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+            font-family: 'Segoe UI', Roboto, sans-serif;
             line-height: 1.6;
         }
 
+        /* Compact Header Fix - Matched to Index */
         header {
-            background: var(--card-bg);
-            padding: 1.2rem;
-            border-bottom: 2px solid var(--accent-purple);
-            position: sticky;
-            top: 0;
+            background: var(--card-bg); 
+            padding: 0.5rem 1rem; 
+            position: sticky; 
+            top: 0; 
             z-index: 100;
-        }
-
-        nav {
-            max-width: 1100px;
-            margin: 0 auto;
-            display: flex;
-            justify-content: space-between;
+            border-bottom: 2px solid var(--accent-purple); 
+            min-height: 60px; 
+            display: flex; 
             align-items: center;
         }
 
-        .logo {
-            font-weight: 800;
-            font-size: 1.6rem;
-            background: linear-gradient(to right, #fff, var(--accent-purple));
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            text-decoration: none;
+        /* Tighter Navigation - Matched to Index */
+        nav { 
+            display: flex; 
+            flex-direction: column; 
+            align-items: center; 
+            width: 100%; 
+            max-width: 1100px; 
+            margin: 0 auto; 
+            gap: 0.4rem; 
+        } 
+        @media (min-width: 768px) { nav { flex-direction: row; justify-content: space-between; gap: 0; } }
+
+        .logo { 
+            font-weight: 800; 
+            font-size: 1.2rem; 
+            background: linear-gradient(to right, #fff, var(--accent-purple)); 
+            -webkit-background-clip: text; 
+            -webkit-text-fill-color: transparent; 
+            text-decoration: none; 
+        }
+        .logo span { -webkit-text-fill-color: var(--accent-purple); font-weight: 900; }
+
+        .header-tagline { 
+            font-size: 0.65rem; 
+            color: var(--text-dim); 
+            text-transform: uppercase; 
+            letter-spacing: 1.2px; 
+            font-weight: 600; 
+            margin-bottom: 2px; 
         }
 
-        .logo span { -webkit-text-fill-color: var(--accent-purple); }
+        /* Compact Nav Buttons - Matched to Index */
+        nav ul { display: flex; list-style: none; gap: 0.4rem; flex-wrap: wrap; justify-content: center; row-gap: 0.4rem; }
+        nav a { 
+            color: var(--text-dim); 
+            text-decoration: none; 
+            font-size: 0.75rem; 
+            font-weight: 600; 
+            padding: 0.4rem 0.8rem; 
+            border-radius: 8px; 
+            background: rgba(255, 255, 255, 0.04); 
+            border: 1px solid rgba(255, 255, 255, 0.08); 
+            display: inline-block; 
+        }
+        nav a:hover { color: var(--text-main); background: rgba(139, 92, 246, 0.15); border-color: var(--accent-purple); }
 
         main {
             max-width: 900px;
@@ -68,6 +97,7 @@
             background: linear-gradient(to right, #fff, var(--accent-purple));
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
+            text-align: center;
         }
 
         h2 {
@@ -87,6 +117,7 @@
             padding: 1.5rem;
             border-radius: 8px;
             margin: 2rem 0;
+            color: var(--text-dim);
         }
 
         .warning strong { color: var(--accent-red); }
@@ -116,11 +147,12 @@
             display: inline-block;
             background: var(--accent-purple);
             color: #fff;
-            padding: 0.6rem 1.2rem;
-            border-radius: 6px;
+            padding: 0.7rem 1.1rem;
+            border-radius: 8px;
             text-decoration: none;
             font-weight: 600;
             margin: 0.5rem 0;
+            font-size: 0.85rem;
             transition: opacity 0.2s;
         }
 
@@ -145,6 +177,7 @@
             padding: 0.2rem 0.4rem;
             border-radius: 4px;
             color: var(--accent-purple);
+            font-family: monospace;
         }
 
         .btn-back {
@@ -159,7 +192,7 @@
             text-align: center;
             padding: 4rem 2rem;
             color: var(--text-dim);
-            font-size: 0.85rem;
+            font-size: 0.8rem;
             border-top: 1px solid #1e293b;
         }
     </style>
@@ -169,12 +202,19 @@
     <header>
         <nav>
             <a href="index.html" class="logo">TerribleTech<span>.io</span></a>
+            <div class="header-tagline">Privacy. Security. Sovereignty.</div>
+            <ul>
+                <li><a href="apps.html">The Stack</a></li>
+                <li><a href="privacy-hardening.html">Hardening</a></li>
+                <li><a href="guides.html">Home Lab</a></li>
+                <li><a href="thevault.html">The Vault</a></li>
+            </ul>
         </nav>
     </header>
 
     <main>
         <h1>YouTube Morphe</h1>
-        <p>A specialized, modified YouTube client built for the Android ecosystem. This guide ensures you get the most out of background playback, sponsor-blocking, and ad-free viewing.</p>
+        <p style="text-align:center;">A specialized, modified YouTube client built for the Android ecosystem. This guide ensures you get the most out of background playback, sponsor-blocking, and ad-free viewing.</p>
 
         <div class="warning">
             <strong>Security Notice:</strong> Always download these tools from official sources. This guide points directly to the <code>MorpheApp</code> organization to ensure you are getting legitimate APKs.
@@ -222,7 +262,7 @@
     </main>
 
     <footer>
-        <p>&copy; 2026 TerribleTech.io | Built on Android</p>
+        <p>&copy; 2026 TerribleTech.io | Digital Excellence.</p>
     </footer>
 
 </body>

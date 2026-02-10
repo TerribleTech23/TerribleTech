@@ -3,12 +3,14 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="color-scheme" content="only dark">
     <title>Hardening | TerribleTech</title>
     <style>
         * { margin: 0; padding: 0; box-sizing: border-box; }
         :root {
             --bg-dark: #0f172a; --card-bg: #1e293b; --text-main: #f8fafc;
             --text-dim: #94a3b8; --accent-purple: #8b5cf6; 
+            color-scheme: only dark;
         }
         body { background-color: var(--bg-dark); color: var(--text-main); font-family: 'Segoe UI', Roboto, sans-serif; line-height: 1.6; }
 
@@ -29,7 +31,7 @@
         nav a:hover { color: var(--text-main); background: rgba(139, 92, 246, 0.15); border-color: var(--accent-purple); }
 
         main { max-width: 1100px; margin: 0 auto; padding: 2.5rem 1.5rem; }
-        h1 { font-size: 2.8rem; text-align: center; margin-bottom: 1rem; background: linear-gradient(to right, #fff, var(--accent-purple)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; font-weight: 700; }
+        h1 { font-size: 2.8rem; text-align: center; margin-bottom: 1rem; background: linear-gradient(to bottom, #fff, var(--accent-purple)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; font-weight: 700; }
         
         .content-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 1.5rem; padding-top: 2rem; }
         .card { background: var(--card-bg); padding: 1.8rem; border-radius: 16px; border: 1px solid #334155; transition: 0.3s; display: flex; flex-direction: column; }

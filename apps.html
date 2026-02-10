@@ -17,7 +17,6 @@
         }
         body { background-color: var(--bg-dark); color: var(--text-main); font-family: 'Segoe UI', Roboto, sans-serif; line-height: 1.6; }
         
-        /* Compact Header Fix - Matched to Index */
         header { 
             background: var(--card-bg); 
             padding: 0.5rem 1rem; 
@@ -30,7 +29,6 @@
             align-items: center; 
         }
 
-        /* Tighter Navigation - Matched to Index */
         nav { 
             display: flex; 
             flex-direction: column; 
@@ -61,7 +59,6 @@
             margin-bottom: 2px;
         }
 
-        /* Compact Nav Buttons - Matched to Index */
         nav ul { display: flex; list-style: none; gap: 0.4rem; flex-wrap: wrap; justify-content: center; row-gap: 0.4rem; }
         nav a { 
             color: var(--text-dim); 
@@ -77,7 +74,17 @@
         nav a:hover { color: var(--text-main); background: rgba(139, 92, 246, 0.15); border-color: var(--accent-purple); }
 
         main { max-width: 1100px; margin: 0 auto; padding: 2.5rem 1.5rem; }
-        h1 { font-size: 2.8rem; text-align: center; margin-bottom: 1rem; background: linear-gradient(to right, #fff, var(--accent-purple)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; font-weight: 700; }
+        
+        /* Fixed gradient to match Home Lab (top to bottom) */
+        h1 { 
+            font-size: 2.8rem; 
+            text-align: center; 
+            margin-bottom: 1rem; 
+            background: linear-gradient(to bottom, #fff, var(--accent-purple)); 
+            -webkit-background-clip: text; 
+            -webkit-text-fill-color: transparent; 
+            font-weight: 700; 
+        }
         
         .app-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1.5rem; padding: 2rem 0; }
         .app-card { background: var(--card-bg); padding: 1.8rem; border-radius: 16px; border: 1px solid #334155; transition: 0.3s; }

@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="color-scheme" content="only dark">
+    <title>The Vault | TerribleTech</title>
+    <style>
+        /* Reusing the exact styling for uniformity across the site */
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        :root { 
+            --bg-dark: #0f172a; 
+            --card-bg: #1e293b; 
+            --text-main: #f8fafc; 
+            --text-dim: #94a3b8; 
+            --accent-purple: #8b5cf6; 
+            color-scheme: only dark;
+        }
+        body { background-color: var(--bg-dark); color: var(--text-main); font-family: 'Segoe UI', sans-serif; line-height: 1.6; }
+        header { background: var(--card-bg); padding: 1rem; position: sticky; top: 0; z-index: 100; border-bottom: 2px solid var(--accent-purple); }
+        nav { display: flex; flex-direction: column; align-items: center; max-width: 1100px; margin: 0 auto; gap: 0.8rem; }
+        @media (min-width: 768px) { nav { flex-direction: row; justify-content: space-between; } }
+        .logo { font-weight: 800; font-size: 1.4rem; background: linear-gradient(to right, #fff, var(--accent-purple)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; text-decoration: none; }
+        .logo span { -webkit-text-fill-color: var(--accent-purple); }
+        .header-tagline { font-size: 0.75rem; color: var(--text-dim); text-transform: uppercase; letter-spacing: 1.5px; font-weight: 600; }
+        
+        /* Fixed navigation: Added row-gap to match horizontal spacing when buttons wrap */
+        nav ul { 
+            display: flex; 
+            list-style: none; 
+            gap: 0.5rem; 
+            row-gap: 0.5rem; /* This fixes the vertical spacing on mobile wrap */
+            flex-wrap: wrap; 
+            justify-content: center; 
+        }
+
+        nav a { color: var(--text-dim); text-decoration: none; font-size: 0.85rem; font-weight: 600; padding: 0.5rem 0.8rem; border-radius: 8px; background: rgba(255, 255, 255, 0.04); border: 1px solid rgba(255, 255, 255, 0.08); display: inline-block; }
+        nav a:hover { color: var(--text-main); background: rgba(139, 92, 246, 0.15); border-color: var(--accent-purple); }
+        
+        main { max-width: 1100px; margin: 0 auto; padding: 2.5rem 1.5rem; }
+        h1 { font-size: 2.8rem; text-align: center; margin-bottom: 1rem; background: linear-gradient(to bottom, #fff, var(--accent-purple)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; font-weight: 700; }
+        .content-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 1.5rem; padding-top: 2rem; }
+        .card { background: var(--card-bg); padding: 1.8rem; border-radius: 16px; border: 1px solid #334155; transition: 0.3s; display: flex; flex-direction: column; }
+        .card:hover { transform: translateY(-5px); border-color: var(--accent-purple); }
+        .tag { font-size: 0.65rem; text-transform: uppercase; color: var(--accent-purple); font-weight: bold; margin-bottom: 0.5rem; }
+        .card h2 { margin-bottom: 0.8rem; font-size: 1.4rem; color: var(--accent-purple); }
+        .card p { color: var(--text-dim); margin-bottom: 1.5rem; flex-grow: 1; font-size: 0.9rem; }
+        .btn { display: inline-block; padding: 0.7rem 1.1rem; background: var(--accent-purple); color: white; text-decoration: none; border-radius: 8px; font-weight: 600; text-align: center; }
+        footer { text-align: center; padding: 3rem 2rem; color: var(--text-dim); font-size: 0.8rem; border-top: 1px solid #1e293b; margin-top: 4rem; }
+    </style>
+</head>
+<body>
+    <header>
+        <nav>
+            <a href="index.html" class="logo">TerribleTech<span>.io</span></a>
+            <div class="header-tagline">Privacy. Security. Sovereignty.</div>
+            <ul>
+                <li><a href="apps.html">The Stack</a></li>
+                <li><a href="privacy-hardening.html">Hardening</a></li>
+                <li><a href="guides.html">Home Lab</a></li>
+                <li><a href="thevault.html" style="color: var(--accent-purple); border-color: var(--accent-purple); background: rgba(139, 92, 246, 0.15);">The Vault</a></li>
+            </ul>
+        </nav>
+    </header>
+    <main>
+        <h1>The Vault</h1>
+        <p style="text-align:center; color:var(--text-dim);">Essential apps for independent media consumption and library management.</p>
+        <div class="content-grid">
+            <article class="card">
+                <span class="tag">Entertainment</span>
+                <h2>YouTube Morphe</h2>
+                <p>Hardened YouTube client featuring ad-blocking, background play, and SponsorBlock integration.</p>
+                <a href="#" class="btn">Explore App</a>
+            </article>
+
+            <article class="card">
+                <span class="tag">TV / Android</span>
+                <h2>SmartTube</h2>
+                <p>Advanced open-source YouTube player for Android TV boxes, including ad-blocking and 4K support.</p>
+                <a href="#" class="btn">Explore App</a>
+            </article>
+
+            <article class="card">
+                <span class="tag">Streaming</span>
+                <h2>Stremio + Debrid</h2>
+                <p>The ultimate setup for high-speed, buffer-free 4K media streaming via Real-Debrid.</p>
+                <a href="#" class="btn">Explore App</a>
+            </article>
+
+            <article class="card">
+                <span class="tag">Search</span>
+                <h2>Squid.wtf</h2>
+                <p>Specialized search engine for scraping and finding high-quality media links across the web.</p>
+                <a href="#" class="btn">Explore App</a>
+            </article>
+
+            <article class="card">
+                <span class="tag">Live TV</span>
+                <h2>TiviMate</h2>
+                <p>Premium IPTV player offering a seamless, professional interface for live television.</p>
+                <a href="#" class="btn">Explore App</a>
+            </article>
+
+            <article class="card">
+                <span class="tag">Self-Host</span>
+                <h2>Immich</h2>
+                <p>Privacy-first photo and video management designed to keep your data under your control.</p>
+                <a href="#" class="btn">Explore App</a>
+            </article>
+        </div>
+    </main>
+    <footer><p>&copy; 2026 TerribleTech.io | Digital Excellence.</p></footer>
+</body>
+</html>

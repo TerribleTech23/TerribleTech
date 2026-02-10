@@ -14,7 +14,6 @@
         }
         body { background-color: var(--bg-dark); color: var(--text-main); font-family: 'Segoe UI', Roboto, sans-serif; line-height: 1.6; }
 
-        /* Compact Header Fix */
         header {
             background: var(--card-bg); 
             padding: 0.5rem 1rem; 
@@ -27,7 +26,6 @@
             align-items: center;
         }
 
-        /* Tighter Navigation */
         nav { display: flex; flex-direction: column; align-items: center; width: 100%; max-width: 1100px; margin: 0 auto; gap: 0.4rem; } 
         @media (min-width: 768px) { nav { flex-direction: row; justify-content: space-between; gap: 0; } }
 
@@ -36,62 +34,40 @@
 
         .header-tagline { font-size: 0.65rem; color: var(--text-dim); text-transform: uppercase; letter-spacing: 1.2px; font-weight: 600; margin-bottom: 2px; }
 
-        /* Compact Nav Buttons */
         nav ul { display: flex; list-style: none; gap: 0.4rem; flex-wrap: wrap; justify-content: center; row-gap: 0.4rem; }
         nav a { color: var(--text-dim); text-decoration: none; font-size: 0.75rem; font-weight: 600; padding: 0.4rem 0.8rem; border-radius: 8px; background: rgba(255, 255, 255, 0.04); border: 1px solid rgba(255, 255, 255, 0.08); display: inline-block; }
         nav a:hover { color: var(--text-main); background: rgba(139, 92, 246, 0.15); border-color: var(--accent-purple); }
 
         main { max-width: 1100px; margin: 0 auto; padding: 1.5rem 1.5rem; } 
         .hero { text-align: center; margin-bottom: 2.5rem; }
-        
-        /* Updated gradient to match Home Lab style (top to bottom) */
-        .hero h1 { 
-            font-size: 1.8rem; 
-            background: linear-gradient(to bottom, #ffffff, #a78bfa); 
-            -webkit-background-clip: text; 
-            -webkit-text-fill-color: transparent; 
-            font-weight: 700; 
-            line-height: 1.3; 
-        }
+        .hero h1 { font-size: 1.8rem; background: linear-gradient(to bottom, #ffffff, #a78bfa); -webkit-background-clip: text; -webkit-text-fill-color: transparent; font-weight: 700; line-height: 1.3; }
 
+        /* Grid adjusted for 4 cards */
         .content-grid { display: grid; grid-template-columns: 1fr; gap: 1.5rem; }
-        @media (min-width: 900px) { .content-grid { grid-template-columns: repeat(3, 1fr); } }
+        @media (min-width: 600px) { .content-grid { grid-template-columns: repeat(2, 1fr); } }
+        @media (min-width: 1100px) { .content-grid { grid-template-columns: repeat(4, 1fr); } }
 
         .card { background: var(--card-bg); padding: 1.8rem; border-radius: 16px; border: 1px solid #334155; transition: 0.3s; display: flex; flex-direction: column; }
         .card:hover { transform: translateY(-5px); border-color: var(--accent-purple); }
-        .card-tag { font-size: 0.65rem; text-transform: uppercase; color: var(--accent-purple); font-weight: bold; margin-bottom: 0.5rem; }
+        
+        /* Updated tag to White as discussed */
+        .card-tag { font-size: 0.65rem; text-transform: uppercase; color: #ffffff; font-weight: bold; margin-bottom: 0.5rem; letter-spacing: 1px; }
+        
         .card h2 { margin-bottom: 0.8rem; font-size: 1.4rem; color: var(--accent-purple); }
         .card p { color: var(--text-dim); margin-bottom: 1.5rem; flex-grow: 1; font-size: 0.9rem; }
 
         .btn { display: inline-block; padding: 0.7rem 1.1rem; background: var(--accent-purple); color: white; text-decoration: none; border-radius: 8px; font-weight: 600; text-align: center; font-size: 0.85rem; border: none; cursor: pointer; }
         
         .security-section { text-align: center; padding: 40px 0; }
-        #hacker-overlay {
-            display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%;
-            background: black; color: #00ff00; font-family: 'Courier New', monospace;
-            padding: 20px; z-index: 10000; overflow: hidden; white-space: pre-wrap; font-size: 14px;
-        }
+        #hacker-overlay { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: black; color: #00ff00; font-family: 'Courier New', monospace; padding: 20px; z-index: 10000; overflow: hidden; white-space: pre-wrap; font-size: 14px; }
 
         footer { text-align: center; padding: 3rem 2rem; color: var(--text-dim); font-size: 0.8rem; border-top: 1px solid #1e293b; }
 
-        /* --- GLASS COOKIE BANNER --- */
-        .cookie-banner {
-            position: fixed; bottom: 20px; left: 50%; transform: translateX(-50%);
-            width: 95%; max-width: 750px; background: rgba(30, 41, 59, 0.75);
-            backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px); color: white;
-            padding: 1.25rem 1.5rem; display: none; justify-content: space-between;
-            align-items: center; border-radius: 12px; z-index: 9999;
-            border: 1px solid rgba(139, 92, 246, 0.4); box-shadow: 0 10px 30px rgba(0, 0, 0, 0.6);
-        }
+        .cookie-banner { position: fixed; bottom: 20px; left: 50%; transform: translateX(-50%); width: 95%; max-width: 750px; background: rgba(30, 41, 59, 0.75); backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px); color: white; padding: 1.25rem 1.5rem; display: none; justify-content: space-between; align-items: center; border-radius: 12px; z-index: 9999; border: 1px solid rgba(139, 92, 246, 0.4); box-shadow: 0 10px 30px rgba(0, 0, 0, 0.6); }
         .cookie-content { display: flex; align-items: center; gap: 8px; }
         .cookie-banner span { font-size: 0.85rem; font-weight: 500; }
         .inline-cookie { font-size: 1.2rem; } 
-        .cookie-banner button {
-            background: var(--accent-purple); color: white; border: none;
-            padding: 0.6rem 2rem; border-radius: 8px; cursor: pointer;
-            font-weight: 700; font-size: 0.8rem; white-space: nowrap;
-            transition: 0.3s ease; min-width: 140px; margin-left: 20px;
-        }
+        .cookie-banner button { background: var(--accent-purple); color: white; border: none; padding: 0.6rem 2rem; border-radius: 8px; cursor: pointer; font-weight: 700; font-size: 0.8rem; white-space: nowrap; transition: 0.3s ease; min-width: 140px; margin-left: 20px; }
         .cookie-link { color: var(--text-dim); cursor: pointer; text-decoration: none; background: none; border: none; font-size: 0.8rem; margin-left: 10px; }
     </style>
 </head>
@@ -130,6 +106,12 @@
                 <h2>Home Lab</h2>
                 <p>Walkthroughs for media automation, remote networking via Tailscale, and self-hosted photo backups.</p>
                 <a href="guides.html" class="btn">Build Something</a>
+            </article>
+            <article class="card">
+                <div class="card-tag">Archives</div>
+                <h2>The Vault</h2>
+                <p>A curated collection of independent media tools, hardened players, and library management software.</p>
+                <a href="thevault.html" class="btn">Enter Vault</a>
             </article>
         </section>
 

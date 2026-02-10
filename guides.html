@@ -82,7 +82,10 @@
         .content-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 1.5rem; padding-top: 2rem; }
         .card { background: var(--card-bg); padding: 1.8rem; border-radius: 16px; border: 1px solid #334155; transition: 0.3s; display: flex; flex-direction: column; }
         .card:hover { transform: translateY(-5px); border-color: var(--accent-purple); }
-        .tag { font-size: 0.65rem; text-transform: uppercase; color: var(--accent-purple); font-weight: bold; margin-bottom: 0.5rem; }
+        
+        /* Updated Tag to White */
+        .tag { font-size: 0.65rem; text-transform: uppercase; color: #ffffff; font-weight: bold; margin-bottom: 0.5rem; letter-spacing: 1px; }
+        
         .card h2 { margin-bottom: 0.8rem; font-size: 1.4rem; color: var(--accent-purple); }
         .card p { color: var(--text-dim); margin-bottom: 1.5rem; flex-grow: 1; font-size: 0.9rem; }
         .btn { display: inline-block; padding: 0.7rem 1.1rem; background: var(--accent-purple); color: white; text-decoration: none; border-radius: 8px; font-weight: 600; text-align: center; }
@@ -108,7 +111,9 @@
         <div class="content-grid">
             <article class="card"><span class="tag">Network</span><h2>Tailscale Exit Node</h2><p>Using your home network as a secure mobile gateway anywhere in the world.</p><a href="tailscale.html" class="btn">Read Guide</a></article>
             <article class="card"><span class="tag">Media</span><h2>Stremio + Debrid</h2><p>The ultimate setup for buffer-free 4K media streaming via Real-Debrid.</p><a href="stremio.html" class="btn">Read Guide</a></article>
-            <article class="card"><span class="tag">Self-Host</span><h2>Immich Backup</h2><p>Self-hosting a Google Photos replacement on a dedicated server or NAS.</p><a href="immich.html" class="btn">Read Guide</a></article>
+            
+            <article class="card"><span class="tag">Self-Host</span><h2>Immich Backup</h2><p>Self-hosting a Google Photos replacement on a dedicated server or NAS.</p><a href="immich-guide.html" class="btn">Read Guide</a></article>
+            
             <article class="card"><span class="tag">Media</span><h2>YouTube Morphe</h2><p>Hardening your mobile YouTube experience with background play and ad-blocking.</p><a href="YtMorphe.html" class="btn">Read Guide</a></article>
         </div>
     </main>

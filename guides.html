@@ -3,87 +3,120 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Home Lab | ArmasBuilt Technical Archives</title>
-    <link rel="stylesheet" href="../style.css">
+    <meta name="color-scheme" content="only dark">
+    <title>Home Lab | TerribleTech</title>
     <style>
-        /* Mobile Jump Fix & Smart Break */
-        .mobile-break { display: none; }
-        @media (max-width: 768px) {
-            .mobile-break { display: inline; }
+        /* Reusing the styling for exact consistency across the site */
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        :root { 
+            --bg-dark: #0f172a; 
+            --card-bg: #1e293b; 
+            --text-main: #f8fafc; 
+            --text-dim: #94a3b8; 
+            --accent-purple: #8b5cf6; 
+            color-scheme: only dark;
+        }
+        body { background-color: var(--bg-dark); color: var(--text-main); font-family: 'Segoe UI', sans-serif; line-height: 1.6; }
+        
+        /* Compact Header Fix - Matched to Index */
+        header { 
+            background: var(--card-bg); 
+            padding: 0.5rem 1rem; 
+            position: sticky; 
+            top: 0; 
+            z-index: 100; 
+            border-bottom: 2px solid var(--accent-purple); 
+            min-height: 60px; 
+            display: flex; 
+            align-items: center; 
         }
 
-        /* Syncing the Card Titles to Purple to match your new Guides Index */
-        .card h3 {
-            color: #a855f7 !important;
-            margin: 10px 0;
+        /* Tighter Navigation - Matched to Index */
+        nav { 
+            display: flex; 
+            flex-direction: column; 
+            align-items: center; 
+            width: 100%;
+            max-width: 1100px; 
+            margin: 0 auto; 
+            gap: 0.4rem; 
+        }
+        @media (min-width: 768px) { nav { flex-direction: row; justify-content: space-between; gap: 0; } }
+
+        .logo { 
+            font-weight: 800; 
+            font-size: 1.2rem; 
+            background: linear-gradient(to right, #fff, var(--accent-purple)); 
+            -webkit-background-clip: text; 
+            -webkit-text-fill-color: transparent; 
+            text-decoration: none; 
+        }
+        .logo span { -webkit-text-fill-color: var(--accent-purple); font-weight: 900; }
+
+        .header-tagline { 
+            font-size: 0.65rem; 
+            color: var(--text-dim); 
+            text-transform: uppercase; 
+            letter-spacing: 1.2px; 
+            font-weight: 600; 
+            margin-bottom: 2px;
         }
 
-        /* Ensuring the main title matches the Red Archive style */
-        .guides-title {
-            color: #ef4444 !important; 
-            text-transform: uppercase;
-            letter-spacing: 2px;
-            font-weight: bold;
-            border-top: 1px solid rgba(239, 68, 68, 0.2);
-            border-bottom: 1px solid rgba(239, 68, 68, 0.2);
-            padding: 10px 0;
-            margin: 20px 0;
-            text-align: center;
+        /* Compact Nav Buttons - Matched to Index */
+        nav ul { display: flex; list-style: none; gap: 0.4rem; flex-wrap: wrap; justify-content: center; row-gap: 0.4rem; }
+        nav a { 
+            color: var(--text-dim); 
+            text-decoration: none; 
+            font-size: 0.75rem; 
+            font-weight: 600; 
+            padding: 0.4rem 0.8rem; 
+            border-radius: 8px; 
+            background: rgba(255, 255, 255, 0.04); 
+            border: 1px solid rgba(255, 255, 255, 0.08); 
+            display: inline-block;
         }
+        nav a:hover { color: var(--text-main); background: rgba(139, 92, 246, 0.15); border-color: var(--accent-purple); }
+
+        main { max-width: 1100px; margin: 0 auto; padding: 2.5rem 1.5rem; }
+        h1 { font-size: 2.8rem; text-align: center; margin-bottom: 1rem; background: linear-gradient(to bottom, #fff, var(--accent-purple)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; font-weight: 700; }
+        .content-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 1.5rem; padding-top: 2rem; }
+        .card { background: var(--card-bg); padding: 1.8rem; border-radius: 16px; border: 1px solid #334155; transition: 0.3s; display: flex; flex-direction: column; }
+        .card:hover { transform: translateY(-5px); border-color: var(--accent-purple); }
+        
+        /* Updated Tag to White */
+        .tag { font-size: 0.65rem; text-transform: uppercase; color: #ffffff; font-weight: bold; margin-bottom: 0.5rem; letter-spacing: 1px; }
+        
+        .card h2 { margin-bottom: 0.8rem; font-size: 1.4rem; color: var(--accent-purple); }
+        .card p { color: var(--text-dim); margin-bottom: 1.5rem; flex-grow: 1; font-size: 0.9rem; }
+        .btn { display: inline-block; padding: 0.7rem 1.1rem; background: var(--accent-purple); color: white; text-decoration: none; border-radius: 8px; font-weight: 600; text-align: center; }
+        footer { text-align: center; padding: 3rem 2rem; color: var(--text-dim); font-size: 0.8rem; border-top: 1px solid #1e293b; margin-top: 4rem; }
     </style>
 </head>
 <body>
-    <div class="container">
-        <header>
-            <img src="../armasbuilt-shield.png" alt="ArmasBuilt" class="main-logo">
-            <h1>Armas&bull;Built</h1>
+    <header>
+        <nav>
+            <a href="index.html" class="logo">TerribleTech<span>.io</span></a>
+            <div class="header-tagline">Privacy. Security. Sovereignty.</div>
+            <ul>
+                <li><a href="apps.html">The Stack</a></li>
+                <li><a href="privacy-hardening.html">Hardening</a></li>
+                <li><a href="guides.html" style="color: var(--accent-purple); border-color: var(--accent-purple); background: rgba(139, 92, 246, 0.15);">Home Lab</a></li>
+                <li><a href="thevault.html">The Vault</a></li>
+            </ul>
+        </nav>
+    </header>
+    <main>
+        <h1>Home Lab</h1>
+        <p style="text-align:center; color:var(--text-dim);">Guides for media automation, networking, and self-hosted infrastructure.</p>
+        <div class="content-grid">
+            <article class="card"><span class="tag">Network</span><h2>Tailscale Exit Node</h2><p>Using your home network as a secure mobile gateway anywhere in the world.</p><a href="tailscale.html" class="btn">Read Guide</a></article>
+            <article class="card"><span class="tag">Media</span><h2>Stremio + Debrid</h2><p>The ultimate setup for buffer-free 4K media streaming via Real-Debrid.</p><a href="stremio.html" class="btn">Read Guide</a></article>
             
-            <p class="tagline">Privacy. Security.<span class="mobile-break"><br></span>Sovereignty.</p>
+            <article class="card"><span class="tag">Self-Host</span><h2>Immich Backup</h2><p>Self-hosting a Google Photos replacement on a dedicated server or NAS.</p><a href="Immich.html" class="btn">Read Guide</a></article>
             
-            <nav style="margin-top: 25px; text-align: center; position: relative; z-index: 9999;">
-                <a href="../index.html" style="color: #a855f7; margin: 0 15px; text-decoration: none; font-weight: bold; text-transform: uppercase; display: inline-block; padding: 10px;">Home</a>
-                <a href="../store.html" style="color: #a855f7; margin: 0 15px; text-decoration: none; font-weight: bold; text-transform: uppercase; display: inline-block; padding: 10px;">Store</a>
-                <a href="index.html" style="color: #a855f7; margin: 0 15px; text-decoration: none; font-weight: bold; text-transform: uppercase; display: inline-block; padding: 10px;">Guides</a>
-            </nav>
-        </header>
-
-        <main>
-            <div class="guides-title">Home Lab</div>
-
-            <div class="grid" style="margin-top: 30px;">
-                <article class="card">
-                    <div style="font-size: 0.65rem; text-transform: uppercase; color: #fff; font-weight: bold; margin-bottom: 0.5rem; letter-spacing: 1px;">Network</div>
-                    <h3>Tailscale Exit Node</h3>
-                    <p>Using your home network as a secure mobile gateway anywhere in the world.</p>
-                    <a href="tailscale.html" class="status-badge" style="text-decoration: none; display: inline-block;">Read Guide</a>
-                </article>
-
-                <article class="card">
-                    <div style="font-size: 0.65rem; text-transform: uppercase; color: #fff; font-weight: bold; margin-bottom: 0.5rem; letter-spacing: 1px;">Media</div>
-                    <h3>Stremio + Debrid</h3>
-                    <p>The ultimate setup for buffer-free 4K media streaming via Real-Debrid.</p>
-                    <a href="stremio.html" class="status-badge" style="text-decoration: none; display: inline-block;">Read Guide</a>
-                </article>
-                
-                <article class="card">
-                    <div style="font-size: 0.65rem; text-transform: uppercase; color: #fff; font-weight: bold; margin-bottom: 0.5rem; letter-spacing: 1px;">Self-Host</div>
-                    <h3>Immich Backup</h3>
-                    <p>Self-hosting a Google Photos replacement on a dedicated server or NAS.</p>
-                    <a href="Immich.html" class="status-badge" style="text-decoration: none; display: inline-block;">Read Guide</a>
-                </article>
-                
-                <article class="card">
-                    <div style="font-size: 0.65rem; text-transform: uppercase; color: #fff; font-weight: bold; margin-bottom: 0.5rem; letter-spacing: 1px;">Media</div>
-                    <h3>YouTube Morphe</h3>
-                    <p>Hardening your mobile YouTube experience with background play and ad-blocking.</p>
-                    <a href="YtMorphe.html" class="status-badge" style="text-decoration: none; display: inline-block;">Read Guide</a>
-                </article>
-            </div>
-        </main>
-
-        <div class="footer" style="margin-top: 50px;">
-            <p>&copy; 2026 ArmasBuilt. Sacramento, CA.<br>Privacy. Security. Sovereignty.</p>
+            <article class="card"><span class="tag">Media</span><h2>YouTube Morphe</h2><p>Hardening your mobile YouTube experience with background play and ad-blocking.</p><a href="YtMorphe.html" class="btn">Read Guide</a></article>
         </div>
-    </div>
+    </main>
+    <footer><p>&copy; 2026 TerribleTech.io | Digital Excellence.</p></footer>
 </body>
-</html>
+</html> edit news to match the website.
